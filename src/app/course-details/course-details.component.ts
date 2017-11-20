@@ -12,4 +12,10 @@ export class CourseDetailsComponent implements OnInit {
   ngOnInit() {
   }
 
+  edit() {
+  }
+
+  delete() {
+  }
+
 }

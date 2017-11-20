@@ -11,6 +11,7 @@ import { FooterComponent } from './footer/footer.component';
 import { CoursesComponent } from './courses/courses.component';
 import { CourseDetailsComponent } from './course-details/course-details.component';
 import { LoginComponent } from './login/login.component';
+import { UserLoginComponent } from './header/user-login/user-login.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { LoginComponent } from './login/login.component';
     FooterComponent,
     CoursesComponent,
     CourseDetailsComponent,
-    LoginComponent
+    LoginComponent,
+    UserLoginComponent
   ],
   imports: [
     BrowserModule,

@@ -12,4 +12,10 @@ export class CoursesComponent implements OnInit {
   ngOnInit() {
   }
 
+  find(pattern: string) {
+  }
+
+  add() {
+  }
+
 }
