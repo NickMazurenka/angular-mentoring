@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { LogoFakeComponent } from './header/logo-fake/logo-fake.component';
 import { LogoComponent } from './header/logo/logo.component';
 import { FooterComponent } from './footer/footer.component';
 import { CoursesComponent } from './courses/courses.component';
@@ -18,7 +17,6 @@ import { UserLoginComponent } from './header/user-login/user-login.component';
   declarations: [
     AppComponent,
     HeaderComponent,
-    LogoFakeComponent,
     LogoComponent,
     FooterComponent,
     CoursesComponent,
