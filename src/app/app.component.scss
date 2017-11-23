@@ -1,0 +1,26 @@
+.body {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+}
+
+@mixin content() {
+    flex: 1 0 auto;
+}
+
+.content {
+    @include content();
+    width: 100%;
+}
+
+@media (min-width: 900px) {
+    .content {
+        @include content();
+        margin: auto;
+        width: 900px;
+    }
+}
+
+.content-padding {
+    padding: 0.5rem;
+}

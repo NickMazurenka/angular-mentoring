@@ -1,0 +1,36 @@
+:host {
+    flex: none;
+    background: #FFFFFF;
+}
+
+.logo {
+    font-size: 2rem;
+    line-height: 2rem;
+    margin-right: 1rem;
+    color: #FF6008;
+}
+
+@mixin header () {
+    display: flex;
+    border-bottom: 1px solid #EEEEEE;
+}
+
+.header {
+    @include header();
+    padding: 0.5rem 0;
+    margin: 0 0.5rem;
+}
+
+@media (min-width: 1000px) {
+    .header {
+        @include header();
+        padding: 1.5rem 0;
+        margin: 0 3rem;
+    }
+}
+
+.header-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 2rem;
+}
