@@ -1,5 +1,4 @@
 :host {
-    flex: none;
     background: #FFFFFF;
 }
 
@@ -30,7 +29,5 @@
 }
 
 .header-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    line-height: 2rem;
+    font: bold 25px/2rem Lato;
 }
