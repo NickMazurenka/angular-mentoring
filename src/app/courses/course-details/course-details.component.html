@@ -1,3 +1,14 @@
-<p>
-  course-details works!
-</p>
+<div *ngIf="course" class="course">
+  <div class="course-details">
+    <div class="course-properties">
+      <div class="course-text">Video course {{course.id}}</div>
+      <div class="course-text">{{course.duration}}</div>
+      <div class="course-text">{{course.date}}</div>
+    </div>
+    <div class="course-text">{{course.description}}</div>
+  </div>
+  <div class="course-controls">
+    <div class="button">Edit</div>
+    <div class="button">Delete</div>
+  </div>
+</div>

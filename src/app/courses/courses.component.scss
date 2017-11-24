@@ -45,6 +45,8 @@
 .controls-container {
     display: flex;
     flex-flow: column;
+    background-color: #FFFFFF;
+    padding: 0.5rem 1rem;
 }
 
 @media (min-width: 400px) {
@@ -52,4 +54,10 @@
         display: flex;
         flex-flow: row;
     }
+}
+
+.courses-container {
+    padding: 0.5rem;
+    display: flex;
+    flex-flow: column;
 }

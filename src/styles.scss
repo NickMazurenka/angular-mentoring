@@ -6,3 +6,12 @@ html, body {
     height: 100%;
     margin: 0;
 }
+
+@mixin container() {
+    width: 100%;
+    
+    @media (min-width: 900px){
+        width: 900px;
+        margin: auto;
+    }
+}

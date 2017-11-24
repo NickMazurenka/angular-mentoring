@@ -1,33 +1,16 @@
+@import '../../styles.scss';
+
 :host {
     background: #FFFFFF;
-}
-
-.logo {
-    font-size: 2rem;
-    line-height: 2rem;
-    margin-right: 1rem;
-    color: #FF6008;
-}
-
-@mixin header () {
-    display: flex;
     border-bottom: 1px solid #EEEEEE;
 }
 
 .header {
-    @include header();
+    @include container();
+    display: flex;
+    justify-content: space-between;
     padding: 0.5rem 0;
-    margin: 0 0.5rem;
-}
-
-@media (min-width: 1000px) {
-    .header {
-        @include header();
+    @media (min-width: 900px) {
         padding: 1.5rem 0;
-        margin: 0 3rem;
     }
-}
-
-.header-title {
-    font: bold 25px/2rem Lato;
 }

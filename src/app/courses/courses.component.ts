@@ -7,21 +7,21 @@ import { ICourseDetails } from './course-details/course-details.model';
   styleUrls: ['./courses.component.scss']
 })
 export class CoursesComponent implements OnInit {
-  private courses: ICourseDetails[] = [{
-    id: 0,
-    description: 'Awesome course one',
-    date: new Date(2017, 11, 23),
-    duration: 27
-  }, {
+  courses: ICourseDetails[] = [{
     id: 1,
-    description: 'Awesome course two',
-    date: new Date(2017, 11, 23),
-    duration: 72
+    description: 'Awesome course one',
+    date: '24 Nov 17',
+    duration: '1h 27 min'
   }, {
     id: 2,
+    description: 'Awesome course two',
+    date: '24 Nov 17',
+    duration: '1h 27 min'
+  }, {
+    id: 3,
     description: 'Awesome course three',
-    date: new Date(2017, 11, 23),
-    duration: 27
+    date: '24 Nov 17',
+    duration: '1h 27 min'
   }];
 
   constructor() { }
