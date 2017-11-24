@@ -31,6 +31,10 @@
 .course-controls {
     display: flex;
     flex-flow: column;
+
+    @media (max-width: 530px) {
+        flex-flow: row wrap;
+    }
 }
 
 .course-properties {
