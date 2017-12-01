@@ -13,6 +13,7 @@ import { CoursesComponent } from './courses/courses.component';
 import { CourseDetailsComponent } from './courses/course-details/course-details.component';
 import { LoginComponent } from './login/login.component';
 import { UserLoginComponent } from './header/user-login/user-login.component';
+import { RouterModule } from '@angular/router/src/router_module';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { UserLoginComponent } from './header/user-login/user-login.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,14 @@
+.button {
+    flex: 0 0 auto;
+    color: #FFFFFF;
+    background-color: #FF6008;
+    border-radius: 2rem;
+    padding: 0 1rem;
+    margin: 0 1rem;
+    line-height: 2rem;
+    cursor: pointer;
+
+    @media (max-width: 399px) {
+        margin-left: 0;
+    }
+}
