@@ -1,14 +1,45 @@
+.container {
+    margin: 1rem;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.header {
+    margin: 1rem 0;
+    font: 20px/20px Lato;
+}
+
+.input {
+    font: 18px/18px Lato;
+    padding: 0 1rem;
+    color: #000000;
+    background-color: #EEEEEE;
+    line-height: 3rem;
+    border: none;
+}
+
+.input:focus {
+    outline: #FF6008 solid 1px;
+}
+
+.input::placeholder {
+    color: #B6B6B6;
+}
+
 .button {
-    flex: 0 0 auto;
+    text-transform: uppercase;
+    text-align: center;
     color: #FFFFFF;
     background-color: #FF6008;
     border-radius: 2rem;
-    padding: 0 1rem;
-    margin: 0 1rem;
-    line-height: 2rem;
+    line-height: 3rem;
     cursor: pointer;
-
-    @media (max-width: 399px) {
-        margin-left: 0;
-    }
+    max-width: 12rem;
 }

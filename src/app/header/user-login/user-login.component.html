@@ -1,4 +1,2 @@
-<div class="controls">
-    <fa name="user-circle-o" class="login"></fa>
-    <fa name="sign-out" class="logout"></fa>
-</div>
+<fa *ngIf="!loggedIn" name="user-circle-o" (click)="login()" class="control"></fa>
+<fa *ngIf="loggedIn" name="sign-out" (click)="logout()" class="control"></fa>
