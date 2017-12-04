@@ -6,5 +6,5 @@
   <div class="add-button flex-item">Add course</div>
 </div>
 <div class="courses-container">
-  <app-course-details *ngFor="let course of courses" [course]="course"></app-course-details>
+  <app-course-details *ngFor="let course of courses" [course]="course" (change)="courseChange($event)"></app-course-details>
 </div>

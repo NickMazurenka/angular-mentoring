@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ICourseDetails } from './course-details.model';
 
 @Component({
@@ -9,6 +9,7 @@ import { ICourseDetails } from './course-details.model';
 export class CourseDetailsComponent implements OnInit {
 
   @Input() course: ICourseDetails;
+  @Output() change: EventEmitter<number> = new EventEmitter<number>();
 
   constructor() { }
 
@@ -19,6 +20,7 @@ export class CourseDetailsComponent implements OnInit {
   }
 
   delete() {
+    this.change.emit(this.course.id);
   }
 
 }

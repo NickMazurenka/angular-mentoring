@@ -38,4 +38,8 @@ export class CoursesComponent implements OnInit {
   add() {
   }
 
+  courseChange(id: number) {
+    console.log('Parent detected change in course ' + id);
+  }
+
 }
