@@ -14,7 +14,7 @@ import { CourseDetailsComponent } from './courses/course-details/course-details.
 import { LoginComponent } from './login/login.component';
 import { UserLoginComponent } from './header/user-login/user-login.component';
 import { RouterModule } from '@angular/router/src/router_module';
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,8 @@ import { RouterModule } from '@angular/router/src/router_module';
     BrowserModule,
     AppRoutingModule,
     AngularFontAwesomeModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

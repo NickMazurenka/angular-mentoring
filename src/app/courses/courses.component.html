@@ -1,7 +1,7 @@
 <div class="controls-container">
   <div class="search-container">
-    <input type="text" class="search-field flex-item">
-    <fa name="search" class="search-button flex-item"></fa>
+    <input [(ngModel)]="pattern" type="text" class="search-field flex-item">
+    <fa name="search" class="search-button flex-item" (click)="search()"></fa>
   </div>
   <div class="add-button flex-item">Add course</div>
 </div>

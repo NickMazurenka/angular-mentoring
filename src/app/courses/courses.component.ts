@@ -8,6 +8,7 @@ import { ICourseDetails } from './course-details/course-details.model';
 })
 export class CoursesComponent implements OnInit {
   courses: ICourseDetails[];
+  pattern: string;
 
   constructor() {
     this.courses = [];
@@ -30,6 +31,10 @@ export class CoursesComponent implements OnInit {
       date: '24 Nov 17',
       duration: '1h 27 min'
     });
+  }
+
+  search() {
+    console.log(this.pattern);
   }
 
   find(pattern: string) {
