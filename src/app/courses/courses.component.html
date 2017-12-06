@@ -3,7 +3,7 @@
     <input [(ngModel)]="pattern" type="text" class="search-field flex-item">
     <fa name="search" class="search-button flex-item" (click)="search()"></fa>
   </div>
-  <div class="add-button flex-item">Add course</div>
+  <button class="button add-button flex-item">Add course</button>
 </div>
 <div class="courses-container">
   <app-course-details *ngFor="let course of courses" [course]="course" (change)="courseChange($event)"></app-course-details>

@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { ConfirmationDialogServiceService } from './confirmation-dialog-service.service';
+import { ConfirmationDialogService } from './confirmation-dialog.service';
 
-describe('ConfirmationDialogServiceService', () => {
+describe('ConfirmationDialogService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ConfirmationDialogServiceService]
+      providers: [ConfirmationDialogService]
     });
   });
 
-  it('should be created', inject([ConfirmationDialogServiceService], (service: ConfirmationDialogServiceService) => {
+  it('should be created', inject([ConfirmationDialogService], (service: ConfirmationDialogService) => {
     expect(service).toBeTruthy();
   }));
 });

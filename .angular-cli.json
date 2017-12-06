@@ -22,6 +22,11 @@
         "styles.scss",
         "../node_modules/font-awesome/scss/font-awesome.scss"
       ],
+      "stylePreprocessorOptions": {
+        "includePaths": [
+          "styles"
+        ]
+      },
       "scripts": [],
       "environmentSource": "environments/environment.ts",
       "environments": {

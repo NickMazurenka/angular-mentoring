@@ -1,0 +1,16 @@
+.input {
+    font: 18px/18px Lato;
+    padding: 0 1rem;
+    color: #000000;
+    background-color: #EEEEEE;
+    line-height: 3rem;
+    border: none;
+}
+
+.input:focus {
+    outline: #B6B6B6 solid 1px;
+}
+
+.input::placeholder {
+    color: #B6B6B6;
+}
