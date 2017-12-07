@@ -21,4 +21,16 @@
         background-color: #FFFFFF;
         border: 1px solid #FF6008;
     }
+
+    &_optional {
+        color: #000000;
+        background-color: #FFFFFF;
+        border: 1px solid #DFDFDF;
+
+        &:hover {
+            color: #000000;
+            background-color: #FFFFFF;
+            border: 1px solid #000000;
+        }
+    }
 }

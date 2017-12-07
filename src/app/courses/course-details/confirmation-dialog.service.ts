@@ -21,7 +21,7 @@ export class ConfirmationDialogService {
 
     overlayRef.attach(dialogPortal);
 
-    overlayRef.backdropClick().subscribe(_ => overlayRef.dispose);
+    overlayRef.backdropClick().subscribe(_ => overlayRef.dispose());
   }
 
   private getOverlayConfig(): OverlayConfig {
