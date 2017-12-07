@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Overlay } from '@angular/cdk/overlay';
+import { Overlay, OverlayConfig } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 
@@ -13,12 +13,30 @@ export class ConfirmationDialogService {
   }
 
   open() {
-    const overlayRef = this.overlay.create();
+    const overlayConfig = this.getOverlayConfig();
+
+    const overlayRef = this.overlay.create(overlayConfig);
 
     const dialogPortal = new ComponentPortal(ConfirmationDialogComponent);
 
-    // Attach ComponentPortal to PortalHost
     overlayRef.attach(dialogPortal);
+
+    overlayRef.backdropClick().subscribe(_ => overlayRef.dispose);
+  }
+
+  private getOverlayConfig(): OverlayConfig {
+    const positionStrategy = this.overlay.position()
+      .global()
+      .centerHorizontally()
+      .centerVertically();
+
+    const overlayConfig = new OverlayConfig({
+      hasBackdrop: true,
+      scrollStrategy: this.overlay.scrollStrategies.block(),
+      positionStrategy
+    });
+
+    return overlayConfig;
   }
 
 }
