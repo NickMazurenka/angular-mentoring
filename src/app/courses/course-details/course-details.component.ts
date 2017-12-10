@@ -10,7 +10,7 @@ import { ConfirmationDialogService } from './confirmation-dialog.service';
 export class CourseDetailsComponent implements OnInit {
 
   @Input() course: ICourseDetails;
-  @Output() change: EventEmitter<number> = new EventEmitter<number>();
+  @Output() onDelete: EventEmitter<number> = new EventEmitter<number>();
 
   private dialogService: ConfirmationDialogService;
 
@@ -25,8 +25,8 @@ export class CourseDetailsComponent implements OnInit {
   }
 
   delete() {
-    this.dialogService.open();
-    this.change.emit(this.course.id);
+    const dialogRef = this.dialogService.open();
+    dialogRef.onDelete.subscribe(() => this.onDelete.emit(this.course.id));
   }
 
 }
