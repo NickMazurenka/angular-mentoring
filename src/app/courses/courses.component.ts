@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ICourseDetails } from './course-details/course-details.model';
+import { CoursesService } from './courses.service';
 
 @Component({
   selector: 'app-courses',
@@ -7,30 +8,17 @@ import { ICourseDetails } from './course-details/course-details.model';
   styleUrls: ['./courses.component.scss']
 })
 export class CoursesComponent implements OnInit {
-  courses: ICourseDetails[];
-  pattern: string;
+  private courses: ICourseDetails[];
+  private pattern: string;
+  private coursesService: CoursesService;
 
-  constructor() {
+  constructor(coursesService: CoursesService) {
     this.courses = [];
+    this.coursesService = coursesService;
   }
 
   ngOnInit() {
-    this.courses.push({
-      id: 1,
-      description: 'Awesome course one',
-      date: '24 Nov 17',
-      duration: '1h 27 min'
-    }, {
-      id: 2,
-      description: 'Awesome course two',
-      date: '24 Nov 17',
-      duration: '1h 27 min'
-    }, {
-      id: 3,
-      description: 'Awesome course three',
-      date: '24 Nov 17',
-      duration: '1h 27 min'
-    });
+    this.courses = this.coursesService.getCourseList();
   }
 
   search() {
