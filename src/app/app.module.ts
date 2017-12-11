@@ -18,6 +18,7 @@ import { UserLoginComponent } from './header/user-login/user-login.component';
 import { ConfirmationDialogComponent } from './courses/course-details/confirmation-dialog/confirmation-dialog.component';
 import { ConfirmationDialogService } from './courses/course-details/confirmation-dialog.service';
 import { CoursesService } from './courses/courses.service';
+import { LoginService } from './shared-services/login.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,11 @@ import { CoursesService } from './courses/courses.service';
     FormsModule,
     OverlayModule
   ],
-  providers: [ConfirmationDialogService, CoursesService],
+  providers: [
+    ConfirmationDialogService,
+    CoursesService,
+    LoginService
+  ],
   bootstrap: [AppComponent],
   entryComponents: [ConfirmationDialogComponent]
 })

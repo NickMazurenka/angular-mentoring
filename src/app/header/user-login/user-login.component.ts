@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from '../../shared-services/login.service';
 
 @Component({
   selector: 'app-user-login',
@@ -8,23 +9,27 @@ import { Router } from '@angular/router';
 })
 export class UserLoginComponent implements OnInit {
 
-  public loggedIn: boolean;
+  public loggedIn: boolean = false;
+
+  private loginService: LoginService;
   private router: Router;
 
-  constructor(router: Router) {
+  constructor(loginService: LoginService, router: Router) {
+    this.loginService = loginService;
     this.router = router;
   }
 
   ngOnInit() {
+    this.loginService.loginEvent.subscribe(() => this.loggedIn = true);
+    this.loginService.logoutEvent.subscribe(() => this.loggedIn = false);
   }
 
-  login(name: string, password: string) {
-    this.loggedIn = true;
+  loginClicked(name: string, password: string) {
     this.router.navigate(['/login']);
   }
 
-  logout() {
-    this.loggedIn = false;
+  logoutClicked() {
     this.router.navigate(['']);
+    this.loginService.LogOut();
   }
 }

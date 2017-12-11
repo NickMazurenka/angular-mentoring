@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { IUser } from '../shared-models/user.model';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class LoginService {
+
+  public loginEvent: Subject<boolean> = new Subject<boolean>();
+  public logoutEvent: Subject<boolean> = new Subject<boolean>();
 
   private loggedIn = false;
   private userName: string;
@@ -11,15 +15,13 @@ export class LoginService {
 
   constructor() { }
 
-  public LogIn(username: string, password: string): Observable<IUser> {
+  public LogIn(username: string, password: string): Observable<boolean> {
     this.userName = username;
     this.userPassword = password;
     this.loggedIn = true;
 
-    return new Observable(observer => observer.next({
-      name: this.userName,
-      password: this.userPassword
-    }));
+    this.loginEvent.next(true);
+    return new Observable(observer => observer.next(true));
   }
 
   public LogOut(): Observable<boolean> {
@@ -27,6 +29,7 @@ export class LoginService {
     this.userPassword = null;
     this.loggedIn = false;
 
+    this.logoutEvent.next(true);
     return new Observable(observer => observer.next(true));
   }
 }

@@ -1,8 +1,8 @@
 <div class="container">
   <div class="header">Log into your account</div>
-  <form class="controls">
-    <input type="text" class="input form-group" placeholder="Email Address">
-    <input type="text" class="input form-group" placeholder="Password">
-    <div class="button button_large">Log in</div>
+  <form (ngSubmit)="onSubmit()" #loginForm="ngForm" class="controls">
+    <input id="name" [(ngModel)]="userName" name="name" type="text" class="input form-group" placeholder="Email Address">
+    <input id="password" [(ngModel)]="userPassword" name="password" type="password" class="input form-group" placeholder="Password">
+    <button type="submit" class="button button_large">Log in</button>
   </form>
 </div>
