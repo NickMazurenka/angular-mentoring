@@ -1,9 +1,9 @@
-<div *ngIf="course" class="course">
+<div *ngIf="course" class="course" [appCoursePlateColor]="course.date">
   <div class="course-details">
     <div class="course-properties">
       <div class="course-text">Video course {{course.id}}</div>
       <div class="course-text">{{course.duration}}</div>
-      <div class="course-text">{{course.date}}</div>
+      <div class="course-text">{{course.date | date}}</div>
     </div>
     <div class="course-text">{{course.description}}</div>
   </div>

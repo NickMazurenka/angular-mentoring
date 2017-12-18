@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router/src/router_module';
 import { FormsModule } from '@angular/forms';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { DatePipe } from '@angular/common';
 
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
@@ -19,6 +20,7 @@ import { ConfirmationDialogComponent } from './courses/course-details/confirmati
 import { ConfirmationDialogService } from './courses/course-details/confirmation-dialog.service';
 import { CoursesService } from './courses/courses.service';
 import { LoginService } from './shared-services/login.service';
+import { CoursePlateColorDirective } from './courses/course-details/course-plate-color.directive';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { LoginService } from './shared-services/login.service';
     LoginComponent,
     UserLoginComponent,
     ConfirmationDialogComponent,
+    CoursePlateColorDirective,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,8 @@ import { LoginService } from './shared-services/login.service';
   providers: [
     ConfirmationDialogService,
     CoursesService,
-    LoginService
+    LoginService,
+    DatePipe
   ],
   bootstrap: [AppComponent],
   entryComponents: [ConfirmationDialogComponent]

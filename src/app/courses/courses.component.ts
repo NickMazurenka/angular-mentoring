@@ -8,8 +8,9 @@ import { CoursesService } from './courses.service';
   styleUrls: ['./courses.component.scss']
 })
 export class CoursesComponent implements OnInit {
-  private courses: ICourseDetails[];
-  private pattern: string;
+  public courses: ICourseDetails[];
+  public pattern: string;
+
   private coursesService: CoursesService;
 
   constructor(coursesService: CoursesService) {

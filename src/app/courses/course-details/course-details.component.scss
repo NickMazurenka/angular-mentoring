@@ -7,13 +7,28 @@
     padding: 1rem;
     background: #FFFFFF;
     position: relative;
+}
 
+@mixin course-plate() {
     &::before {
         content: "";
         left: -0.1rem;
         width: 0.25rem;
         height: 2.25rem;
         position: absolute;
+    }
+}
+
+.course-plate_upcoming {
+    @include course-plate();
+    &::before {
+        background: #E3E3E3;
+    }
+}
+
+.course-plate_fresh {
+    @include course-plate();
+    &::before {
         background: #FF6008;
     }
 }

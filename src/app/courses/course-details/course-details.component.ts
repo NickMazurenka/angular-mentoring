@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ICourseDetails } from './course-details.model';
 import { ConfirmationDialogService } from './confirmation-dialog.service';
+import { CoursePlateColorDirective } from './course-plate-color.directive';
 
 @Component({
   selector: 'app-course-details',
