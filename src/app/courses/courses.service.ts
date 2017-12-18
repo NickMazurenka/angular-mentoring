@@ -24,7 +24,8 @@ export class CoursesService {
   constructor() { }
 
   public getCourseList(): ICourseDetails[] {
-    return CoursesService.courses;
+    return [];
+    //return CoursesService.courses;
   }
 
   public CreateCourse(course: ICourseDetails): void {
