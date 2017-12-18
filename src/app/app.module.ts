@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router/src/router_module';
 import { FormsModule } from '@angular/forms';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { DatePipe } from '@angular/common';
+import { UpperCasePipe } from '@angular/common';
 
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
@@ -47,7 +48,8 @@ import { CoursePlateColorDirective } from './courses/course-details/course-plate
     ConfirmationDialogService,
     CoursesService,
     LoginService,
-    DatePipe
+    DatePipe,
+    UpperCasePipe
   ],
   bootstrap: [AppComponent],
   entryComponents: [ConfirmationDialogComponent]
