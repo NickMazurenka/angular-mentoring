@@ -18,7 +18,8 @@ export class CoursesService {
     id: 3,
     description: 'Awesome course three',
     date: new Date('24 Nov 17'),
-    duration: '1h 27 min'
+    duration: '1h 27 min',
+    starred: true
   }];
 
   constructor() { }

@@ -3,4 +3,5 @@ export interface ICourseDetails {
     duration: string;
     date: Date;
     description: string;
+    starred?: boolean;
 }

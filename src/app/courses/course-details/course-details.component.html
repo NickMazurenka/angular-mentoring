@@ -3,6 +3,7 @@
     <div class="course-properties">
       <div class="course-text">Video course {{course.id}}</div>
       <div class="course-text">{{course.duration}}</div>
+      <fa *ngIf="course.starred" class="star" name="star"></fa>
       <div class="course-text">{{course.date | date}}</div>
     </div>
     <div class="course-text">{{course.description | uppercase}}</div>
