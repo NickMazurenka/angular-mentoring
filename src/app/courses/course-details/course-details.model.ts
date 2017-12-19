@@ -1,6 +1,6 @@
 export interface ICourseDetails {
     id: number;
-    duration: string;
+    duration: number;
     date: Date;
     description: string;
     starred?: boolean;

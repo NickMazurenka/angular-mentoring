@@ -8,17 +8,17 @@ export class CoursesService {
     id: 1,
     description: 'Awesome course one',
     date: new Date('24 Dec 17'),
-    duration: '1h 27 min'
+    duration: 87
   }, {
     id: 2,
     description: 'Awesome course two',
     date: new Date('18 Dec 17'),
-    duration: '1h 27 min'
+    duration: 27
   }, {
     id: 3,
     description: 'Awesome course three',
     date: new Date('24 Nov 17'),
-    duration: '1h 27 min',
+    duration: 88,
     starred: true
   }];
 

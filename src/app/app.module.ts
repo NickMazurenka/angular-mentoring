@@ -22,6 +22,7 @@ import { ConfirmationDialogService } from './courses/course-details/confirmation
 import { CoursesService } from './courses/courses.service';
 import { LoginService } from './shared-services/login.service';
 import { CoursePlateColorDirective } from './courses/course-details/course-plate-color.directive';
+import { CourseDurationPipe } from './courses/course-details/course-duration.pipe';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { CoursePlateColorDirective } from './courses/course-details/course-plate
     UserLoginComponent,
     ConfirmationDialogComponent,
     CoursePlateColorDirective,
+    CourseDurationPipe,
   ],
   imports: [
     BrowserModule,
