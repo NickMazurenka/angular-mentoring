@@ -1,11 +1,11 @@
 <div class="controls-container">
   <div class="search-container">
-    <input [(ngModel)]="pattern" type="text" class="search-field flex-item">
-    <fa name="search" class="search-button flex-item" (click)="search()"></fa>
+    <input #searchInput [(ngModel)]="pattern" type="text" class="search-field flex-item">
+    <fa name="search" class="search-button flex-item" (click)="search(searchInput.value)"></fa>
   </div>
   <button class="button add-button flex-item">Add course</button>
 </div>
 <div class="courses-container">
-  <div *ngIf="courses.length === 0" class="courses-empty-message">No data. Feel free to add new course.</div>
-  <app-course-details *ngFor="let course of courses" [course]="course" (change)="courseChange($event)"></app-course-details>
+  <div *ngIf="coursesFiltered.length === 0" class="courses-empty-message">No data. Feel free to add new course.</div>
+  <app-course-details *ngFor="let course of coursesFiltered" [course]="course" (change)="courseChange($event)"></app-course-details>
 </div>

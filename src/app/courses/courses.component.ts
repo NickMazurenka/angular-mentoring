@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ICourseDetails } from './course-details/course-details.model';
 import { CoursesService } from './courses.service';
+import { CoursesFilterPipe } from './courses-filter.pipe';
 
 @Component({
   selector: 'app-courses',
@@ -8,9 +9,10 @@ import { CoursesService } from './courses.service';
   styleUrls: ['./courses.component.scss']
 })
 export class CoursesComponent implements OnInit {
-  public courses: ICourseDetails[];
+  public coursesFiltered: ICourseDetails[];
   public pattern: string;
 
+  private courses: ICourseDetails[];
   private coursesService: CoursesService;
 
   constructor(coursesService: CoursesService) {
@@ -20,10 +22,15 @@ export class CoursesComponent implements OnInit {
 
   ngOnInit() {
     this.courses = this.coursesService.getCourseList();
+    this.coursesFiltered = this.courses;
   }
 
   search() {
-    console.log(this.pattern);
+    if (this.pattern) {
+      this.coursesFiltered = new CoursesFilterPipe().transform(this.courses, this.pattern);
+    } else {
+      this.coursesFiltered = this.courses;
+    }
   }
 
   find(pattern: string) {
