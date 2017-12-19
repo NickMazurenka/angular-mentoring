@@ -7,5 +7,5 @@
 </div>
 <div class="courses-container">
   <div *ngIf="coursesFiltered.length === 0" class="courses-empty-message">No data. Feel free to add new course.</div>
-  <app-course-details *ngFor="let course of coursesFiltered" [course]="course" (change)="courseChange($event)"></app-course-details>
+  <app-course-details *ngFor="let course of coursesFiltered | coursesOrder" [course]="course" (change)="courseChange($event)"></app-course-details>
 </div>

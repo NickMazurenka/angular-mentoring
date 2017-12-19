@@ -24,6 +24,7 @@ import { LoginService } from './shared-services/login.service';
 import { CoursePlateColorDirective } from './courses/course-details/course-plate-color.directive';
 import { CourseDurationPipe } from './courses/course-details/course-duration.pipe';
 import { CoursesFilterPipe } from './courses/courses-filter.pipe';
+import { CoursesOrderPipe } from './courses/courses-order.pipe';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { CoursesFilterPipe } from './courses/courses-filter.pipe';
     CoursePlateColorDirective,
     CourseDurationPipe,
     CoursesFilterPipe,
+    CoursesOrderPipe,
   ],
   imports: [
     BrowserModule,
