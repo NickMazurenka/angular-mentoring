@@ -28,21 +28,26 @@ export class CoursesService {
     return CoursesService.courses;
   }
 
-  public CreateCourse(course: ICourseDetails): void {
+  public createCourse(course: ICourseDetails): void {
     CoursesService.courses.push(course);
   }
 
-  public GetCourseById(id: number): ICourseDetails {
+  public getCourseById(id: number): ICourseDetails {
     return CoursesService.courses.filter((course: ICourseDetails) => course.id === id)[0];
   }
 
-  public UpdateCourse(id: number, data: ICourseDetails): void {
-    let course = this.GetCourseById(id);
+  public updateCourse(id: number, data: ICourseDetails): void {
+    let course = this.getCourseById(id);
     course = data;
   }
 
-  public RemoveCourse(id: number): void {
+  public deleteCouseById(id: number): void {
     CoursesService.courses = CoursesService.courses.filter((course: ICourseDetails) => course.id !== id);
+  }
+
+  public deleteCouse(course: ICourseDetails): void {
+    const index = CoursesService.courses.indexOf(course);
+    CoursesService.courses.splice(index, 1);
   }
 
 }

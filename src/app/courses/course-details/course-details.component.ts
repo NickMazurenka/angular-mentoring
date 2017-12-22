@@ -11,7 +11,7 @@ import { CoursePlateColorDirective } from './course-plate-color.directive';
 export class CourseDetailsComponent implements OnInit {
 
   @Input() course: ICourseDetails;
-  @Output() onDelete: EventEmitter<number> = new EventEmitter<number>();
+  @Output() onDelete: EventEmitter<ICourseDetails> = new EventEmitter<ICourseDetails>();
 
   private dialogService: ConfirmationDialogService;
 
@@ -27,7 +27,7 @@ export class CourseDetailsComponent implements OnInit {
 
   delete() {
     const dialogRef = this.dialogService.open();
-    dialogRef.onDelete.subscribe(() => this.onDelete.emit(this.course.id));
+    dialogRef.onDelete.subscribe(() => this.onDelete.emit(this.course));
   }
 
 }

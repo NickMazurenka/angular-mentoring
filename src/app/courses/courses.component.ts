@@ -9,10 +9,9 @@ import { CoursesFilterPipe } from './courses-filter.pipe';
   styleUrls: ['./courses.component.scss']
 })
 export class CoursesComponent implements OnInit {
-  public coursesFiltered: ICourseDetails[];
   public pattern: string;
+  public courses: ICourseDetails[];
 
-  private courses: ICourseDetails[];
   private coursesService: CoursesService;
 
   constructor(coursesService: CoursesService) {
@@ -22,25 +21,19 @@ export class CoursesComponent implements OnInit {
 
   ngOnInit() {
     this.courses = this.coursesService.getCourseList();
-    this.coursesFiltered = this.courses;
   }
 
   search() {
     if (this.pattern) {
-      this.coursesFiltered = new CoursesFilterPipe().transform(this.courses, this.pattern);
+      this.courses = new CoursesFilterPipe().transform(this.coursesService.getCourseList(), this.pattern);
     } else {
-      this.coursesFiltered = this.courses;
+      this.courses = this.coursesService.getCourseList();
     }
   }
 
-  find(pattern: string) {
-  }
-
-  add() {
-  }
-
-  courseChange(id: number) {
-    console.log('Parent detected change in course ' + id);
+  deleteCourse(course: ICourseDetails) {
+    this.coursesService.deleteCouse(course);
+    this.courses = this.coursesService.getCourseList();
   }
 
 }
