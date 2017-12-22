@@ -20,20 +20,21 @@ export class CoursesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.courses = this.coursesService.getCourseList();
+    this.coursesService.getCourseList().subscribe((courses: ICourseDetails[]) => this.courses = courses);
   }
 
   search() {
-    if (this.pattern) {
-      this.courses = new CoursesFilterPipe().transform(this.coursesService.getCourseList(), this.pattern);
-    } else {
-      this.courses = this.coursesService.getCourseList();
-    }
+    this.coursesService.getCourseList().subscribe((courses: ICourseDetails[]) => {
+      if (this.pattern) {
+        this.courses = new CoursesFilterPipe().transform(courses, this.pattern);
+      } else {
+        this.courses = courses;
+      }
+    });
   }
 
   deleteCourse(course: ICourseDetails) {
-    this.coursesService.deleteCouse(course);
-    this.courses = this.coursesService.getCourseList();
+    this.coursesService.deleteCouse(course).subscribe((courses: ICourseDetails[]) => this.courses = courses);
   }
 
 }

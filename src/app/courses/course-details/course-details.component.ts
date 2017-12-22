@@ -8,7 +8,7 @@ import { CoursePlateColorDirective } from './course-plate-color.directive';
   templateUrl: './course-details.component.html',
   styleUrls: ['./course-details.component.scss']
 })
-export class CourseDetailsComponent implements OnInit {
+export class CourseDetailsComponent {
 
   @Input() course: ICourseDetails;
   @Output() onDelete: EventEmitter<ICourseDetails> = new EventEmitter<ICourseDetails>();
@@ -17,9 +17,6 @@ export class CourseDetailsComponent implements OnInit {
 
   constructor(dialogService: ConfirmationDialogService) {
     this.dialogService = dialogService;
-  }
-
-  ngOnInit() {
   }
 
   edit() {

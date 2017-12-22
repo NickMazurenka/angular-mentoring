@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { ICourseDetails } from './course-details/course-details.model';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
 
 @Injectable()
 export class CoursesService {
 
-  private static courses: ICourseDetails[] = [{
+  private courses: ICourseDetails[] = [{
     id: 1,
     description: 'Awesome course one',
     date: new Date('24 Dec 17'),
@@ -24,30 +26,32 @@ export class CoursesService {
 
   constructor() { }
 
-  public getCourseList(): ICourseDetails[] {
-    return CoursesService.courses;
+  public getCourseList(): Observable<ICourseDetails[]> {
+    return Observable.of(this.courses);
   }
 
-  public createCourse(course: ICourseDetails): void {
-    CoursesService.courses.push(course);
+  public createCourse(course: ICourseDetails): Observable<ICourseDetails> {
+    this.courses.push(course);
+    return Observable.of(course);
   }
 
-  public getCourseById(id: number): ICourseDetails {
-    return CoursesService.courses.filter((course: ICourseDetails) => course.id === id)[0];
+  public updateCourse(data: ICourseDetails): Observable<ICourseDetails> {
+    let course = this.courses.filter((c: ICourseDetails) => c.id === data.id)[0];
+
+    return new Observable(observer => {
+      if (course == null) {
+        observer.error();
+      } else {
+        course = data;
+        observer.next(course);
+      }
+    });
   }
 
-  public updateCourse(id: number, data: ICourseDetails): void {
-    let course = this.getCourseById(id);
-    course = data;
-  }
-
-  public deleteCouseById(id: number): void {
-    CoursesService.courses = CoursesService.courses.filter((course: ICourseDetails) => course.id !== id);
-  }
-
-  public deleteCouse(course: ICourseDetails): void {
-    const index = CoursesService.courses.indexOf(course);
-    CoursesService.courses.splice(index, 1);
+  public deleteCouse(course: ICourseDetails): Observable<ICourseDetails[]> {
+    const index = this.courses.indexOf(course);
+    this.courses.splice(index, 1);
+    return Observable.of(this.courses);
   }
 
 }

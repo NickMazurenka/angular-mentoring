@@ -9,7 +9,7 @@ import { Observer } from 'rxjs/Observer';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   public userName: string;
   public userPassword: string;
@@ -20,9 +20,6 @@ export class LoginComponent implements OnInit {
   constructor(loginService: LoginService, router: Router) {
     this.loginService = loginService;
     this.router = router;
-  }
-
-  ngOnInit() {
   }
 
   onSubmit() {

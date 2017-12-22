@@ -6,15 +6,12 @@ import { ConfirmationDialogRef } from './confirmation-dialog-ref';
   templateUrl: './confirmation-dialog.component.html',
   styleUrls: ['./confirmation-dialog.component.scss']
 })
-export class ConfirmationDialogComponent implements OnInit {
+export class ConfirmationDialogComponent {
 
   private dialogRef: ConfirmationDialogRef;
 
   constructor(dialogRef: ConfirmationDialogRef) {
     this.dialogRef = dialogRef;
-  }
-
-  ngOnInit() {
   }
 
   yesClick() {
