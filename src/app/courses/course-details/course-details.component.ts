@@ -1,10 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { ICourseDetails } from './course-details.model';
 import { ConfirmationDialogService } from './confirmation-dialog.service';
 import { CoursePlateColorDirective } from './course-plate-color.directive';
 
 @Component({
   selector: 'app-course-details',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './course-details.component.html',
   styleUrls: ['./course-details.component.scss']
 })
