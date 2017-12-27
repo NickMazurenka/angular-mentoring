@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
 export class LogoComponent {
 
   private router: Router;
-  private logoSpin: boolean = false;
+
+  public logoSpin: boolean = false;
 
   constructor(router: Router) {
     this.router = router;
