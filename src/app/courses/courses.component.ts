@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ICourseDetails } from './course-details/course-details.model';
 import { CoursesService } from './courses.service';
 import { CoursesFilterPipe } from './courses-filter.pipe';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-courses',
@@ -13,8 +14,10 @@ export class CoursesComponent implements OnInit {
   public courses: ICourseDetails[];
 
   private coursesService: CoursesService;
+  private router: Router;
 
-  constructor(coursesService: CoursesService) {
+  constructor(router: Router, coursesService: CoursesService) {
+    this.router = router;
     this.courses = [];
     this.coursesService = coursesService;
   }
@@ -31,6 +34,10 @@ export class CoursesComponent implements OnInit {
         this.courses = courses;
       }
     });
+  }
+
+  onAddCourseClicked() {
+    this.router.navigate(['addCourse']);
   }
 
   deleteCourse(course: ICourseDetails) {

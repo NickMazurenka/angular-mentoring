@@ -3,7 +3,7 @@
     <input #searchInput [(ngModel)]="pattern" type="text" class="search-field flex-item">
     <fa name="search" class="search-button flex-item" (click)="search()"></fa>
   </div>
-  <button class="button add-button flex-item">Add course</button>
+  <button class="button add-button flex-item" (click)="onAddCourseClicked()">Add course</button>
 </div>
 <div class="courses-container">
   <div *ngIf="courses.length === 0" class="courses-empty-message">No data. Feel free to add new course.</div>

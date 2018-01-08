@@ -25,6 +25,7 @@ import { CoursePlateColorDirective } from './courses/course-details/course-plate
 import { CourseDurationPipe } from './courses/course-details/course-duration.pipe';
 import { CoursesFilterPipe } from './courses/courses-filter.pipe';
 import { CoursesOrderPipe } from './courses/courses-order.pipe';
+import { AddCourseComponent } from './add-course/add-course.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { CoursesOrderPipe } from './courses/courses-order.pipe';
     CourseDurationPipe,
     CoursesFilterPipe,
     CoursesOrderPipe,
+    AddCourseComponent,
   ],
   imports: [
     BrowserModule,
