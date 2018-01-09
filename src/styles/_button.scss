@@ -12,6 +12,10 @@
     cursor: pointer;
     text-transform: uppercase;
 
+    &_wide {
+        width: 16rem;
+    }
+
     &_large {
         line-height: 3rem;
     }

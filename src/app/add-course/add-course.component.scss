@@ -1,0 +1,15 @@
+.fieldset {
+    display: flex;
+    flex-flow: column;
+}
+
+.field {
+    margin: 1rem 0;
+}
+
+.controls {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+}
