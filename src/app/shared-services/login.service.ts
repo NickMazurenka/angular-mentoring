@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { IUser } from '../shared-models/user.model';
 import { Subject } from 'rxjs/Subject';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
 
 @Injectable()
 export class LoginService {
 
-  public loginEvent: Subject<boolean> = new Subject<boolean>();
-  public logoutEvent: Subject<boolean> = new Subject<boolean>();
+  public loginEvent: ReplaySubject<boolean> = new ReplaySubject<boolean>();
 
   private loggedIn = false;
   private userName: string;
@@ -29,7 +29,7 @@ export class LoginService {
     this.userPassword = null;
     this.loggedIn = false;
 
-    this.logoutEvent.next(true);
-    return new Observable(observer => observer.next(true));
+    this.loginEvent.next(false);
+    return new Observable(observer => observer.next(false));
   }
 }

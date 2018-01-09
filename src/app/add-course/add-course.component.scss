@@ -1,6 +1,13 @@
+.heading {
+    font: bold 36px/36px Lato;
+    margin: 1rem 0;
+    text-align: center;
+}
+
 .fieldset {
     display: flex;
     flex-flow: column;
+    margin: 0 1rem;
 }
 
 .field {
@@ -12,4 +19,5 @@
     margin-bottom: 2rem;
     display: flex;
     justify-content: space-between;
+    margin: 0 1rem;    
 }

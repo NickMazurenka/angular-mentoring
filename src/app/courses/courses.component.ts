@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ICourseDetails } from './course-details/course-details.model';
 import { CoursesService } from './courses.service';
 import { CoursesFilterPipe } from './courses-filter.pipe';
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.scss']
 })
-export class CoursesComponent implements OnInit {
+export class CoursesComponent implements OnInit, OnDestroy {
   public pattern: string;
   public courses: ICourseDetails[];
 
@@ -42,6 +42,9 @@ export class CoursesComponent implements OnInit {
 
   deleteCourse(course: ICourseDetails) {
     this.coursesService.deleteCouse(course).subscribe((courses: ICourseDetails[]) => this.courses = courses);
+  }
+
+  ngOnDestroy() {
   }
 
 }

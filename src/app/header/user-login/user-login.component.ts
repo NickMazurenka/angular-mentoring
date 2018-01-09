@@ -20,8 +20,7 @@ export class UserLoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loginService.loginEvent.subscribe(() => this.loggedIn = true);
-    this.loginService.logoutEvent.subscribe(() => this.loggedIn = false);
+    this.loginService.loginEvent.subscribe((value) => this.loggedIn = value);
   }
 
   loginClicked(name: string, password: string) {
