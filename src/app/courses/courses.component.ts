@@ -3,6 +3,7 @@ import { ICourseDetails } from './course-details/course-details.model';
 import { CoursesService } from './courses.service';
 import { CoursesFilterPipe } from './courses-filter.pipe';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-courses',
@@ -16,6 +17,10 @@ export class CoursesComponent implements OnInit, OnDestroy {
   private coursesService: CoursesService;
   private router: Router;
 
+  private _getCourseListSubscriptionOnInit: Subscription;
+  private _getCourseListSubscriptionSearch: Subscription;
+  private _deleteCourseSubscription: Subscription;
+
   constructor(router: Router, coursesService: CoursesService) {
     this.router = router;
     this.courses = [];
@@ -23,11 +28,12 @@ export class CoursesComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.coursesService.getCourseList().subscribe((courses: ICourseDetails[]) => this.courses = courses);
+    this._getCourseListSubscriptionOnInit =
+      this.coursesService.getCourseList().subscribe((courses: ICourseDetails[]) => this.courses = courses);
   }
 
   search() {
-    this.coursesService.getCourseList().subscribe((courses: ICourseDetails[]) => {
+    this._getCourseListSubscriptionSearch = this.coursesService.getCourseList().subscribe((courses: ICourseDetails[]) => {
       if (this.pattern) {
         this.courses = new CoursesFilterPipe().transform(courses, this.pattern);
       } else {
@@ -41,10 +47,14 @@ export class CoursesComponent implements OnInit, OnDestroy {
   }
 
   deleteCourse(course: ICourseDetails) {
-    this.coursesService.deleteCouse(course).subscribe((courses: ICourseDetails[]) => this.courses = courses);
+    this._deleteCourseSubscription =
+      this.coursesService.deleteCouse(course).subscribe((courses: ICourseDetails[]) => this.courses = courses);
   }
 
   ngOnDestroy() {
+    this._getCourseListSubscriptionOnInit.unsubscribe();
+    this._getCourseListSubscriptionSearch.unsubscribe();
+    this._deleteCourseSubscription.unsubscribe();
   }
 
 }
