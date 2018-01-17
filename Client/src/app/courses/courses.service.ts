@@ -9,23 +9,7 @@ export class CoursesService {
 
   private static outdatedRange: number = 14;
 
-  private _courses: ICourseDto[] = [{
-    courseId: 1,
-    courseDescription: 'Awesome course one',
-    courseDate: new Date('4 Jan 18'),
-    courseDuration: 87
-  }, {
-    courseId: 2,
-    courseDescription: 'Awesome course two',
-    courseDate: new Date('8 Jan 18'),
-    courseDuration: 27
-  }, {
-    courseId: 3,
-    courseDescription: 'Awesome course three',
-    courseDate: new Date('24 Nov 18'),
-    courseDuration: 88,
-    courseStarred: true
-  }];
+  private _courses: ICourseDto[] = [];
 
   private get courses(): ICourseDetails[] {
     const dateLimit: Date = new Date();

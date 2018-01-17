@@ -52,9 +52,15 @@ export class CoursesComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this._getCourseListSubscriptionOnInit.unsubscribe();
-    this._getCourseListSubscriptionSearch.unsubscribe();
-    this._deleteCourseSubscription.unsubscribe();
+    if (this._getCourseListSubscriptionOnInit) {
+      this._getCourseListSubscriptionOnInit.unsubscribe();
+    }
+    if (this._getCourseListSubscriptionSearch) {
+      this._getCourseListSubscriptionSearch.unsubscribe();
+    }
+    if (this._deleteCourseSubscription) {
+      this._deleteCourseSubscription.unsubscribe();
+    }
   }
 
 }
