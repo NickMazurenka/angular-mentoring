@@ -1,7 +1,8 @@
 export interface ICourseDetails {
-    id: number;
-    duration: number;
-    date: Date;
-    description: string;
-    starred?: boolean;
+  id: number;
+  name: string;
+  description: string;
+  date: Date;
+  duration: number;
+  starred?: boolean;
 }

@@ -4,6 +4,7 @@ import { CoursesService } from './courses.service';
 import { CoursesFilterPipe } from './courses-filter.pipe';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-courses',
@@ -13,6 +14,8 @@ import { Subscription } from 'rxjs/Subscription';
 export class CoursesComponent implements OnInit, OnDestroy {
   public pattern: string;
   public courses: ICourseDetails[];
+  public coursesPerPage = 10;
+  public currentPage = 0;
 
   private coursesService: CoursesService;
   private router: Router;
@@ -27,13 +30,23 @@ export class CoursesComponent implements OnInit, OnDestroy {
     this.coursesService = coursesService;
   }
 
+  private getCourseListPaging(): Observable<ICourseDetails[]> {
+    return this.coursesService.getCourseList(this.currentPage * this.coursesPerPage, this.coursesPerPage);
+  }
+
+  private getCourseListSearch(): Observable<ICourseDetails[]> {
+    return this.coursesService.getCourseList();
+  }
+
   ngOnInit() {
     this._getCourseListSubscriptionOnInit =
-      this.coursesService.getCourseList().subscribe((courses: ICourseDetails[]) => this.courses = courses);
+      this.getCourseListPaging().subscribe((courses: ICourseDetails[]) => {
+        this.courses = courses;
+      });
   }
 
   search() {
-    this._getCourseListSubscriptionSearch = this.coursesService.getCourseList().subscribe((courses: ICourseDetails[]) => {
+    this._getCourseListSubscriptionSearch = this.getCourseListSearch().subscribe((courses: ICourseDetails[]) => {
       if (this.pattern) {
         this.courses = new CoursesFilterPipe().transform(courses, this.pattern);
       } else {

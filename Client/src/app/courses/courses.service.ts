@@ -1,45 +1,25 @@
 import { Injectable } from '@angular/core';
 import { ICourseDetails } from './course-details/course-details.model';
 import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators';
 import 'rxjs/add/observable/of';
 import { ICourseDto } from './course-details/course-dto.model';
+import { AuthHttpService } from '../shared-services/auth-http.service';
 
 @Injectable()
 export class CoursesService {
 
-  private static outdatedRange: number = 14;
+  private outdatedRange: number = 14;
 
-  private _courses: ICourseDto[] = [];
+  private coursesUrl = 'http://localhost:3004/courses';
 
-  private get courses(): ICourseDetails[] {
-    const dateLimit: Date = new Date();
-    dateLimit.setDate(dateLimit.getDate() - CoursesService.outdatedRange);
-    return this._courses.filter(course => course.courseDate >= dateLimit).map((courseDto: ICourseDto) => {
-      return {
-        id: courseDto.courseId,
-        description: courseDto.courseDescription,
-        date: courseDto.courseDate,
-        duration: courseDto.courseDuration,
-        starred: courseDto.courseStarred
-      };
-    });
-  }
-  private set courses(value: ICourseDetails[]) {
-    this._courses = value.map((course: ICourseDetails) => {
-      return {
-        courseId: course.id,
-        courseDescription: course.description,
-        courseDate: course.date,
-        courseDuration: course.duration,
-        courseStarred: course.starred
-      };
-    });
-  }
+  private courses: ICourseDetails[] = [];
 
-  constructor() { }
+  constructor(private httpService: AuthHttpService) { }
 
-  public getCourseList(): Observable<ICourseDetails[]> {
-    return Observable.of(this.courses);
+  public getCourseList(start?: number, count?: number): Observable<ICourseDetails[]> {
+    const url: string = start == null ? this.coursesUrl : `${this.coursesUrl}?start=${start}&count=${count}`;
+    return this.mapCourseDto(this.httpService.get<ICourseDto[]>(url));
   }
 
   public createCourse(course: ICourseDetails): Observable<ICourseDetails> {
@@ -63,6 +43,19 @@ export class CoursesService {
   public deleteCouse(course: ICourseDetails): Observable<ICourseDetails[]> {
     this.courses = this.courses.filter(c => c.id !== course.id);
     return Observable.of(this.courses);
+  }
+
+  private mapCourseDto(coursesDtoObs: Observable<ICourseDto[]>): Observable<ICourseDetails[]> {
+    return coursesDtoObs.pipe(map((coursesDto: ICourseDto[]) => coursesDto.map((courseDto: ICourseDto) => {
+      return {
+        id: courseDto.id,
+        name: courseDto.name,
+        description: courseDto.description,
+        date: new Date(courseDto.date),
+        duration: courseDto.length,
+        starred: courseDto.isTopRated
+      };
+    })));
   }
 
 }

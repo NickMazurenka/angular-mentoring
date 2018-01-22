@@ -1,7 +1,8 @@
 export interface ICourseDto {
-    courseId: number;
-    courseDuration: number;
-    courseDate: Date;
-    courseDescription: string;
-    courseStarred?: boolean;
+  id: number;
+  name: string;
+  description: string;
+  isTopRated: boolean;
+  date: string;
+  length: number;
 }

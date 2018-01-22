@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { DatePipe } from '@angular/common';
 import { UpperCasePipe } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
@@ -26,6 +27,7 @@ import { CourseDurationPipe } from './courses/course-details/course-duration.pip
 import { CoursesFilterPipe } from './courses/courses-filter.pipe';
 import { CoursesOrderPipe } from './courses/courses-order.pipe';
 import { AddCourseComponent } from './add-course/add-course.component';
+import { AuthHttpService } from './shared-services/auth-http.service';
 
 @NgModule({
   declarations: [
@@ -50,14 +52,16 @@ import { AddCourseComponent } from './add-course/add-course.component';
     AngularFontAwesomeModule,
     AppRoutingModule,
     FormsModule,
-    OverlayModule
+    OverlayModule,
+    HttpClientModule
   ],
   providers: [
     ConfirmationDialogService,
     CoursesService,
     LoginService,
     DatePipe,
-    UpperCasePipe
+    UpperCasePipe,
+    AuthHttpService
   ],
   bootstrap: [AppComponent],
   entryComponents: [ConfirmationDialogComponent]
