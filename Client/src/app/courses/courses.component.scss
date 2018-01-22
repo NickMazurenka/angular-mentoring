@@ -19,6 +19,12 @@
     padding: 0.5rem 1rem;
 }
 
+.paging-controls {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+
 @media (min-width: 400px) {
     .controls-container {
         display: flex;

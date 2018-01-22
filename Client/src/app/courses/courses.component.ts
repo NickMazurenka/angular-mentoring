@@ -14,8 +14,8 @@ import { Observable } from 'rxjs/Observable';
 export class CoursesComponent implements OnInit, OnDestroy {
   public pattern: string;
   public courses: ICourseDetails[];
-  public coursesPerPage = 10;
-  public currentPage = 0;
+  public coursesPerPage = 5;
+  public pageNumber = 0;
 
   private coursesService: CoursesService;
   private router: Router;
@@ -31,7 +31,7 @@ export class CoursesComponent implements OnInit, OnDestroy {
   }
 
   private getCourseListPaging(): Observable<ICourseDetails[]> {
-    return this.coursesService.getCourseList(this.currentPage * this.coursesPerPage, this.coursesPerPage);
+    return this.coursesService.getCourseList(this.pageNumber * this.coursesPerPage, this.coursesPerPage);
   }
 
   private getCourseListSearch(): Observable<ICourseDetails[]> {
@@ -53,6 +53,22 @@ export class CoursesComponent implements OnInit, OnDestroy {
         this.courses = courses;
       }
     });
+  }
+
+  onNextPageClick() {
+    this.pageNumber++;
+    this._getCourseListSubscriptionOnInit =
+      this.getCourseListPaging().subscribe((courses: ICourseDetails[]) => {
+        this.courses = courses;
+      });
+  }
+
+  onPrevPageClick() {
+    this.pageNumber--;
+    this._getCourseListSubscriptionOnInit =
+      this.getCourseListPaging().subscribe((courses: ICourseDetails[]) => {
+        this.courses = courses;
+      });
   }
 
   onAddCourseClicked() {
