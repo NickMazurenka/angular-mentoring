@@ -17,9 +17,16 @@ export class CoursesService {
 
   constructor(private http: HttpClient) { }
 
-  public getCourseList(start?: number, count?: number): Observable<ICourseDetails[]> {
-    const url: string = start == null ? this.coursesUrl : `${this.coursesUrl}?start=${start}&count=${count}`;
+  public getCourseList(start?: number, count?: number, filter?: string): Observable<ICourseDetails[]> {
+    const url: string = start == null ? this.coursesUrl :
+      filter == null ? `${this.coursesUrl}?start=${start}&count=${count}` :
+        `${this.coursesUrl}?start=${start}&count=${count}&filter=${filter}`;
     return this.mapCourseDto(this.http.get<ICourseDto[]>(url));
+  }
+
+  public deleteCouse(courseId: number, start?: number, count?: number, filter?: string): Observable<Object> {
+    const url: string = `${this.coursesUrl}/${courseId}`;
+    return this.http.delete(url);
   }
 
   public createCourse(course: ICourseDetails): Observable<ICourseDetails> {
@@ -38,11 +45,6 @@ export class CoursesService {
         observer.next(course);
       }
     });
-  }
-
-  public deleteCouse(course: ICourseDetails): Observable<ICourseDetails[]> {
-    this.courses = this.courses.filter(c => c.id !== course.id);
-    return Observable.of(this.courses);
   }
 
   private mapCourseDto(coursesDtoObs: Observable<ICourseDto[]>): Observable<ICourseDetails[]> {

@@ -30,35 +30,28 @@ export class CoursesComponent implements OnInit, OnDestroy {
     this.coursesService = coursesService;
   }
 
-  private getCourseListPaging(): Observable<ICourseDetails[]> {
-    return this.coursesService.getCourseList(this.pageNumber * this.coursesPerPage, this.coursesPerPage);
-  }
-
-  private getCourseListSearch(): Observable<ICourseDetails[]> {
-    return this.coursesService.getCourseList();
+  private getCourseList(): Observable<ICourseDetails[]> {
+    return this.coursesService.getCourseList(this.pageNumber * this.coursesPerPage, this.coursesPerPage, this.pattern);
   }
 
   ngOnInit() {
     this._getCourseListSubscriptionOnInit =
-      this.getCourseListPaging().subscribe((courses: ICourseDetails[]) => {
+      this.getCourseList().subscribe((courses: ICourseDetails[]) => {
         this.courses = courses;
       });
   }
 
-  search() {
-    this._getCourseListSubscriptionSearch = this.getCourseListSearch().subscribe((courses: ICourseDetails[]) => {
-      if (this.pattern) {
-        this.courses = new CoursesFilterPipe().transform(courses, this.pattern);
-      } else {
-        this.courses = courses;
-      }
+  search(pattern: string) {
+    this.pattern = pattern;
+    this._getCourseListSubscriptionSearch = this.getCourseList().subscribe((courses: ICourseDetails[]) => {
+      this.courses = courses;
     });
   }
 
   onNextPageClick() {
     this.pageNumber++;
     this._getCourseListSubscriptionOnInit =
-      this.getCourseListPaging().subscribe((courses: ICourseDetails[]) => {
+      this.getCourseList().subscribe((courses: ICourseDetails[]) => {
         this.courses = courses;
       });
   }
@@ -66,7 +59,7 @@ export class CoursesComponent implements OnInit, OnDestroy {
   onPrevPageClick() {
     this.pageNumber--;
     this._getCourseListSubscriptionOnInit =
-      this.getCourseListPaging().subscribe((courses: ICourseDetails[]) => {
+      this.getCourseList().subscribe((courses: ICourseDetails[]) => {
         this.courses = courses;
       });
   }
@@ -77,7 +70,8 @@ export class CoursesComponent implements OnInit, OnDestroy {
 
   deleteCourse(course: ICourseDetails) {
     this._deleteCourseSubscription =
-      this.coursesService.deleteCouse(course).subscribe((courses: ICourseDetails[]) => this.courses = courses);
+      this.coursesService.deleteCouse(course.id, this.pageNumber * this.coursesPerPage, this.coursesPerPage)
+        .subscribe(() => this.search(this.pattern));
   }
 
   ngOnDestroy() {

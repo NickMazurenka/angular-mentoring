@@ -10,6 +10,7 @@ module.exports = (server) => {
 			from = query.start ? query.start : 0,
 			to = query.count ? +query.start + +query.count : null,
 			sort = query.sort,
+			filter = query.filter,
 			queryStr = query.query,
 			courses = server.db.getState().courses;
 		//console.log(sort);
@@ -17,8 +18,11 @@ module.exports = (server) => {
 		if (courses.length < to || to === null) {
 			to = courses.length;
 		}
+		if (filter != null) {
+			courses = courses.filter(course => course.name.toLowerCase().indexOf(filter.toLowerCase()) !== -1);
+		}
 		courses = courses.slice(from, to);
-		
+
 		res.json(courses);
 	});
 

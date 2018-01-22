@@ -3,10 +3,11 @@
     <div class="course-properties">
       <div class="course-text">Video course {{course.id}}</div>
       <div class="course-text">{{course.duration | courseDuration}}</div>
-      <fa [ngClass]= "{'star_hidden': !course.starred }" class="star" name="star"></fa>
+      <fa [ngClass]="{'star_hidden': !course.starred }" class="star" name="star"></fa>
       <div class="course-text">{{course.date | date}}</div>
     </div>
-    <div class="course-text">{{course.description | uppercase}}</div>
+    <div class="course-text">{{course.name | uppercase}}</div>
+    <div class="course-text">{{course.description}}</div>
   </div>
   <div class="course-controls">
     <div class="button control-button">Edit</div>
