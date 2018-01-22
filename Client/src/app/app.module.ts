@@ -21,7 +21,6 @@ import { UserLoginComponent } from './header/user-login/user-login.component';
 import { ConfirmationDialogComponent } from './courses/course-details/confirmation-dialog/confirmation-dialog.component';
 import { ConfirmationDialogService } from './courses/course-details/confirmation-dialog.service';
 import { CoursesService } from './courses/courses.service';
-import { LoginService } from './shared-services/login.service';
 import { CoursePlateColorDirective } from './courses/course-details/course-plate-color.directive';
 import { CourseDurationPipe } from './courses/course-details/course-duration.pipe';
 import { CoursesFilterPipe } from './courses/courses-filter.pipe';
@@ -60,7 +59,6 @@ import { TokenInterceptor } from './shared-services/token-interceptor';
   providers: [
     ConfirmationDialogService,
     CoursesService,
-    LoginService,
     DatePipe,
     UpperCasePipe,
     AuthService,

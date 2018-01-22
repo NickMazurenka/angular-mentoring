@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginService } from '../../shared-services/login.service';
 import { Subscription } from 'rxjs/Subscription';
+import { AuthService } from '../../shared-services/auth.service';
 
 @Component({
   selector: 'app-user-login',
@@ -12,18 +12,15 @@ export class UserLoginComponent implements OnInit, OnDestroy {
 
   public loggedIn: boolean = false;
 
-  private loginService: LoginService;
-  private router: Router;
-
   private _loginSubscription: Subscription;
 
-  constructor(loginService: LoginService, router: Router) {
-    this.loginService = loginService;
-    this.router = router;
+  constructor(
+    private auth: AuthService,
+    private router: Router) {
   }
 
   ngOnInit() {
-    this._loginSubscription = this.loginService.loginEvent.subscribe((value) => this.loggedIn = value);
+    this._loginSubscription = this.auth.loginEvent.subscribe((value) => this.loggedIn = value);
   }
 
   loginClicked(name: string, password: string) {
@@ -32,7 +29,7 @@ export class UserLoginComponent implements OnInit, OnDestroy {
 
   logoutClicked() {
     this.router.navigate(['']);
-    this.loginService.LogOut();
+    this.auth.logOut();
   }
 
   ngOnDestroy() {
