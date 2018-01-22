@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 import { Subscription } from 'rxjs/Subscription';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -15,20 +16,22 @@ export class LoginComponent implements OnDestroy {
   public userName: string;
   public userPassword: string;
 
-  private loginService: LoginService;
-  private router: Router;
-
   private _loginSubscription: Subscription;
 
-  constructor(loginService: LoginService, router: Router) {
-    this.loginService = loginService;
-    this.router = router;
+  constructor(
+    private loginService: LoginService,
+    private router: Router,
+    private locationService: Location) {
   }
 
   onSubmit() {
-    this.loginService.LogIn(this.userName, this.userPassword).subscribe(() => {
+    this._loginSubscription = this.loginService.LogIn(this.userName, this.userPassword).subscribe(() => {
       this.router.navigate(['']);
     });
+  }
+
+  onCancelClick() {
+    this.locationService.back();
   }
 
   ngOnDestroy() {

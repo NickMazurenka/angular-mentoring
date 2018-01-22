@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 import 'rxjs/add/observable/of';
 import { ICourseDto } from './course-details/course-dto.model';
-import { AuthHttpService } from '../shared-services/auth-http.service';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class CoursesService {
@@ -15,11 +15,11 @@ export class CoursesService {
 
   private courses: ICourseDetails[] = [];
 
-  constructor(private httpService: AuthHttpService) { }
+  constructor(private http: HttpClient) { }
 
   public getCourseList(start?: number, count?: number): Observable<ICourseDetails[]> {
     const url: string = start == null ? this.coursesUrl : `${this.coursesUrl}?start=${start}&count=${count}`;
-    return this.mapCourseDto(this.httpService.get<ICourseDto[]>(url));
+    return this.mapCourseDto(this.http.get<ICourseDto[]>(url));
   }
 
   public createCourse(course: ICourseDetails): Observable<ICourseDetails> {

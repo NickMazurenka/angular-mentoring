@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { DatePipe } from '@angular/common';
 import { UpperCasePipe } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
@@ -27,7 +27,9 @@ import { CourseDurationPipe } from './courses/course-details/course-duration.pip
 import { CoursesFilterPipe } from './courses/courses-filter.pipe';
 import { CoursesOrderPipe } from './courses/courses-order.pipe';
 import { AddCourseComponent } from './add-course/add-course.component';
-import { AuthHttpService } from './shared-services/auth-http.service';
+import { AuthService } from './shared-services/auth.service';
+import { LocalStorageService } from './shared-services/local-storage.service';
+import { TokenInterceptor } from './shared-services/token-interceptor';
 
 @NgModule({
   declarations: [
@@ -61,7 +63,13 @@ import { AuthHttpService } from './shared-services/auth-http.service';
     LoginService,
     DatePipe,
     UpperCasePipe,
-    AuthHttpService
+    AuthService,
+    LocalStorageService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent],
   entryComponents: [ConfirmationDialogComponent]
