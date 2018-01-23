@@ -1,2 +1,6 @@
+<div class="user-info" *ngIf="userInfo != null">
+  <span class="first-name">{{userInfo.firstName}}</span>
+  <span class="last-name">{{userInfo.lastName}}</span>
+</div>
 <fa *ngIf="!loggedIn" name="user-circle-o" (click)="loginClicked()" class="control"></fa>
 <fa *ngIf="loggedIn" name="sign-out" (click)="logoutClicked()" class="control"></fa>

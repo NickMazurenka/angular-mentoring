@@ -6,11 +6,17 @@ import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators/map';
 import { catchError } from 'rxjs/operators/catchError';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { IUserCredentialsDto } from '../shared-models/user-credentials-dto.model';
+import { IUserInfoDto } from '../shared-models/user-info-dto.model';
+import { IUserInfo } from '../shared-models/user-info.model';
+import { IUserTokenDto } from '../header/user-login/user-token-dto.model';
 
 @Injectable()
 export class AuthService {
 
   private authUrl: string = 'http://localhost:3004/auth/login';
+
+  private infoUrl: string = 'http://localhost:3004/auth/userinfo';
 
   private tokenKey = 'access_token';
 
@@ -36,8 +42,12 @@ export class AuthService {
   }
 
   public logIn(username: string, password: string): Observable<boolean> {
-    return this.http.post<string>(this.authUrl, { username, password }).pipe(map((token: string) => {
-      this.storeToken(token);
+    const creds: IUserCredentialsDto = {
+      username: username,
+      password: password
+    };
+    return this.http.post<IUserTokenDto>(this.authUrl, creds).pipe(map((response: IUserTokenDto) => {
+      this.storeToken(response.token);
       this.loginEvent.next(true);
       return true;
     }));
@@ -46,6 +56,19 @@ export class AuthService {
   public logOut(): void {
     this.removeToken();
     this.loginEvent.next(false);
+  }
+
+  public getUserInfo(): Observable<IUserInfo> {
+    const token = this.getToken();
+    if (token == null || token === '') {
+      return null;
+    }
+    return this.http.get<IUserInfoDto>(this.infoUrl).pipe(map((info: IUserInfoDto) => {
+      return {
+        firstName: info.first,
+        lastName: info.last
+      };
+    }));
   }
 
 }
