@@ -35,7 +35,7 @@ deploy:
     skip-cleanup: true
     api_key:
       secure: $HEROKU_TOKEN
-    app: ts-dep
+    app: stormy-ridge-32955
     on:
       branch: master
   - provider: pages
