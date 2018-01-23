@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { AuthService } from '../../shared-services/auth.service';
-import { userInfo } from 'os';
 import { IUserInfo } from '../../shared-models/user-info.model';
 import { IUserTokenDto } from './user-token-dto.model';
 

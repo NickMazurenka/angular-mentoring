@@ -5,13 +5,16 @@ import { map } from 'rxjs/operators';
 import 'rxjs/add/observable/of';
 import { ICourseDto } from './course-details/course-dto.model';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class CoursesService {
 
   private outdatedRange: number = 14;
 
-  private coursesUrl = 'http://localhost:3004/courses';
+  private get coursesUrl() {
+    return `${environment.apiEndpoint}/courses`;
+  }
 
   private courses: ICourseDetails[] = [];
 

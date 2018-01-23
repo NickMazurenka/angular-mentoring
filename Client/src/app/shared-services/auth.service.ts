@@ -10,13 +10,10 @@ import { IUserCredentialsDto } from '../shared-models/user-credentials-dto.model
 import { IUserInfoDto } from '../shared-models/user-info-dto.model';
 import { IUserInfo } from '../shared-models/user-info.model';
 import { IUserTokenDto } from '../header/user-login/user-token-dto.model';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AuthService {
-
-  private authUrl: string = 'http://localhost:3004/auth/login';
-
-  private infoUrl: string = 'http://localhost:3004/auth/userinfo';
 
   private tokenKey = 'access_token';
 
@@ -46,7 +43,7 @@ export class AuthService {
       username: username,
       password: password
     };
-    return this.http.post<IUserTokenDto>(this.authUrl, creds).pipe(map((response: IUserTokenDto) => {
+    return this.http.post<IUserTokenDto>(`${environment.apiEndpoint}/auth/login`, creds).pipe(map((response: IUserTokenDto) => {
       this.storeToken(response.token);
       this.loginEvent.next(true);
       return true;
@@ -63,7 +60,7 @@ export class AuthService {
     if (token == null || token === '') {
       return null;
     }
-    return this.http.get<IUserInfoDto>(this.infoUrl).pipe(map((info: IUserInfoDto) => {
+    return this.http.get<IUserInfoDto>(`${environment.apiEndpoint}/auth/userinfo`).pipe(map((info: IUserInfoDto) => {
       return {
         firstName: info.first,
         lastName: info.last
