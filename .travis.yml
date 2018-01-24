@@ -6,7 +6,7 @@ node_js:
   - "node"
 
 env:
-  - CLIENT_DIR=client SERVER_DIR=server
+  - CLIENT_DIR=Client SERVER_DIR=Server
 
 addons:
   chrome: stable
