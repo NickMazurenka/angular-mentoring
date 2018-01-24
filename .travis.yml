@@ -42,7 +42,7 @@ deploy:
     skip-cleanup: true
     github-token: $GITHUB_TOKEN
     keep-history: true
-    local-dir: ../$CLIENT_DIR/dist
+    local-dir: ./$CLIENT_DIR/dist
     target-branch: gh-pages
     on:
       branch: master
