@@ -25,7 +25,7 @@ install:
   - cd $TRAVIS_BUILD_DIR/$CLIENT_DIR && yarn
 
 script:
-  - cd $TRAVIS_BUILD_DIR/$CLIENT_DIR && yarn build --base-href "/test-deployment/"
+  - cd $TRAVIS_BUILD_DIR/$CLIENT_DIR && yarn build --base-href "/angular-mentoring/"
 
 before_deploy:
   - cd $TRAVIS_BUILD_DIR/$SERVER_DIR
