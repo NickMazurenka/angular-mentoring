@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiEndpoint: 'http://watwat:3004'
+  apiEndpoint: 'https://stormy-ridge-32955.herokuapp.com'
 };
