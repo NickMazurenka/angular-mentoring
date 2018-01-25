@@ -1,5 +1,11 @@
+$button-hover-in-time: 0.2s;
+$button-hover-out-time: 0.7s;
+$button-alter-hover-in-time: 0.3s;
+$button-alter-hover-out-time: 0.3s;
+
 .button {
-    font: 12px/12px Lato;
+    font: bold 11px/12px Lato;
+    letter-spacing: 1px;
     width: 5rem;
     outline: none;
     color: #FFFFFF;
@@ -12,6 +18,7 @@
     text-align: center;
     cursor: pointer;
     text-transform: uppercase;
+    transition: background-color $button-hover-out-time, color $button-hover-out-time, border-color $button-hover-out-time;
 
     &_wide {
         width: 16rem;
@@ -25,17 +32,44 @@
         color: #FF6008;
         background-color: #FFFFFF;
         border: 1px solid #FF6008;
+        transition: background-color $button-hover-in-time, color $button-hover-in-time, border-color $button-hover-in-time;
     }
 
-    &_optional {
-        color: #000000;
+    &_basic {
+      color: #FFFFFF;
+        background-color: #333333;
+        border: 1px solid #333333;
+
+        &:hover {
+            color: #FFFFFF;
+            background-color: #515356;
+            border: 1px solid #515356;
+        }
+    }
+
+    &_alter {
+      color: #000000;
         background-color: #FFFFFF;
         border: 1px solid #DFDFDF;
+        transition: background-color $button-alter-hover-out-time, color $button-alter-hover-out-time, border-color $button-alter-hover-out-time;
 
         &:hover {
             color: #000000;
             background-color: #FFFFFF;
             border: 1px solid #000000;
+            transition: background-color $button-alter-hover-in-time, color $button-alter-hover-in-time, border-color $button-alter-hover-in-time;
         }
+    }
+
+    &_optional {
+        color: #000000;
+        background-color: #DFDFDF;
+        border: 1px solid #DFDFDF;
+
+        &:hover {
+            color: #000000;
+            background-color: #FFFFFF;
+            border: 1px solid #DFDFDF;
+          }
     }
 }

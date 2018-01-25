@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router/src/router_module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { DatePipe } from '@angular/common';
 import { UpperCasePipe } from '@angular/common';
@@ -29,6 +29,7 @@ import { AddCourseComponent } from './add-course/add-course.component';
 import { AuthService } from './shared-services/auth.service';
 import { LocalStorageService } from './shared-services/local-storage.service';
 import { TokenInterceptor } from './shared-services/token-interceptor';
+import { PagingComponent } from './courses/paging/paging.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { TokenInterceptor } from './shared-services/token-interceptor';
     CoursesFilterPipe,
     CoursesOrderPipe,
     AddCourseComponent,
+    PagingComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +56,8 @@ import { TokenInterceptor } from './shared-services/token-interceptor';
     AppRoutingModule,
     FormsModule,
     OverlayModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
     ConfirmationDialogService,

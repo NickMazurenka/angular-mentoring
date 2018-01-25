@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-course',
@@ -8,7 +9,17 @@ import { Router } from '@angular/router';
 })
 export class AddCourseComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  addCourseForm: FormGroup;
+
+  constructor(private router: Router, private formBuilder: FormBuilder) {
+    this.addCourseForm = this.formBuilder.group({
+      title: ['', Validators.required],
+      description: '',
+      date: '',
+      duration: '',
+      authors: ''
+    });
+  }
 
   ngOnInit() {
   }

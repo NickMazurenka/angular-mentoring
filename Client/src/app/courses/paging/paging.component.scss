@@ -1,0 +1,51 @@
+$chevron-color: #515356;
+
+.navigation-button {
+  width: 30px;
+  height: 30px;
+  color: $chevron-color;
+  background-color: #FFFFFF;
+  border: 3px solid $chevron-color;
+  border-radius: 50%;
+  outline: none;
+  padding: 2px 0 0 0;
+  margin: 0;
+}
+
+.chevron {
+  font-size: 18px;
+
+  &.left {
+    margin-left: -3px;
+
+    &.first {
+      margin-left: -2px;
+    }
+
+    &.second {
+      margin-left: -10px;
+    }
+  }
+
+  &.right {
+    margin-left: 3px;
+
+    &.first {
+      margin-left: 2px;
+    }
+
+    &.second {
+      margin-left: -10px;
+    }
+  }
+}
+
+.pages {
+  display: inline-block;
+  overflow-x: auto;
+}
+
+.page {
+}
+
+
