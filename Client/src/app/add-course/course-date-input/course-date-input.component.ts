@@ -2,6 +2,7 @@ import { Component, OnInit, Input, forwardRef, ExistingProvider } from '@angular
 import {
   ControlValueAccessor, NG_VALUE_ACCESSOR, Validator, AbstractControl, FormControl, ValidationErrors, NG_VALIDATORS
 } from '@angular/forms';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
   selector: 'app-course-date-input',

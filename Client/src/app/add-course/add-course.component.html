@@ -2,9 +2,22 @@
 <form [formGroup]="addCourseForm">
   <div class="fieldset">
     <input class="field input" type="text" placeholder="Title" formControlName="title">
-    <textarea class="field input input__textarea" placeholder="Description" formControlName="description"></textarea>
-    <app-course-date-input formControlName="date"></app-course-date-input>
+    <span class="field__error" *ngIf="showControlError('title')">
+      {{addCourseForm.get('title')?.errors | json}}
+    </span>
+    <textarea class="field input input__textarea" placeholder="Description" formControlName="description">
+    </textarea>
+    <span class="field__error" *ngIf="showControlError('description')">
+      {{addCourseForm.get('description')?.errors | json}}
+    </span>
+    <app-course-date-input formControlName="date" class="input__wrapper"></app-course-date-input>
+    <span class="field__error" *ngIf="showControlError('date')">
+      {{addCourseForm.get('date')?.errors | json}}
+    </span>
     <app-course-duration-input formControlName="duration"></app-course-duration-input>
+    <span class="field__error" *ngIf="showControlError('duration')">
+      {{addCourseForm.get('duration')?.errors | json}}
+    </span>
     <input class="field input" type="text" placeholder="Authors">
   </div>
   <div class="controls">

@@ -1,7 +1,47 @@
+$button-hover-in-time: 0.2s;
+$button-hover-out-time: 0.7s;
+
 .field {
   margin-bottom: 1rem;
 }
 
 .duration {
   width: 6em;
+}
+
+.controls {
+  height: 3rem;
+  border: transparent solid 1px;
+  vertical-align: top;
+  display: inline-flex;
+  flex-direction: column;
+  margin-left: -1.8rem;
+}
+
+.control {
+  &__button {
+    color: #525457;
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    transition: background-color $button-hover-out-time, color $button-hover-out-time;
+
+    &:hover {
+      color: #EEEEEE;
+      background-color: #515356;
+      transition: background-color $button-hover-in-time, color $button-hover-in-time;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.triangle {
+  color: inherit;
+  margin: auto;
 }

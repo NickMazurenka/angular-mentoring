@@ -15,20 +15,16 @@
         resize: vertical;
     }
 
-    &_invalid {
+    &.ng-dirty.ng-invalid, &__wrapper.ng-dirty.ng-invalid > & {
       border-color: #FC7124;
     }
 }
 
 .input:focus {
     outline: none;
-    border: #B6B6B6 solid 1px;
+    border-color: #B6B6B6;
 }
 
 .input::placeholder {
     color: #B6B6B6;
-}
-
-.input_invalid:focus {
-  border-color: #FC7124;
 }

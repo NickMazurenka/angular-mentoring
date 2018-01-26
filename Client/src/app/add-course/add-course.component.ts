@@ -15,9 +15,9 @@ export class AddCourseComponent implements OnInit {
     this.addCourseForm = this.formBuilder.group({
       title: ['', [Validators.required, Validators.maxLength(50)]],
       description: ['', Validators.maxLength(200)],
-      date: '',
-      duration: '',
-      authors: ''
+      date: ['', [Validators.required]],
+      duration: ['', [Validators.required]],
+      authors: ['', [Validators.required]]
     });
   }
 
@@ -26,5 +26,10 @@ export class AddCourseComponent implements OnInit {
 
   onCancelClick() {
     this.router.navigate(['courses']);
+  }
+
+  showControlError(controlName: string): boolean {
+    const control = this.addCourseForm.get(controlName);
+    return control.invalid && control.dirty;
   }
 }

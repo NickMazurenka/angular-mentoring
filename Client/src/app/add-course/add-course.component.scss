@@ -12,6 +12,10 @@
 
 .field {
     margin-bottom: 1rem;
+
+    &__error {
+      margin-top: -1rem;
+    }
 }
 
 .controls {
