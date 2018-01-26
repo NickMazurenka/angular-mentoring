@@ -2,9 +2,9 @@
 <form [formGroup]="addCourseForm">
   <div class="fieldset">
     <input class="field input" type="text" placeholder="Title" formControlName="title">
-    <textarea class="field input input_textarea" placeholder="Description" formControlName="description"></textarea>
-    <input class="field input" type="text" placeholder="Date">
-    <input class="field input" type="text" placeholder="Duration">
+    <textarea class="field input input__textarea" placeholder="Description" formControlName="description"></textarea>
+    <app-course-date-input formControlName="date"></app-course-date-input>
+    <app-course-duration-input formControlName="duration"></app-course-duration-input>
     <input class="field input" type="text" placeholder="Authors">
   </div>
   <div class="controls">
@@ -13,3 +13,6 @@
   </div>
 </form>
 <p>Form value: {{ addCourseForm.value | json }}</p>
+<p>Valid: {{ addCourseForm.valid}}</p>
+<p>Dirty: {{ addCourseForm.dirty}}</p>
+<p>Touched: {{ addCourseForm.touched}}</p>

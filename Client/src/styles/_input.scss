@@ -5,21 +5,30 @@
     background-color: #EEEEEE;
     line-height: 1em;
     height: 3rem;
-    border: none;
+    border: #EEEEEE solid 1px;
 
-    &_textarea {
+    &__textarea {
         line-height: 1.3em;
         padding-top: 0.5em;
         padding-bottom: 0.5em;
         min-height: 3rem;
         resize: vertical;
     }
+
+    &_invalid {
+      border-color: #FC7124;
+    }
 }
 
 .input:focus {
-    outline: #B6B6B6 solid 1px;
+    outline: none;
+    border: #B6B6B6 solid 1px;
 }
 
 .input::placeholder {
     color: #B6B6B6;
+}
+
+.input_invalid:focus {
+  border-color: #FC7124;
 }

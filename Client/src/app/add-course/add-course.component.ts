@@ -13,8 +13,8 @@ export class AddCourseComponent implements OnInit {
 
   constructor(private router: Router, private formBuilder: FormBuilder) {
     this.addCourseForm = this.formBuilder.group({
-      title: ['', Validators.required],
-      description: '',
+      title: ['', [Validators.required, Validators.maxLength(50)]],
+      description: ['', Validators.maxLength(200)],
       date: '',
       duration: '',
       authors: ''

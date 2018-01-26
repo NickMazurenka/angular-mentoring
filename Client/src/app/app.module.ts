@@ -30,6 +30,8 @@ import { AuthService } from './shared-services/auth.service';
 import { LocalStorageService } from './shared-services/local-storage.service';
 import { TokenInterceptor } from './shared-services/token-interceptor';
 import { PagingComponent } from './courses/paging/paging.component';
+import { CourseDateInputComponent } from './add-course/course-date-input/course-date-input.component';
+import { CourseDurationInputComponent } from './add-course/course-duration-input/course-duration-input.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import { PagingComponent } from './courses/paging/paging.component';
     CoursesOrderPipe,
     AddCourseComponent,
     PagingComponent,
+    CourseDateInputComponent,
+    CourseDurationInputComponent,
   ],
   imports: [
     BrowserModule,
