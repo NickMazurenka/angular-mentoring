@@ -1,9 +1,15 @@
-<input [(ngModel)]="value" (change)="onChange()" (keyup)="onChange()" class="field input duration" type="text" placeholder="Duration">
+<input [(ngModel)]="value"
+  (keypress)="onKeyPress($event)"
+  (paste)="onPaste($event)"
+  (drop)="onDrop($event)"
+  class="field input duration"
+  type="text"
+  placeholder="Duration">
 <div class="controls">
-  <button class="control__button control__button_up">
+  <button class="control__button control__button_up" (click)="onUpClick()">
     <fa name="angle-up" class="triangle"></fa>
   </button>
-  <button class="control__button control__button_down">
+  <button class="control__button control__button_down" (click)="onDownClick()">
     <fa name="angle-down" class="triangle"></fa>
   </button>
 </div>

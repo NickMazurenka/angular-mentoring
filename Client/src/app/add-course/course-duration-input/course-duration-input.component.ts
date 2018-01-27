@@ -18,8 +18,36 @@ export class CourseDurationInputComponent implements ControlValueAccessor {
 
   value: string;
 
-  onChange() {
+  onChange(event) {
     this.onChangeValue(this.value);
+  }
+
+  onKeyPress(event) {
+    const pattern = this.value.length > 0 ? /[0-9]/ : /[1-9]/;
+    const inputChar = String.fromCharCode(event.charCode);
+
+    if (!pattern.test(inputChar)) {
+      event.preventDefault();
+    }
+  }
+
+  onPaste(event) {
+    event.preventDefault();
+  }
+
+  onDrop(event) {
+    event.preventDefault();
+  }
+
+  onUpClick() {
+    this.value = (+this.value + 1).toString();
+  }
+
+  onDownClick() {
+    const number = +this.value;
+    if (number > 0) {
+      this.value = (number - 1).toString();
+    }
   }
 
   registerOnValidatorChange?(fn: () => void): void { }
