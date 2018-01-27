@@ -2,6 +2,7 @@ import { Component, OnInit, Input, forwardRef, ExistingProvider } from '@angular
 import {
   ControlValueAccessor, NG_VALUE_ACCESSOR, Validator, AbstractControl, FormControl, ValidationErrors, NG_VALIDATORS
 } from '@angular/forms';
+import { CourseDurationPipe } from '../../courses/course-details/course-duration.pipe';
 
 @Component({
   selector: 'app-course-duration-input',
@@ -16,18 +17,31 @@ import {
 })
 export class CourseDurationInputComponent implements ControlValueAccessor {
 
+  private _prev: string;
   value: string;
 
+  private sendFromValueUpdate(): void {
+    if (this._prev === this.value) {
+      return;
+    }
+    this._prev = this.value;
+    this.onChangeValue(this.value === '' ? null : +this.value);
+  }
+
   onChange(event) {
-    this.onChangeValue(this.value);
+    this.sendFromValueUpdate();
   }
 
   onKeyPress(event) {
     const pattern = this.value.length > 0 ? /[0-9]/ : /[1-9]/;
+    if (this.value.length > 2) {
+      event.preventDefault();
+      return;
+    }
     const inputChar = String.fromCharCode(event.charCode);
-
     if (!pattern.test(inputChar)) {
       event.preventDefault();
+      return;
     }
   }
 
@@ -41,6 +55,7 @@ export class CourseDurationInputComponent implements ControlValueAccessor {
 
   onUpClick() {
     this.value = (+this.value + 1).toString();
+    this.sendFromValueUpdate();
   }
 
   onDownClick() {
@@ -48,6 +63,7 @@ export class CourseDurationInputComponent implements ControlValueAccessor {
     if (number > 0) {
       this.value = (number - 1).toString();
     }
+    this.sendFromValueUpdate();
   }
 
   registerOnValidatorChange?(fn: () => void): void { }

@@ -1,4 +1,7 @@
-<input [(ngModel)]="value"
+<input
+  [(ngModel)]="value"
+  (change)="onChange()"
+  (keyup)="onChange()"
   (keypress)="onKeyPress($event)"
   (paste)="onPaste($event)"
   (drop)="onDrop($event)"
@@ -13,3 +16,4 @@
     <fa name="angle-down" class="triangle"></fa>
   </button>
 </div>
+<div class="result" *ngIf="value != null && value.length > 0 ">{{ value | courseDuration }}</div>
