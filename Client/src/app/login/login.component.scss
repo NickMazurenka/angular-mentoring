@@ -7,6 +7,17 @@
     flex-direction: column;
 }
 
+.field {
+    margin-bottom: 1rem;
+
+    &__error {
+        color: #FF6008;
+        font: 12px/1rem Lato;
+        margin-top: -1rem;
+    }
+}
+  
+
 .controls {
   margin-top: 1rem;
   margin-bottom: 2rem;
