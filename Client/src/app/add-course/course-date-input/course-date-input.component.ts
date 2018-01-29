@@ -20,6 +20,10 @@ export class CourseDateInputComponent implements ControlValueAccessor {
   value: string;
 
   private parseDate(value: string): Date {
+    const pattern = /(1|2)\d\d\d(-|\/)\d(0|1|2)?(-|\/)(0|1|2|3)\d?/;
+    if (!pattern.test(value)) {
+      return null;
+    }
     const timestamp = Date.parse(value);
     if (isNaN(timestamp)) {
       return null;
