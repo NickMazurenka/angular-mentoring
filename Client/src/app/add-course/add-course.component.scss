@@ -10,12 +10,23 @@
     margin: 0 1rem;
 }
 
-.field {
-    margin-bottom: 1rem;
+.group {
+  display: flex;
+  justify-content: space-between;
+}
 
-    &__error {
-      margin-top: -1rem;
-    }
+.ng-touched.ng-invalid .validated {
+  border-color: #FC7124;
+}
+
+.field {
+  margin-bottom: 1rem;
+
+  &__error {
+    color: #FF6008;
+    font: 12px/1rem Lato;
+    margin-top: -1rem;
+  }
 }
 
 .controls {

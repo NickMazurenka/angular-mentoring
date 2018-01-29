@@ -1,16 +1,11 @@
-<!-- <div class="controls">
-  <button class="control__button" (click)="onExpandClick()">
-    <fa name="{{expanded? 'angle-up':'angle-down'}}" class="triangle"></fa>
-  </button>
-</div> -->
-
-<div class="accordion field authors">
+<div class="input__label">Authors</div>
+<div class="accordion authors">
   <input class="accordion__switch" id="authors" type="checkbox">
-  <label class="accordion__label" for="authors">Authors</label>
+  <label class="accordion__label validated" for="authors">({{selected.length}} Selected)</label>
   <div class="accordion__content">
     <div class="option__container" *ngFor="let option of options; let i = index">
       <div class="option__wrapper">
-        <input class="checkbox" type="checkbox" id="option-{{i}}">
+        <input class="checkbox" type="checkbox" id="option-{{i}}" (change)="changeSelection(option)">
         <label class="option__label" for="option-{{i}}">{{option}}</label>
       </div>
     </div>

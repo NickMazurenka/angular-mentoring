@@ -1,12 +1,16 @@
 $button-hover-in-time: 0.2s;
 $button-hover-out-time: 0.7s;
 
+:host {
+  width: 19rem;
+}
+
 .field {
   margin-bottom: 1rem;
 }
 
 .duration {
-  width: 6em;
+  width: 3em;
 }
 
 .controls {

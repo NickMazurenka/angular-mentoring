@@ -1,4 +1,4 @@
-import { Component, OnInit, forwardRef } from '@angular/core';
+import { Component, OnInit, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -6,28 +6,30 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   templateUrl: './course-authors-selector.component.html',
   styleUrls: ['./course-authors-selector.component.scss'],
   providers: [{
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => CourseAuthorsSelectorComponent),
-      multi: true
-    }]
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => CourseAuthorsSelectorComponent),
+    multi: true
+  }]
 })
 export class CourseAuthorsSelectorComponent implements ControlValueAccessor {
 
   value: string;
 
-  options: string[] = [
-    'Kim Kuan',
-    'Vasya',
-    'Petya',
-    'Rjevskiy',
-    'Rojonskiy',
-    'Rogojonskiy',
-  ];
+  @Input()
+  options: string[];
+
+  selected: string[] = [];
 
   public constructor() { }
 
-  onChange() {
-    this.onChangeValue(1);
+  changeSelection(option: string) {
+    const index = this.selected.indexOf(option);
+    if (index !== -1) {
+      this.selected.splice(index, 1);
+    } else {
+      this.selected.push(option);
+    }
+    this.onChangeValue(this.selected);
   }
 
   registerOnValidatorChange?(fn: () => void): void { }

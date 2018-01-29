@@ -1,3 +1,4 @@
+<div class="input__label">Duration</div>
 <input
   [(ngModel)]="value"
   (change)="onChange()"
@@ -5,9 +6,8 @@
   (keypress)="onKeyPress($event)"
   (paste)="onPaste($event)"
   (drop)="onDrop($event)"
-  class="field input duration"
-  type="text"
-  placeholder="Duration">
+  class="input duration"
+  type="text">
 <div class="controls">
   <button class="control__button control__button_up" (click)="onUpClick()">
     <fa name="angle-up" class="triangle"></fa>

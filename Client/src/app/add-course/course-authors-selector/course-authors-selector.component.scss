@@ -1,12 +1,19 @@
 $button-hover-in-time: 0.2s;
 $button-hover-out-time: 0.7s;
 
-.field {
-    margin-bottom: 1rem;
+:host {
+  width: 18rem;
+  display: flex;
+  align-items: center;
 }
-  
+
+.field {
+  margin-bottom: 1rem;
+}
+
 .authors {
-    width: 18rem;
+  display: inline-block;
+  width: 12rem;
 }
 
 .option {

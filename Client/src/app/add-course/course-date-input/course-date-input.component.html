@@ -1,7 +1,8 @@
+<div class="input__label">Date</div>
 <input
     [(ngModel)]="value"
     (change)="onChange()"
     (keyup)="onChange()"
-    class="field input date"
+    class="input date"
     type="text"
-    placeholder="Date">
+    placeholder="{{currentDate | date: 'yyyy/MM/dd'}}">

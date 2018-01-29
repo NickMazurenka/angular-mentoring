@@ -7,6 +7,15 @@
     height: 3rem;
     border: #EEEEEE solid 1px;
 
+    &__label {
+      display: inline-block;
+      color: #515253;
+      font: 14px/14px Lato;
+      letter-spacing: 1px;
+      padding-right: 1rem;
+      text-transform: uppercase;
+    }
+
     &__textarea {
         line-height: 1.3em;
         padding-top: 0.5em;
@@ -15,7 +24,7 @@
         resize: vertical;
     }
 
-    &.ng-dirty.ng-invalid, &__wrapper.ng-dirty.ng-invalid > & {
+    &.ng-touched.ng-invalid, &__wrapper.ng-touched.ng-invalid > & {
       border-color: #FC7124;
     }
 }

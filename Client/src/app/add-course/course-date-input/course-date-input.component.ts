@@ -19,6 +19,12 @@ export class CourseDateInputComponent implements ControlValueAccessor {
 
   value: string;
 
+  get currentDate(): Date {
+    return new Date();
+  }
+
+  public constructor() { }
+
   private parseDate(value: string): Date {
     const pattern = /(1|2)\d\d\d(-|\/)\d(0|1|2)?(-|\/)(0|1|2|3)\d?/;
     if (!pattern.test(value)) {
@@ -55,7 +61,5 @@ export class CourseDateInputComponent implements ControlValueAccessor {
 
   setDisabledState?(isDisabled: boolean): void {
   }
-
-  public constructor() { }
 
 }

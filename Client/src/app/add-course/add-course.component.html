@@ -3,29 +3,28 @@
   <div class="fieldset">
     <input class="field input" type="text" placeholder="Title" formControlName="title">
     <span class="field__error" *ngIf="showControlError('title')">
-      {{addCourseForm.get('title')?.errors | json}}
+      {{ getControlError('title') }}
     </span>
     <textarea class="field input input__textarea" placeholder="Description" formControlName="description">
     </textarea>
     <span class="field__error" *ngIf="showControlError('description')">
-      {{addCourseForm.get('description')?.errors | json}}
+      {{ getControlError('description') }}
     </span>
-    <app-course-date-input formControlName="date" class="input__wrapper"></app-course-date-input>
+    <app-course-authors-selector formControlName="authors" [options]="authors" class="field"></app-course-authors-selector>
+    <span class="field__error" *ngIf="showControlError('authors')">
+      {{ getControlError('authors') }}
+    </span>
+    <app-course-date-input formControlName="date" class="input__wrapper field"></app-course-date-input>
     <span class="field__error" *ngIf="showControlError('date')">
-      {{addCourseForm.get('date')?.errors | json}}
+      {{ getControlError('date') }}
     </span>
-    <app-course-duration-input formControlName="duration"></app-course-duration-input>
+    <app-course-duration-input formControlName="duration" class="input__wrapper field"></app-course-duration-input>
     <span class="field__error" *ngIf="showControlError('duration')">
-      {{addCourseForm.get('duration')?.errors | json}}
+      {{ getControlError('duration') }}
     </span>
-    <app-course-authors-selector formControlName="duration"></app-course-authors-selector>
   </div>
   <div class="controls">
     <button class="button button_large button_alter button_wide" (click)="onCancelClick()">Cancel</button>
-    <button type="submit" class="button button_large button_wide">Add New Course</button>
+    <button type="submit" class="button button_large button_wide" (click)="onSubmit()" [class.button_disabled]="!addCourseForm.valid">Add New Course</button>
   </div>
 </form>
-<p>Form value: {{ addCourseForm.value | json }}</p>
-<p>Valid: {{ addCourseForm.valid}}</p>
-<p>Dirty: {{ addCourseForm.dirty}}</p>
-<p>Touched: {{ addCourseForm.touched}}</p>

@@ -30,8 +30,21 @@ $button-alter-hover-out-time: 0.3s;
 
     &:hover {
         color: #FFFFFF;
+        border: 1px solid #FF6008;
         background-color: #FF6008;
         transition: background-color $button-hover-in-time, color $button-hover-in-time, border-color $button-hover-in-time;
+    }
+
+    &_disabled {
+      color: #FFFFFF;
+      border: 1px solid #333333;
+      background-color: #333333;
+
+      &:hover {
+        border: 1px solid #515356;
+        background-color: #515356;
+        transition: background-color $button-hover-in-time, color $button-hover-in-time, border-color $button-hover-in-time;  
+      }
     }
 
     &_basic {
