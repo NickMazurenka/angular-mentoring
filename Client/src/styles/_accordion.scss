@@ -1,0 +1,55 @@
+.accordion {
+    font: 18px/18px Lato;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+
+    &__switch {
+        position: absolute;
+        opacity: 0;
+        z-index: -1;
+
+        &:checked + label::after {
+            transform: rotateX(180deg);
+        }
+    }
+
+    &__label {
+        position: relative;
+        display: block;
+        padding: 0 1rem;
+        color: #B6B6B6;
+        background-color: #EEEEEE;
+        height: 3rem;
+        line-height: 3rem;
+        border: #EEEEEE solid 1px;
+        cursor: pointer;
+
+        &::after {
+            font: normal normal normal 14px/1 FontAwesome;
+            color: #525456;
+            content: "\F107";
+            position: absolute;
+            right: 0;
+            top: 0;
+            display: block;
+            width: 3rem;
+            height: 3rem;
+            line-height: 3rem;
+            text-align: center;
+        }
+    }
+
+    &__content {
+        max-height: 0;
+        overflow: hidden;
+        background-color: #FFFFFF;
+        transition: max-height .35s;
+        border: #EEEEEE solid 1px;
+
+        input:checked ~ & {
+            max-height: none;
+        }
+    }
+}
+  

@@ -18,7 +18,7 @@
     <span class="field__error" *ngIf="showControlError('duration')">
       {{addCourseForm.get('duration')?.errors | json}}
     </span>
-    <input class="field input" type="text" placeholder="Authors">
+    <app-course-authors-selector formControlName="duration"></app-course-authors-selector>
   </div>
   <div class="controls">
     <button class="button button_large button_alter button_wide" (click)="onCancelClick()">Cancel</button>

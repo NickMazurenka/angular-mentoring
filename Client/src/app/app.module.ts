@@ -32,6 +32,7 @@ import { TokenInterceptor } from './shared-services/token-interceptor';
 import { PagingComponent } from './courses/paging/paging.component';
 import { CourseDateInputComponent } from './add-course/course-date-input/course-date-input.component';
 import { CourseDurationInputComponent } from './add-course/course-duration-input/course-duration-input.component';
+import { CourseAuthorsSelectorComponent } from './add-course/course-authors-selector/course-authors-selector.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { CourseDurationInputComponent } from './add-course/course-duration-input
     PagingComponent,
     CourseDateInputComponent,
     CourseDurationInputComponent,
+    CourseAuthorsSelectorComponent,
   ],
   imports: [
     BrowserModule,

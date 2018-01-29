@@ -1,0 +1,64 @@
+$button-hover-in-time: 0.2s;
+$button-hover-out-time: 0.7s;
+
+.field {
+    margin-bottom: 1rem;
+}
+  
+.authors {
+    width: 18rem;
+}
+
+.option {
+
+  &__container {
+    padding: 0.5rem;
+    width: 100%;
+  }
+
+  &__wrapper {
+    width: 100%;
+  }
+
+  &__label {
+    display: block;
+    width: 100%;
+  }
+}
+
+.controls {
+  height: 3rem;
+  border: transparent solid 1px;
+  vertical-align: top;
+  display: inline-flex;
+  flex-direction: column;
+  margin-left: -3.3rem;
+}
+
+.control {
+  &__button {
+    color: #525457;
+    width: 3rem;
+    height: 3rem;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    transition: background-color $button-hover-out-time, color $button-hover-out-time;
+
+    &:hover {
+      color: #EEEEEE;
+      background-color: #515356;
+      transition: background-color $button-hover-in-time, color $button-hover-in-time;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.triangle {
+  color: inherit;
+  margin: auto;
+}
