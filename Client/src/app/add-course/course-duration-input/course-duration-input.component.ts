@@ -28,7 +28,7 @@ export class CourseDurationInputComponent implements ControlValueAccessor {
     this.onChangeValue(this.value === '' ? null : +this.value);
   }
 
-  onChange(event) {
+  onChange() {
     this.sendFromValueUpdate();
   }
 
