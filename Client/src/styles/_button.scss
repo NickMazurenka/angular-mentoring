@@ -8,9 +8,9 @@ $button-alter-hover-out-time: 0.3s;
     letter-spacing: 2px;
     width: 5rem;
     outline: none;
-    color: #FF6008;
-    background-color: #FFFFFF;
+    color: #FFFFFF;
     border: 1px solid #FF6008;
+    background-color: #FF6008;
     border-radius: 2rem;
     padding: 0 1rem;
     line-height: 2rem;
@@ -29,13 +29,19 @@ $button-alter-hover-out-time: 0.3s;
     }
 
     &:hover {
-        color: #FFFFFF;
+        color: #FF6008;
+        background-color: #FFFFFF;
         border: 1px solid #FF6008;
-        background-color: #FF6008;
         transition: background-color $button-hover-in-time, color $button-hover-in-time, border-color $button-hover-in-time;
     }
 
-    &_disabled {
+    &_disabled, &_disabled:hover {
+        color: #FF6008;
+        background-color: #FFFFFF;
+        border: 1px solid #FF6008;
+    }
+
+    &_optional {
       color: #FFFFFF;
       border: 1px solid #333333;
       background-color: #333333;

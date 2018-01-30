@@ -65,12 +65,17 @@ export class AddCourseComponent {
     if (control.errors.required) {
       return `Please specify ${controlName}`;
     }
-    if (control.errors.maxLength) {
-      return `${controlName} length should not exceed ${control.errors.maxLength.requiredLength} symbols`;
+    if (control.errors.maxlength) {
+      return `${controlName} length should not exceed ${control.errors.maxlength.requiredLength} symbols`;
     }
     if (control.errors.authorRequired) {
       return `Please specify one or more authors`;
     }
+    console.log(Object.getOwnPropertyNames(control.errors));
+    if (Object.getOwnPropertyNames(control.errors).length > 0) {
+      return `${controlName} has incorrect value`;
+    }
+    return null;
   }
 
   validateAllFormFields(formGroup: FormGroup) {
