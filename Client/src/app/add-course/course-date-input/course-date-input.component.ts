@@ -41,6 +41,10 @@ export class CourseDateInputComponent implements ControlValueAccessor {
     this.onChangeValue(this.parseDate(this.value));
   }
 
+  onBlur() {
+    this.onTouched();
+  }
+
   registerOnValidatorChange?(fn: () => void): void { }
 
   onChangeValue: (value: any) => void = () => { };

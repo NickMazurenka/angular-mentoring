@@ -2,6 +2,7 @@
 <input
   [(ngModel)]="value"
   (change)="onChange()"
+  (blur)="onBlur()"
   (keyup)="onChange()"
   (keypress)="onKeyPress($event)"
   (paste)="onPaste($event)"

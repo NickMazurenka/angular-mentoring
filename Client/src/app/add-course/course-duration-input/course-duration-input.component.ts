@@ -32,6 +32,10 @@ export class CourseDurationInputComponent implements ControlValueAccessor {
     this.sendFromValueUpdate();
   }
 
+  onBlur() {
+    this.onTouched();
+  }
+
   onKeyPress(event) {
     const pattern = this.value.length > 0 ? /[0-9]/ : /[1-9]/;
     if (this.value.length > 2) {

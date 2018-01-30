@@ -3,6 +3,7 @@
     [(ngModel)]="value"
     (change)="onChange()"
     (keyup)="onChange()"
+    (blur)="onBlur()"
     class="input date"
     type="text"
     placeholder="{{currentDate | date: 'yyyy/MM/dd'}}">

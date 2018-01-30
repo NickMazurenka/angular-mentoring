@@ -10,10 +10,6 @@
     <span class="field__error" *ngIf="showControlError('description')">
       {{ getControlError('description') }}
     </span>
-    <app-course-authors-selector formControlName="authors" [options]="authors" class="field"></app-course-authors-selector>
-    <span class="field__error" *ngIf="showControlError('authors')">
-      {{ getControlError('authors') }}
-    </span>
     <app-course-date-input formControlName="date" class="input__wrapper field"></app-course-date-input>
     <span class="field__error" *ngIf="showControlError('date')">
       {{ getControlError('date') }}
@@ -21,6 +17,10 @@
     <app-course-duration-input formControlName="duration" class="input__wrapper field"></app-course-duration-input>
     <span class="field__error" *ngIf="showControlError('duration')">
       {{ getControlError('duration') }}
+    </span>
+    <app-course-authors-selector formControlName="authors" [options]="authors" class="field"></app-course-authors-selector>
+    <span class="field__error" *ngIf="showControlError('authors')">
+      {{ getControlError('authors') }}
     </span>
   </div>
   <div class="controls">

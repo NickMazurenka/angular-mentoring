@@ -32,6 +32,10 @@ export class CourseAuthorsSelectorComponent implements ControlValueAccessor {
     this.onChangeValue(this.selected);
   }
 
+  onToggle() {
+    this.onTouched();
+  }
+
   registerOnValidatorChange?(fn: () => void): void { }
 
   onChangeValue: (value: any) => void = () => { };
