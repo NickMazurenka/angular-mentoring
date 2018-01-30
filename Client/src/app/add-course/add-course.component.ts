@@ -32,12 +32,23 @@ export class AddCourseComponent {
     });
   }
 
-  onSubmit() {
+  private submit() {
     this.validateAllFormFields(this.addCourseForm);
     if (!this.addCourseForm.valid) {
       return;
     }
     alert(new JsonPipe().transform(this.addCourseForm.value));
+  }
+
+  onSubmit() {
+    this.submit();
+  }
+
+  onKeyDown(event) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      this.submit();
+    }
   }
 
   onCancelClick() {

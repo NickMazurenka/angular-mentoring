@@ -29,7 +29,7 @@ export class LoginComponent implements OnDestroy {
     });
   }
 
-  onSubmit() {
+  private submit() {
     this.validateAllFormFields(this.loginForm);
     if (!this.loginForm.valid) {
       return;
@@ -39,6 +39,17 @@ export class LoginComponent implements OnDestroy {
       this.loginForm.get('password').value).subscribe(() => {
         this.router.navigate(['']);
       });
+  }
+
+  onSubmit() {
+    this.submit();
+  }
+
+  onKeyDown(event) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      this.submit();
+    }
   }
 
   onCancelClick() {

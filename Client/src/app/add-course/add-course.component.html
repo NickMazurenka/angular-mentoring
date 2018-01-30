@@ -1,5 +1,5 @@
 <div class="heading">Add new course</div>
-<form [formGroup]="addCourseForm">
+<form [formGroup]="addCourseForm" (keydown)="onKeyDown($event)">
   <div class="fieldset">
     <input class="field input" type="text" placeholder="Title" formControlName="title">
     <span class="field__error" *ngIf="showControlError('title')">

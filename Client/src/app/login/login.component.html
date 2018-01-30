@@ -1,6 +1,6 @@
 <div class="container">
   <div class="header">Log into your account</div>
-  <form [formGroup]="loginForm" class="login-form">
+  <form [formGroup]="loginForm" class="login-form" (keydown)="onKeyDown($event)">
     <input formControlName="username" type="text" class="input field" placeholder="Email Address">
     <span class="field__error" *ngIf="showControlError('username')">
         {{ getControlError('username') }}
