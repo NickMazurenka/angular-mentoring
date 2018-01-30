@@ -30,6 +30,10 @@ export class LoginComponent implements OnDestroy {
   }
 
   onSubmit() {
+    this.validateAllFormFields(this.loginForm);
+    if (!this.loginForm.valid) {
+      return;
+    }
     this._loginSubscription = this.auth.logIn(
       this.loginForm.get('username').value,
       this.loginForm.get('password').value).subscribe(() => {
