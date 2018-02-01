@@ -27,4 +27,8 @@
     <button class="button button_large button_alter button_wide" (click)="onCancelClick()">Cancel</button>
     <button type="submit" class="button button_large button_wide" (click)="onSubmit()" [class.button_disabled]="!addCourseForm.valid">Add New Course</button>
   </div>
+  <p>Form value: {{ addCourseForm.value | json }}</p>
+ <p>Valid: {{ addCourseForm.valid}}</p>
+ <p>Dirty: {{ addCourseForm.dirty}}</p>
+ <p>Touched: {{ addCourseForm.touched}}</p>
 </form>

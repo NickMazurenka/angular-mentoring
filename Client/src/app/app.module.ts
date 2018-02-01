@@ -20,7 +20,6 @@ import { LoginComponent } from './login/login.component';
 import { UserLoginComponent } from './header/user-login/user-login.component';
 import { ConfirmationDialogComponent } from './courses/course-details/confirmation-dialog/confirmation-dialog.component';
 import { ConfirmationDialogService } from './courses/course-details/confirmation-dialog.service';
-import { CoursesService } from './courses/courses.service';
 import { CoursePlateColorDirective } from './courses/course-details/course-plate-color.directive';
 import { CourseDurationPipe } from './courses/course-details/course-duration.pipe';
 import { CoursesFilterPipe } from './courses/courses-filter.pipe';
@@ -34,6 +33,7 @@ import { CourseDateInputComponent } from './add-course/course-date-input/course-
 import { CourseDurationInputComponent } from './add-course/course-duration-input/course-duration-input.component';
 import { CourseAuthorsSelectorComponent } from './add-course/course-authors-selector/course-authors-selector.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { CoursesService } from './shared-services/courses.service';
 
 @NgModule({
   declarations: [

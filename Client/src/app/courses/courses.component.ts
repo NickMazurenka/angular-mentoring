@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ICourseDetails } from './course-details/course-details.model';
-import { CoursesService } from './courses.service';
 import { CoursesFilterPipe } from './courses-filter.pipe';
 import { Router, RouterLink } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
+import { ICourseDetails } from '../shared-models/course-details.model';
+import { CoursesService } from '../shared-services/courses.service';
 
 @Component({
   selector: 'app-courses',

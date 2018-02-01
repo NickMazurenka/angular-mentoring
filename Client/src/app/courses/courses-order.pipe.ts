@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { ICourseDetails } from './course-details/course-details.model';
+import { ICourseDetails } from '../shared-models/course-details.model';
 
 @Pipe({
   name: 'coursesOrder'

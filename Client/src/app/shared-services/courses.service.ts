@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { ICourseDetails } from './course-details/course-details.model';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
-import 'rxjs/add/observable/of';
-import { ICourseDto } from './course-details/course-dto.model';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { ICourseDto } from '../shared-models/course-dto.model';
+import { ICourseDetails } from '../shared-models/course-details.model';
+import 'rxjs/add/observable/of';
 
 @Injectable()
 export class CoursesService {
@@ -24,7 +24,12 @@ export class CoursesService {
     const url: string = start == null ? this.coursesUrl :
       filter == null ? `${this.coursesUrl}?start=${start}&count=${count}` :
         `${this.coursesUrl}?start=${start}&count=${count}&filter=${filter}`;
-    return this.mapCourseDto(this.http.get<ICourseDto[]>(url));
+    return this.mapCoursesDto(this.http.get<ICourseDto[]>(url));
+  }
+
+  public getCourse(id: number): Observable<ICourseDetails> {
+    const url = `${this.coursesUrl}/${id}`;
+    return this.mapCourseDto(this.http.get<ICourseDto>(url));
   }
 
   public deleteCouse(courseId: number, start?: number, count?: number, filter?: string): Observable<Object> {
@@ -50,7 +55,7 @@ export class CoursesService {
     });
   }
 
-  private mapCourseDto(coursesDtoObs: Observable<ICourseDto[]>): Observable<ICourseDetails[]> {
+  private mapCoursesDto(coursesDtoObs: Observable<ICourseDto[]>): Observable<ICourseDetails[]> {
     return coursesDtoObs.pipe(map((coursesDto: ICourseDto[]) => coursesDto.map((courseDto: ICourseDto) => {
       return {
         id: courseDto.id,
@@ -61,6 +66,19 @@ export class CoursesService {
         starred: courseDto.isTopRated
       };
     })));
+  }
+
+  private mapCourseDto(courseDtoObs: Observable<ICourseDto>): Observable<ICourseDetails> {
+    return courseDtoObs.pipe(map((courseDto: ICourseDto) => {
+      return {
+        id: courseDto.id,
+        name: courseDto.name,
+        description: courseDto.description,
+        date: new Date(courseDto.date),
+        duration: courseDto.length,
+        starred: courseDto.isTopRated
+      };
+    }));
   }
 
 }
