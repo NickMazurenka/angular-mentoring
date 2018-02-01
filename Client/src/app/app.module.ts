@@ -33,6 +33,7 @@ import { PagingComponent } from './courses/paging/paging.component';
 import { CourseDateInputComponent } from './add-course/course-date-input/course-date-input.component';
 import { CourseDurationInputComponent } from './add-course/course-duration-input/course-duration-input.component';
 import { CourseAuthorsSelectorComponent } from './add-course/course-authors-selector/course-authors-selector.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { CourseAuthorsSelectorComponent } from './add-course/course-authors-sele
     CourseDateInputComponent,
     CourseDurationInputComponent,
     CourseAuthorsSelectorComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
