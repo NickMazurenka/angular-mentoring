@@ -1,0 +1,13 @@
+$hover-in-time: 0.2s;
+$hover-out-time: 0.4s;
+
+.link {
+    color: #333333;
+    text-decoration: none;
+    transition: color $hover-out-time;
+}
+
+.link:hover {
+    color: #FF6008;
+    transition: color $hover-in-time;
+}

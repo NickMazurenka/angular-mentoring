@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { ICourseDetails } from './course-details.model';
+import { RouterLink } from '@angular/router';
 import { ConfirmationDialogService } from './confirmation-dialog.service';
 import { CoursePlateColorDirective } from './course-plate-color.directive';
 
@@ -20,12 +21,8 @@ export class CourseDetailsComponent {
     this.dialogService = dialogService;
   }
 
-  edit() {
-  }
-
-  delete() {
+  onDeleteClick() {
     const dialogRef = this.dialogService.open();
     dialogRef.onDelete.subscribe(() => this.onDelete.emit(this.course));
   }
-
 }

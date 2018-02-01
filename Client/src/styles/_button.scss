@@ -20,6 +20,25 @@ $button-alter-hover-out-time: 0.3s;
     text-transform: uppercase;
     transition: background-color $button-hover-out-time, color $button-hover-out-time, border-color $button-hover-out-time;
 
+    &__icon {
+        cursor: pointer;        
+        background-color: transparent;
+        color: #333333;
+        border: none;
+        margin: 0;
+        padding: 0;
+        transition: color $button-hover-out-time;
+
+        &:focus {
+            outline: none;
+        }
+
+        &:hover {
+            color: #FF6008;
+            transition: color $button-hover-in-time;
+        }
+    }
+
     &_wide {
         width: 16rem;
     }

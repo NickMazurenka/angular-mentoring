@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ICourseDetails } from './course-details/course-details.model';
 import { CoursesService } from './courses.service';
 import { CoursesFilterPipe } from './courses-filter.pipe';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 
@@ -62,10 +62,6 @@ export class CoursesComponent implements OnInit, OnDestroy {
       this.getCourseList().subscribe((courses: ICourseDetails[]) => {
         this.courses = courses;
       });
-  }
-
-  onAddCourseClicked() {
-    this.router.navigate(['addCourse']);
   }
 
   deleteCourse(course: ICourseDetails) {

@@ -6,8 +6,9 @@ import { AddCourseComponent } from './add-course/add-course.component';
 
 const routes: Routes = [
   { path: 'courses', component: CoursesComponent },
+  { path: 'courses/add', component: AddCourseComponent },
+  { path: 'courses/edit/:id', component: AddCourseComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'addCourse', component: AddCourseComponent },
   { path: '', redirectTo: '/courses', pathMatch: 'full' },
   { path: '**', redirectTo: '/courses' }
 ];
