@@ -37,6 +37,14 @@ $button-alter-hover-out-time: 0.3s;
             color: #FF6008;
             transition: color $button-hover-in-time;
         }
+
+        &_alter {
+            color: #B2B2B2;
+
+            &:hover {
+                color: #515356;
+            }
+        }
     }
 
     &_wide {
