@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 import { ICourseDetails } from '../shared-models/course-details.model';
 import { CoursesService } from '../shared-services/courses.service';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-courses',
@@ -39,6 +40,17 @@ export class CoursesComponent implements OnInit, OnDestroy {
       this.getCourseList().subscribe((courses: ICourseDetails[]) => {
         this.courses = courses;
       });
+    this.coursesService.test().subscribe((courses: ICourseDetails[]) => {
+      const authors = [];
+      courses.forEach(c => {
+        c.authors.forEach(as => {
+          if (authors.find(a => a.id === as.id) == null) {
+            authors.push(as);
+          }
+        });
+      });
+      console.log(new JsonPipe().transform(authors));
+    });
   }
 
   search(pattern: string) {

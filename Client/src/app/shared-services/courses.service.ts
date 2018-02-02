@@ -6,6 +6,8 @@ import { environment } from '../../environments/environment';
 import { ICourseDto } from '../shared-models/course-dto.model';
 import { ICourseDetails } from '../shared-models/course-details.model';
 import 'rxjs/add/observable/of';
+import { IAuthorDto } from '../shared-models/author-dto.model';
+import { IAuthor } from '../shared-models/author.model';
 
 @Injectable()
 export class CoursesService {
@@ -19,6 +21,10 @@ export class CoursesService {
   private courses: ICourseDetails[] = [];
 
   constructor(private http: HttpClient) { }
+
+  public test(): Observable<ICourseDetails[]> {
+    return this.mapCoursesDto(this.http.get<ICourseDto[]>(this.coursesUrl));
+  }
 
   public getCourseList(start?: number, count?: number, filter?: string): Observable<ICourseDetails[]> {
     const url: string = start == null ? this.coursesUrl :
@@ -63,7 +69,8 @@ export class CoursesService {
         description: courseDto.description,
         date: new Date(courseDto.date),
         duration: courseDto.length,
-        starred: courseDto.isTopRated
+        authors: this.mapAuthors(courseDto.authors),
+        starred: courseDto.isTopRated,
       };
     })));
   }
@@ -76,9 +83,20 @@ export class CoursesService {
         description: courseDto.description,
         date: new Date(courseDto.date),
         duration: courseDto.length,
+        authors: this.mapAuthors(courseDto.authors),
         starred: courseDto.isTopRated
       };
     }));
+  }
+
+  private mapAuthors(authorsDto: IAuthorDto[]): IAuthor[] {
+    return authorsDto.map((authorDto: IAuthorDto) => {
+      return {
+        id: authorDto.id,
+        firstName: authorDto.firstName,
+        lastName: authorDto.lastName
+      };
+    });
   }
 
 }

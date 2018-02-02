@@ -1,3 +1,5 @@
+import { IAuthorDto } from './author-dto.model';
+
 export interface ICourseDto {
   id: number;
   name: string;
@@ -5,4 +7,5 @@ export interface ICourseDto {
   isTopRated: boolean;
   date: string;
   length: number;
+  authors: IAuthorDto[];
 }

@@ -13,12 +13,10 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class CourseAuthorsSelectorComponent implements ControlValueAccessor {
 
-  value: string;
+  selected: string[] = [];
 
   @Input()
   options: string[];
-
-  selected: string[] = [];
 
   public constructor() { }
 
@@ -42,8 +40,8 @@ export class CourseAuthorsSelectorComponent implements ControlValueAccessor {
 
   onTouched: () => any = () => { };
 
-  writeValue(value: string): void {
-    this.value = value;
+  writeValue(value: string[]): void {
+    this.selected = value;
   }
 
   registerOnChange(fn: any): void {

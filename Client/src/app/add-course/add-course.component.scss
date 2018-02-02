@@ -1,7 +1,7 @@
 .heading {
     color: #515253;
     font: bold 42px/42px Lato;
-    margin-bottom: 2rem;
+    margin: 2rem 1rem;
 }
 
 .fieldset {
@@ -22,7 +22,7 @@
     color: #FF6008;
     font: 12px/1rem Lato;
     margin-top: -1rem;
-    
+
     &:first-letter {
       text-transform: uppercase;
     }

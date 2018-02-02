@@ -3,6 +3,7 @@ import {
   ControlValueAccessor, NG_VALUE_ACCESSOR, Validator, AbstractControl, FormControl, ValidationErrors, NG_VALIDATORS
 } from '@angular/forms';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-course-date-input',
@@ -19,6 +20,8 @@ export class CourseDateInputComponent implements ControlValueAccessor {
 
   value: string;
 
+  private locale: string = 'en-US';
+
   get currentDate(): Date {
     return new Date();
   }
@@ -26,7 +29,7 @@ export class CourseDateInputComponent implements ControlValueAccessor {
   public constructor() { }
 
   private parseDate(value: string): Date {
-    const pattern = /(1|2)\d\d\d(-|\/)\d(0|1|2)?(-|\/)(0|1|2|3)\d?/;
+    const pattern = /(1|2)\d\d\d(-|\/)\d\d?(-|\/)(0|1|2|3)\d?/;
     if (!pattern.test(value)) {
       return null;
     }
@@ -51,8 +54,8 @@ export class CourseDateInputComponent implements ControlValueAccessor {
 
   onTouched: () => any = () => { };
 
-  writeValue(value: string): void {
-    this.value = value;
+  writeValue(value: Date): void {
+    this.value = new DatePipe(this.locale).transform(value, 'yyyy/MM/dd');
   }
 
   registerOnChange(fn: any): void {

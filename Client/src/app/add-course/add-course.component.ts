@@ -55,8 +55,9 @@ export class AddCourseComponent {
       this.editMode = true;
       this.addCourseForm.get('title').setValue(course.name);
       this.addCourseForm.get('description').setValue(course.description);
-      this.addCourseForm.get('date').setValue(new DatePipe('en-US').transform(course.date, 'yyyy/MM/dd'));
+      this.addCourseForm.get('date').setValue(course.date);
       this.addCourseForm.get('duration').setValue(course.duration);
+      this.addCourseForm.get('authors').setValue(course.authors);
     });
   }
 
