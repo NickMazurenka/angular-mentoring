@@ -3,7 +3,8 @@
     [(ngModel)]="value"
     (change)="onChange()"
     (keyup)="onChange()"
+    (dblclick)="onDoubleClick()"
     (blur)="onBlur()"
     class="input date"
     type="text"
-    placeholder="{{currentDate | date: 'yyyy/MM/dd'}}">
+    placeholder="{{currentDateFormatted }}">

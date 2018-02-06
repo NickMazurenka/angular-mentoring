@@ -19,7 +19,9 @@ module.exports = (server) => {
 			to = courses.length;
 		}
 		if (filter != null) {
-			courses = courses.filter(course => course.name.toLowerCase().indexOf(filter.toLowerCase()) !== -1);
+			courses = courses.filter(course => {
+				return course.name.toLowerCase().indexOf(filter.toLowerCase()) !== -1;
+			});
 		}
 		courses = courses.slice(from, to);
 

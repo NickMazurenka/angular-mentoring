@@ -22,8 +22,8 @@ export class CourseDateInputComponent implements ControlValueAccessor {
 
   private locale: string = 'en-US';
 
-  get currentDate(): Date {
-    return new Date();
+  get currentDateFormatted(): string {
+    return new DatePipe(this.locale).transform(new Date(), 'yyyy/MM/dd');
   }
 
   public constructor() { }
@@ -40,8 +40,17 @@ export class CourseDateInputComponent implements ControlValueAccessor {
     return new Date(timestamp);
   }
 
-  onChange() {
+  private notifyParent() {
     this.onChangeValue(this.parseDate(this.value));
+  }
+
+  onChange() {
+    this.notifyParent();
+  }
+
+  onDoubleClick() {
+    this.value = this.currentDateFormatted;
+    this.notifyParent();
   }
 
   onBlur() {
