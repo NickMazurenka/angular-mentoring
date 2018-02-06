@@ -34,6 +34,7 @@ import { CourseDurationInputComponent } from './add-course/course-duration-input
 import { CourseAuthorsSelectorComponent } from './add-course/course-authors-selector/course-authors-selector.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CoursesService } from './shared-services/courses.service';
+import { AuthorsService } from './shared-services/authors.service';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { CoursesService } from './shared-services/courses.service';
     DatePipe,
     UpperCasePipe,
     AuthService,
+    AuthorsService,
     LocalStorageService,
     {
       provide: HTTP_INTERCEPTORS,

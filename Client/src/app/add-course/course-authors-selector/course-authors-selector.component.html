@@ -3,10 +3,10 @@
   <input class="accordion__switch" id="authors" type="checkbox" (change)="onToggle()">
   <label class="accordion__label validated" for="authors">({{selected.length}} Selected)</label>
   <div class="accordion__content">
-    <div class="option__container" *ngFor="let option of options; let i = index">
+    <div class="option__container" *ngFor="let option of options">
       <div class="option__wrapper">
-        <input class="checkbox" type="checkbox" id="option-{{i}}" (change)="changeSelection(option)">
-        <label class="option__label" for="option-{{i}}">{{option}}</label>
+        <input class="checkbox" type="checkbox" id="author-option-{{option.id}}" (change)="changeSelection(option)" [checked]="isOptionSelected(option)">
+        <label class="option__label" for="author-option-{{option.id}}">{{option.firstName}} {{option.lastName}}</label>
       </div>
     </div>
   </div>

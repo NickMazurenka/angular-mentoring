@@ -1,5 +1,6 @@
 import { Component, OnInit, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { IAuthor } from '../../shared-models/author.model';
 
 @Component({
   selector: 'app-course-authors-selector',
@@ -13,14 +14,14 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class CourseAuthorsSelectorComponent implements ControlValueAccessor {
 
-  selected: string[] = [];
+  selected: IAuthor[] = new Array<IAuthor>();
 
   @Input()
-  options: string[];
+  options: IAuthor[];
 
   public constructor() { }
 
-  changeSelection(option: string) {
+  changeSelection(option: IAuthor) {
     const index = this.selected.indexOf(option);
     if (index !== -1) {
       this.selected.splice(index, 1);
@@ -28,6 +29,10 @@ export class CourseAuthorsSelectorComponent implements ControlValueAccessor {
       this.selected.push(option);
     }
     this.onChangeValue(this.selected);
+  }
+
+  isOptionSelected(option: IAuthor): boolean {
+    return this.selected.indexOf(option) !== -1;
   }
 
   onToggle() {
@@ -40,7 +45,7 @@ export class CourseAuthorsSelectorComponent implements ControlValueAccessor {
 
   onTouched: () => any = () => { };
 
-  writeValue(value: string[]): void {
+  writeValue(value: IAuthor[]): void {
     this.selected = value;
   }
 

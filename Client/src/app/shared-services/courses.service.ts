@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { ICourseDto } from '../shared-models/course-dto.model';
 import { ICourseDetails } from '../shared-models/course-details.model';
 import 'rxjs/add/observable/of';
 import { IAuthorDto } from '../shared-models/author-dto.model';
 import { IAuthor } from '../shared-models/author.model';
+import { JsonPipe } from '@angular/common';
 
 @Injectable()
 export class CoursesService {
@@ -22,10 +23,6 @@ export class CoursesService {
 
   constructor(private http: HttpClient) { }
 
-  public test(): Observable<ICourseDetails[]> {
-    return this.mapCoursesDto(this.http.get<ICourseDto[]>(this.coursesUrl));
-  }
-
   public getCourseList(start?: number, count?: number, filter?: string): Observable<ICourseDetails[]> {
     const url: string = start == null ? this.coursesUrl :
       filter == null ? `${this.coursesUrl}?start=${start}&count=${count}` :
@@ -38,6 +35,18 @@ export class CoursesService {
     return this.mapCourseDto(this.http.get<ICourseDto>(url));
   }
 
+  public addCourse(course: ICourseDetails): Observable<ICourseDetails> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const url = `${this.coursesUrl}`;
+    return this.mapCourseDto(this.http.post<ICourseDto>(url, new JsonPipe().transform(this.mapCourse(course)), { headers } ));
+  }
+
+  public updateCourse(course: ICourseDetails): Observable<ICourseDetails> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const url = `${this.coursesUrl}/${course.id}`;
+    return this.mapCourseDto(this.http.put<ICourseDto>(url, new JsonPipe().transform(this.mapCourse(course)), { headers }));
+  }
+
   public deleteCouse(courseId: number, start?: number, count?: number, filter?: string): Observable<Object> {
     const url: string = `${this.coursesUrl}/${courseId}`;
     return this.http.delete(url);
@@ -48,19 +57,6 @@ export class CoursesService {
     return Observable.of(course);
   }
 
-  public updateCourse(data: ICourseDetails): Observable<ICourseDetails> {
-    let course = this.courses.filter((c: ICourseDetails) => c.id === data.id)[0];
-
-    return new Observable(observer => {
-      if (course == null) {
-        observer.error();
-      } else {
-        course = data;
-        observer.next(course);
-      }
-    });
-  }
-
   private mapCoursesDto(coursesDtoObs: Observable<ICourseDto[]>): Observable<ICourseDetails[]> {
     return coursesDtoObs.pipe(map((coursesDto: ICourseDto[]) => coursesDto.map((courseDto: ICourseDto) => {
       return {
@@ -69,7 +65,7 @@ export class CoursesService {
         description: courseDto.description,
         date: new Date(courseDto.date),
         duration: courseDto.length,
-        authors: this.mapAuthors(courseDto.authors),
+        authors: this.mapAuthorsDto(courseDto.authors),
         starred: courseDto.isTopRated,
       };
     })));
@@ -83,18 +79,40 @@ export class CoursesService {
         description: courseDto.description,
         date: new Date(courseDto.date),
         duration: courseDto.length,
-        authors: this.mapAuthors(courseDto.authors),
+        authors: this.mapAuthorsDto(courseDto.authors),
         starred: courseDto.isTopRated
       };
     }));
   }
 
-  private mapAuthors(authorsDto: IAuthorDto[]): IAuthor[] {
+  private mapCourse(course: ICourseDetails): ICourseDto {
+    return {
+      id: course.id,
+      name: course.name,
+      description: course.description,
+      isTopRated: course.starred != null ? course.starred : false,
+      date: course.date.toString(),
+      length: course.duration,
+      authors: this.mapAuthors(course.authors)
+    };
+  }
+
+  private mapAuthorsDto(authorsDto: IAuthorDto[]): IAuthor[] {
     return authorsDto.map((authorDto: IAuthorDto) => {
       return {
         id: authorDto.id,
         firstName: authorDto.firstName,
         lastName: authorDto.lastName
+      };
+    });
+  }
+
+  private mapAuthors(authors: IAuthor[]): IAuthorDto[] {
+    return authors.map((author: IAuthor) => {
+      return {
+        id: author.id,
+        firstName: author.firstName,
+        lastName: author.lastName
       };
     });
   }
