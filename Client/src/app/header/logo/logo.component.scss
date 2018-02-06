@@ -1,17 +1,15 @@
 :host {
-    display: flex;
+  display: flex;
 }
 
 .logo {
-    font-size: 2rem;
-    line-height: 2rem;
-    margin: 0 0.5rem;
-    color: #515253;
+  font-size: 50px;
+  margin: 0 0.5rem;
+  color: #515253;
 }
 
 .title {
-    color: #333333;
-    font: bold 25px/2rem Lato;
-    padding: 0 0.5rem;
-    cursor: pointer;
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 2rem;
 }

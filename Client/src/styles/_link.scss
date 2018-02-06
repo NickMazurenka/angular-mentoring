@@ -5,9 +5,14 @@ $hover-out-time: 0.4s;
     color: #333333;
     text-decoration: none;
     transition: color $hover-out-time;
+
+    &.disabled {
+      pointer-events: none;
+      cursor: default;
+    }
 }
 
-.link:hover {
+.link:hover:not(.disabled) {
     color: #FF6008;
     transition: color $hover-in-time;
 }

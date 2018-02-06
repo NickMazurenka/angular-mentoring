@@ -7,9 +7,10 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AuthGuard } from './shared-services/auth.guard';
 
 const routes: Routes = [
-  { path: 'courses', component: CoursesComponent, canActivate: [AuthGuard] },
+  { path: 'courses', component: CoursesComponent, canActivate: [AuthGuard], },
   { path: 'courses/add', component: AddCourseComponent, canActivate: [AuthGuard] },
   { path: 'courses/edit/:id', component: AddCourseComponent, canActivate: [AuthGuard] },
+  { path: 'courses/edit', redirectTo: '/courses', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: '404', component: PageNotFoundComponent },
   { path: '', redirectTo: '/courses', pathMatch: 'full' },

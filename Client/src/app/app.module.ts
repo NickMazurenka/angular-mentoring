@@ -36,6 +36,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { CoursesService } from './shared-services/courses.service';
 import { AuthorsService } from './shared-services/authors.service';
 import { AuthGuard } from './shared-services/auth.guard';
+import { BreadCrumbComponent } from './header/breadcrumb/breadcrumb.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { AuthGuard } from './shared-services/auth.guard';
     CourseDurationInputComponent,
     CourseAuthorsSelectorComponent,
     PageNotFoundComponent,
+    BreadCrumbComponent,
   ],
   imports: [
     BrowserModule,

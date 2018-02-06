@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BreadCrumbComponent } from '../breadcrumb/breadcrumb.component';
 
 @Component({
   selector: 'app-logo',
@@ -8,16 +9,9 @@ import { Router } from '@angular/router';
 })
 export class LogoComponent {
 
-  private router: Router;
-
   public logoSpin: boolean = false;
 
-  constructor(router: Router) {
-    this.router = router;
-  }
-
-  titleClicked() {
-    this.router.navigate(['']);
+  constructor() {
   }
 
 }
