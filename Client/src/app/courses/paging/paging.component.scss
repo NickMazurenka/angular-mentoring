@@ -1,42 +1,34 @@
-$chevron-color: #515356;
+$angle-color: #B2B2B2;
+$text-info-color: #B2B2B2;
+$input-border-color: #B2B2B2;
+$input-border-color-focus: #515356;
 
 .navigation-button {
-  width: 30px;
-  height: 30px;
-  color: $chevron-color;
+  width: 16px;
+  height: 20px;
+  font-size: 14px;
+  color: $angle-color;
   background-color: #FFFFFF;
-  border: 3px solid $chevron-color;
-  border-radius: 50%;
+  border: none;
   outline: none;
-  padding: 2px 0 0 0;
-  margin: 0;
+  padding: 0;
+  margin: 0 -2px;
+  cursor: pointer;
 }
 
-.chevron {
-  font-size: 18px;
+.page-input {
+  font-size: 14px;
+  line-height: 20px;
+  height: 20px;
+  width: 30px;
+  background-color: transparent;
+  border-color: $input-border-color;
+  text-align: center;
+  padding: 0;
+  margin: 0 2px;
 
-  &.left {
-    margin-left: -3px;
-
-    &.first {
-      margin-left: -2px;
-    }
-
-    &.second {
-      margin-left: -10px;
-    }
-  }
-
-  &.right {
-    margin-left: 3px;
-
-    &.first {
-      margin-left: 2px;
-    }
-
-    &.second {
-      margin-left: -10px;
-    }
+  &:focus {
+    border-color: $input-border-color-focus;
   }
 }
 
@@ -45,7 +37,8 @@ $chevron-color: #515356;
   overflow-x: auto;
 }
 
-.page {
+.pager {
+  color: $text-info-color;
+  display: inline-block;
+  margin: 0 2px;
 }
-
-
