@@ -35,6 +35,7 @@ import { CourseAuthorsSelectorComponent } from './add-course/course-authors-sele
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CoursesService } from './shared-services/courses.service';
 import { AuthorsService } from './shared-services/authors.service';
+import { AuthGuard } from './shared-services/auth.guard';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { AuthorsService } from './shared-services/authors.service';
     UpperCasePipe,
     AuthService,
     AuthorsService,
+    AuthGuard,
     LocalStorageService,
     {
       provide: HTTP_INTERCEPTORS,
