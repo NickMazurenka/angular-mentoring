@@ -1,19 +1,35 @@
-$angle-color: #B2B2B2;
+$button-color: #B2B2B2;
+$button-color-focus: #515356;
 $text-info-color: #B2B2B2;
+$input-text-color: #B2B2B2;
+$input-text-color-focus: #515356;
 $input-border-color: #B2B2B2;
 $input-border-color-focus: #515356;
+$button-hover-in-time: 0.2s;
+$button-hover-out-time: 0.7s;
 
 .navigation-button {
   width: 16px;
   height: 20px;
   font-size: 14px;
-  color: $angle-color;
-  background-color: #FFFFFF;
+  color: $button-color;
+  background-color: transparent;
   border: none;
   outline: none;
   padding: 0;
   margin: 0 -2px;
   cursor: pointer;
+
+  transition: color $button-hover-out-time;
+
+  &:hover {
+    color: $button-color-focus;
+    transition: color $button-hover-in-time;
+  }
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .page-input {
@@ -22,12 +38,14 @@ $input-border-color-focus: #515356;
   height: 20px;
   width: 30px;
   background-color: transparent;
+  color: $input-text-color;
   border-color: $input-border-color;
   text-align: center;
   padding: 0;
   margin: 0 2px;
 
   &:focus {
+    color: $input-text-color-focus;
     border-color: $input-border-color-focus;
   }
 }

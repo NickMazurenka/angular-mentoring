@@ -28,5 +28,9 @@ module.exports = (server) => {
 		res.json(courses);
 	});
 
+	router.get('/courses-count', (req, res, next) => {
+		res.json(server.db.getState().courses.length);
+	});
+
 	return router;
 };

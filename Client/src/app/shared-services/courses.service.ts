@@ -18,6 +18,9 @@ export class CoursesService {
   private get coursesUrl() {
     return `${environment.apiEndpoint}/courses`;
   }
+  private get coursesCountUrl() {
+    return `${environment.apiEndpoint}/courses-count`;
+  }
 
   private courses: ICourseDetails[] = [];
 
@@ -28,6 +31,10 @@ export class CoursesService {
       filter == null ? `${this.coursesUrl}?start=${start}&count=${count}` :
         `${this.coursesUrl}?start=${start}&count=${count}&filter=${filter}`;
     return this.mapCoursesDto(this.http.get<ICourseDto[]>(url));
+  }
+
+  public getCourseTotal(): Observable<number> {
+    return this.http.get<number>(this.coursesCountUrl);
   }
 
   public getCourse(id: number): Observable<ICourseDetails> {

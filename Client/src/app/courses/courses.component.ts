@@ -16,13 +16,20 @@ export class CoursesComponent implements OnInit, OnDestroy {
   public pattern: string;
   public courses: ICourseDetails[];
   public coursesPerPage = 5;
-  public pageNumber = 0;
+  public currentPage = 1;
+  public get totalPages() {
+    return Math.round(this._coursesTotal / this.coursesPerPage) + (this._coursesTotal % this.coursesPerPage > 0 ? 1 : 0);
+  }
+
+  private _coursesTotal = 0;
 
   private coursesService: CoursesService;
   private router: Router;
 
   private _getCourseListSubscriptionOnInit: Subscription;
+  private _getCourseListSubscriptionOnPageChange: Subscription;
   private _getCourseListSubscriptionSearch: Subscription;
+  private _getCourseTotalSunscription: Subscription;
   private _deleteCourseSubscription: Subscription;
 
   constructor(router: Router, coursesService: CoursesService) {
@@ -32,11 +39,24 @@ export class CoursesComponent implements OnInit, OnDestroy {
   }
 
   private getCourseList(): Observable<ICourseDetails[]> {
-    return this.coursesService.getCourseList(this.pageNumber * this.coursesPerPage, this.coursesPerPage, this.pattern);
+    return this.coursesService.getCourseList((this.currentPage - 1) * this.coursesPerPage, this.coursesPerPage, this.pattern);
+  }
+
+  private updateCourseTotal() {
+    this.coursesService.getCourseTotal().subscribe(count => this._coursesTotal = count);
   }
 
   ngOnInit() {
     this._getCourseListSubscriptionOnInit =
+      this.getCourseList().subscribe((courses: ICourseDetails[]) => {
+        this.courses = courses;
+      });
+    this.updateCourseTotal();
+  }
+
+  onPageChange(value: number) {
+    this.currentPage = value;
+    this._getCourseListSubscriptionOnPageChange =
       this.getCourseList().subscribe((courses: ICourseDetails[]) => {
         this.courses = courses;
       });
@@ -49,25 +69,9 @@ export class CoursesComponent implements OnInit, OnDestroy {
     });
   }
 
-  onNextPageClick() {
-    this.pageNumber++;
-    this._getCourseListSubscriptionOnInit =
-      this.getCourseList().subscribe((courses: ICourseDetails[]) => {
-        this.courses = courses;
-      });
-  }
-
-  onPrevPageClick() {
-    this.pageNumber--;
-    this._getCourseListSubscriptionOnInit =
-      this.getCourseList().subscribe((courses: ICourseDetails[]) => {
-        this.courses = courses;
-      });
-  }
-
   deleteCourse(course: ICourseDetails) {
     this._deleteCourseSubscription =
-      this.coursesService.deleteCouse(course.id, this.pageNumber * this.coursesPerPage, this.coursesPerPage)
+      this.coursesService.deleteCouse(course.id, (this.currentPage - 1) * this.coursesPerPage, this.coursesPerPage)
         .subscribe(() => this.search(this.pattern));
   }
 

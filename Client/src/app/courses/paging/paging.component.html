@@ -1,18 +1,25 @@
-<button class="navigation-button">
-  <fa class="" name="angle-double-left"></fa>
+<button class="navigation-button" (click)="onFirstClick()">
+  <fa name="angle-double-left"></fa>
 </button>
-<button class="navigation-button">
-  <fa class="" name="angle-left"></fa>
+<button class="navigation-button" (click)="onPreviousClick()">
+  <fa name="angle-left"></fa>
 </button>
 <div class="pager">
   <span>Page</span>
-  <input class="input page-input">
+  <input class="input page-input"
+    [(ngModel)]="_currentPageValue"
+    (change)="onChange()"
+    (keydown)="onKeyDown($event)"
+    (keypress)="onKeyPress($event)"
+    (paste)="onPaste($event)"
+    (drop)="onDrop($event)"
+    type="text">
   <span>of</span>
   <span>{{totalPages}}</span>
 </div>
-<button class="navigation-button">
-  <fa class="" name="angle-right"></fa>
+<button class="navigation-button" (click)="onNextClick()">
+  <fa name="angle-right"></fa>
 </button>
-<button class="navigation-button">
-  <fa class="" name="angle-double-right"></fa>
+<button class="navigation-button" (click)="onLastClick()">
+  <fa name="angle-double-right"></fa>
 </button>
