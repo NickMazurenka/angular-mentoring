@@ -2,7 +2,7 @@ import { Component, OnInit, Input, forwardRef, ExistingProvider } from '@angular
 import {
   ControlValueAccessor, NG_VALUE_ACCESSOR, Validator, AbstractControl, FormControl, ValidationErrors, NG_VALIDATORS
 } from '@angular/forms';
-import { CourseDurationPipe } from '../../courses/course-details/course-duration.pipe';
+import { CourseDurationPipe } from '../../course-details/course-duration.pipe';
 
 @Component({
   selector: 'app-course-duration-input',

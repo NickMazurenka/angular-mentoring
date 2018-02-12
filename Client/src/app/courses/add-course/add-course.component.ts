@@ -4,11 +4,10 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { JsonPipe, DatePipe } from '@angular/common';
 import { CourseAuthorsRequired } from './course-authors-selector/course-authors-required.validator';
 import { Subscription } from 'rxjs/Subscription';
-import { CoursesService } from '../shared-services/courses.service';
-import { ICourseDto } from '../shared-models/course-dto.model';
-import { ICourseDetails } from '../shared-models/course-details.model';
-import { IAuthor } from '../shared-models/author.model';
-import { AuthorsService } from '../shared-services/authors.service';
+import { IAuthor } from '../../shared-models/author.model';
+import { CoursesService } from '../../shared-services/courses.service';
+import { AuthorsService } from '../../shared-services/authors.service';
+import { ICourseDetails } from '../../shared-models/course-details.model';
 
 @Component({
   selector: 'app-add-course',

@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { ConfirmationDialogService } from './confirmation-dialog.service';
 import { CoursePlateColorDirective } from './course-plate-color.directive';
 import { ICourseDetails } from '../../shared-models/course-details.model';
+import { ConfirmationDialogService } from '../confirmation-dialog.service';
 
 @Component({
   selector: 'app-course-details',
