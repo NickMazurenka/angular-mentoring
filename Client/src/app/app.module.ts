@@ -16,7 +16,6 @@ import { LogoComponent } from './header/logo/logo.component';
 import { FooterComponent } from './footer/footer.component';
 import { CoursesComponent } from './courses/courses.component';
 import { CourseDetailsComponent } from './courses/course-details/course-details.component';
-import { LoginComponent } from './login/login.component';
 import { UserLoginComponent } from './header/user-login/user-login.component';
 import { ConfirmationDialogComponent } from './courses/course-details/confirmation-dialog/confirmation-dialog.component';
 import { ConfirmationDialogService } from './courses/course-details/confirmation-dialog.service';
@@ -46,7 +45,6 @@ import { BreadCrumbComponent } from './header/breadcrumb/breadcrumb.component';
     FooterComponent,
     CoursesComponent,
     CourseDetailsComponent,
-    LoginComponent,
     UserLoginComponent,
     ConfirmationDialogComponent,
     CoursePlateColorDirective,
@@ -65,7 +63,6 @@ import { BreadCrumbComponent } from './header/breadcrumb/breadcrumb.component';
     BrowserModule,
     AppRoutingModule,
     AngularFontAwesomeModule,
-    AppRoutingModule,
     FormsModule,
     OverlayModule,
     HttpClientModule,

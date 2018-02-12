@@ -3,9 +3,9 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 import { Subscription } from 'rxjs/Subscription';
-import { Location } from '@angular/common';
-import { AuthService } from '../shared-services/auth.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, NgControl } from '@angular/forms';
+
+import { AuthService } from '../../shared-services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -21,8 +21,7 @@ export class LoginComponent implements OnDestroy {
   constructor(
     private auth: AuthService,
     private router: Router,
-    private formBuilder: FormBuilder,
-    private locationService: Location) {
+    private formBuilder: FormBuilder) {
     this.loginForm = this.formBuilder.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required]]
@@ -53,7 +52,7 @@ export class LoginComponent implements OnDestroy {
   }
 
   onCancelClick() {
-    this.locationService.back();
+    this.router.navigate(['']);
   }
 
   showControlError(controlName: string): boolean {
