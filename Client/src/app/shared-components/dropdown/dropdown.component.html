@@ -1,0 +1,37 @@
+<div
+  class="overlay-origin"
+  cdkOverlayOrigin
+  #origin="cdkOverlayOrigin">
+
+  <div class="input"
+    [attr.tabindex]="disabled ? '-1' : '0'"
+    [class.opened]="isOpen"
+    [class.disabled]="disabled">
+
+    <div class="value"
+      [class.placeholder]="isPlaceholder">
+      {{ label }}
+    </div>
+    <div class="arrow"></div>
+  </div>
+</div>
+
+<ng-template
+  cdkConnectedOverlay
+  hasBackdrop
+  backdropClass="cdk-overlay-transparent-backdrop"
+  [cdkConnectedOverlayOrigin]="origin"
+  [cdkConnectedOverlayOpen]="isOpen"
+  (backdropClick)="close()">
+
+  <div role="dialog" class="dialog">
+    <div role="listbox" class="listbox" tabindex="0"
+      cdkTrapFocus
+      cdkTrapFocusAutoCapture
+      (keydown)="onKeydown($event)"
+      #listbox>
+
+      <ng-content></ng-content>
+    </div>
+  </div>
+</ng-template>

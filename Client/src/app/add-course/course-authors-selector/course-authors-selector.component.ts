@@ -17,7 +17,7 @@ export class CourseAuthorsSelectorComponent implements ControlValueAccessor {
   selected: IAuthor[] = new Array<IAuthor>();
 
   @Input()
-  options: IAuthor[];
+  authors: IAuthor[];
 
   public constructor() { }
 

@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router/src/router_module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OverlayModule } from '@angular/cdk/overlay';
-import { DatePipe } from '@angular/common';
+import { A11yModule } from '@angular/cdk/a11y';
+import { DatePipe, CommonModule } from '@angular/common';
 import { UpperCasePipe } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -37,6 +38,8 @@ import { CoursesService } from './shared-services/courses.service';
 import { AuthorsService } from './shared-services/authors.service';
 import { AuthGuard } from './shared-services/auth.guard';
 import { BreadCrumbComponent } from './header/breadcrumb/breadcrumb.component';
+import { DropdownComponent } from './shared-components/dropdown/dropdown.component';
+import { SelectableOptionComponent } from './shared-components/selectable-option/selectable-option.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +63,8 @@ import { BreadCrumbComponent } from './header/breadcrumb/breadcrumb.component';
     CourseAuthorsSelectorComponent,
     PageNotFoundComponent,
     BreadCrumbComponent,
+    DropdownComponent,
+    SelectableOptionComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +74,9 @@ import { BreadCrumbComponent } from './header/breadcrumb/breadcrumb.component';
     FormsModule,
     OverlayModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    A11yModule,
+    CommonModule
   ],
   providers: [
     ConfirmationDialogService,

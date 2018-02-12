@@ -1,0 +1,72 @@
+$input-text-color: #000000;
+$input-placeholder-color: #979797;
+$input-disabled-color: #B0B0B0;
+$input-border-color: #979797;
+$input-border-disabled-color: #D5D5D5;
+$input-border-focused-color: #5DB6E6;
+$input-border-invalid-color: #C3060B;
+$dialog-width: 15rem;
+
+.overlay-origin {
+  display: inline-table;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.input {
+  box-sizing: border-box;
+  font-size: 18px;
+  width: $dialog-width;
+  height: 3rem;
+  padding: 0 1rem;
+  line-height: 1em;
+  color: #000000;
+  background-color: #EEEEEE;
+  border: #EEEEEE solid 1px;
+
+  &:focus {
+    outline: none;
+    border-color: #B6B6B6;
+  }
+
+  &.opened {
+    border-color: $input-border-focused-color;
+
+    .arrow {
+    }
+  }
+
+  &.disabled {
+    border-color: $input-border-disabled-color;
+
+    .value {
+      color: $input-disabled-color;
+    }
+
+    .arrow {
+    }
+  }
+}
+
+.value {
+  color: $input-placeholder-color;
+  line-height: 3rem;
+}
+
+.arrow {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.dialog {
+  width: $dialog-width;
+  margin: 4px 0;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.5);
+}
+
+.listbox {
+  outline: none;
+  max-height: 15rem;
+  overflow-y: auto;
+}

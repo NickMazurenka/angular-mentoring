@@ -9,7 +9,7 @@ export class PagingComponent {
 
   constructor() { }
 
-  private _currentPageValue: string;
+  currentPageValue: string;
   private _previousValue: number;
 
   @Input()
@@ -17,10 +17,10 @@ export class PagingComponent {
 
   @Input()
   get currentPage(): number {
-    return +this._currentPageValue;
+    return +this.currentPageValue;
   }
   set currentPage(value: number) {
-    this._currentPageValue = String(value);
+    this.currentPageValue = String(value);
   }
 
   @Output()
@@ -34,7 +34,7 @@ export class PagingComponent {
     }
     if (this.currentPage !== this._previousValue) {
       this._previousValue = this.currentPage;
-      this._currentPageValue = String(this.currentPage);
+      this.currentPageValue = String(this.currentPage);
       this.pageChanged.emit(this.currentPage);
     }
   }

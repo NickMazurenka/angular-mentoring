@@ -18,7 +18,7 @@
     <span class="field__error" *ngIf="showControlError('duration')">
       {{ getControlError('duration') }}
     </span>
-    <app-course-authors-selector formControlName="authors" [options]="authors" class="field"></app-course-authors-selector>
+    <app-course-authors-selector formControlName="authors" [authors]="authors" class="field"></app-course-authors-selector>
     <span class="field__error" *ngIf="showControlError('authors')">
       {{ getControlError('authors') }}
     </span>

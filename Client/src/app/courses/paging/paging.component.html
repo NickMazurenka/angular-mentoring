@@ -7,7 +7,7 @@
 <div class="pager">
   <span>Page</span>
   <input class="input page-input"
-    [(ngModel)]="_currentPageValue"
+    [(ngModel)]="currentPageValue"
     (change)="onChange()"
     (keydown)="onKeyDown($event)"
     (keypress)="onKeyPress($event)"

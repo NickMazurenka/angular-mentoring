@@ -1,0 +1,44 @@
+$option-placeholder-color: #979797;
+$option-background-color: #FFFFFF;
+$option-background-hovered-color: #F8F8F8;
+$option-selected-checkmark-color: #5DB6E6;
+
+:host {
+  outline: none;
+}
+
+.option {
+  position: relative;
+  box-sizing: border-box;
+  display: inline-block;
+  width: 100%;
+  padding: 16px 26px 16px 16px;
+  background-color: $option-background-color;
+  cursor: default;
+
+  &.placeholder {
+    color: $option-placeholder-color;
+  }
+
+  &.active {
+    background-color: $option-background-hovered-color;
+  }
+
+  &.selected {
+    &::after {
+      color: $option-selected-checkmark-color;
+      position: absolute;
+      display: inline-block;
+      width: 13px;
+      height: 11px;
+      top: 16px;
+      right: 26px;
+      content: '\2713';
+    }
+
+  }
+
+  &:hover {
+    background-color: $option-background-hovered-color;
+  }
+}

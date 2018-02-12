@@ -1,5 +1,5 @@
 <div class="input__label">Authors</div>
-<div class="accordion authors">
+<!-- <div class="accordion authors">
   <input class="accordion__switch" id="authors" type="checkbox" (change)="onToggle()">
   <label class="accordion__label validated" for="authors">({{selected.length}} Selected)</label>
   <div class="accordion__content">
@@ -10,4 +10,9 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
+<app-dropdown>
+  <app-selectable-option *ngFor="let author of authors" [value]="author">
+    {{author.firstName}} {{author.lastName}}
+  </app-selectable-option>
+</app-dropdown>
