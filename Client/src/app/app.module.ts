@@ -1,11 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, InjectionToken } from '@angular/core';
 import { RouterModule } from '@angular/router/src/router_module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { DatePipe } from '@angular/common';
 import { UpperCasePipe } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { StoreModule, combineReducers, compose, ActionReducer, State, ActionReducerMap, MetaReducer } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
@@ -23,6 +25,12 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AuthorsService } from './shared-services/authors.service';
 import { AuthGuard } from './shared-services/auth.guard';
 import { BreadCrumbComponent } from './header/breadcrumb/breadcrumb.component';
+import { AuthReducer } from './auth/store/auth.reducer';
+import { LocalStorageSyncReducer } from './shared-store/local-storage-sync.reducer';
+import { AuthEffects } from './auth/store/auth.effects';
+
+const reducers = { auth: AuthReducer };
+const metaReducers: Array<MetaReducer<any, any>> = [LocalStorageSyncReducer];
 
 @NgModule({
   declarations: [
@@ -41,7 +49,9 @@ import { BreadCrumbComponent } from './header/breadcrumb/breadcrumb.component';
     FormsModule,
     OverlayModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
+    EffectsModule.forRoot([AuthEffects])
   ],
   providers: [
     AuthService,

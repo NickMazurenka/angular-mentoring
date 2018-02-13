@@ -1,15 +1,21 @@
 import { CanActivate, Router, CanLoad, Route } from '@angular/router';
-import { AuthService } from './auth.service';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
 
 @Injectable()
 export class AuthGuard implements CanActivate, CanLoad {
 
+  private loggedIn: boolean = false;
+
   constructor(
-    private authService: AuthService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private store: Store<any>
+  ) {
+    this.store.select(state => state.auth).subscribe((state) => {
+      this.loggedIn = state.userInfo != null;
+    });
+  }
 
   canActivate() {
     return this.canAccess();
@@ -20,7 +26,7 @@ export class AuthGuard implements CanActivate, CanLoad {
   }
 
   private canAccess(): boolean {
-    if (this.authService.loggedIn()) {
+    if (this.loggedIn) {
       return true;
     } else {
       this.router.navigate(['login']);

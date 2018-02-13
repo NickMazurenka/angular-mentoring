@@ -1,11 +1,20 @@
+import { FormGroup, FormBuilder, Validators, NgControl } from '@angular/forms';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 import { Subscription } from 'rxjs/Subscription';
-import { FormGroup, FormBuilder, Validators, NgControl } from '@angular/forms';
 
-import { AuthService } from '../../shared-services/auth.service';
+import * as AuthActions from '../store/auth.actions';
+import { AuthorizationState } from '../store/auth.reducer';
+import { IUserInfo } from '../../shared-models/user-info.model';
+
+interface IAuthState {
+  auth: {
+    Auth: AuthorizationState
+  };
+}
 
 @Component({
   selector: 'app-login',
@@ -16,15 +25,23 @@ export class LoginComponent implements OnDestroy {
 
   loginForm: FormGroup;
 
+  private _authState: Observable<AuthorizationState>;
   private _loginSubscription: Subscription;
 
   constructor(
-    private auth: AuthService,
+    private store: Store<any>,
     private router: Router,
     private formBuilder: FormBuilder) {
+
     this.loginForm = this.formBuilder.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required]]
+    });
+    this._authState = this.store.select(state => state.auth);
+    this._authState.subscribe((state) => {
+      if (state.userInfo != null) {
+        this.router.navigate(['courses']);
+      }
     });
   }
 
@@ -33,11 +50,10 @@ export class LoginComponent implements OnDestroy {
     if (!this.loginForm.valid) {
       return;
     }
-    this._loginSubscription = this.auth.logIn(
-      this.loginForm.get('username').value,
-      this.loginForm.get('password').value).subscribe(() => {
-        this.router.navigate(['']);
-      });
+    this.store.dispatch(new AuthActions.LogInRequest({
+      name: this.loginForm.get('username').value,
+      password: this.loginForm.get('password').value
+    }));
   }
 
   onSubmit() {
@@ -73,9 +89,6 @@ export class LoginComponent implements OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this._loginSubscription) {
-      this._loginSubscription.unsubscribe();
-    }
   }
 
 }

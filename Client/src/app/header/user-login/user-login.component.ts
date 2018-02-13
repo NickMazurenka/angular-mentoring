@@ -1,43 +1,37 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/Subscription';
+import { Observable } from 'rxjs/Observable';
+
+import * as AuthActions from '../../auth/store/auth.actions';
 import { AuthService } from '../../shared-services/auth.service';
 import { IUserInfo } from '../../shared-models/user-info.model';
 import { IUserTokenDto } from './user-token-dto.model';
+import { AuthorizationState } from '../../auth/store/auth.reducer';
+
 
 @Component({
   selector: 'app-user-login',
   templateUrl: './user-login.component.html',
   styleUrls: ['./user-login.component.scss']
 })
-export class UserLoginComponent implements OnInit, OnDestroy {
-
-  public loggedIn: boolean = false;
+export class UserLoginComponent implements OnInit {
 
   public userInfo: IUserInfo;
 
-  private _loginSubscription: Subscription;
+  private authState: Observable<AuthorizationState>;
 
   constructor(
-    private auth: AuthService,
+    private store: Store<any>,
     private router: Router) {
+      this.authState = this.store.select(state => state.auth);
   }
 
   ngOnInit() {
-    this.loggedIn = this.auth.loggedIn();
-    if (this.loggedIn) {
-      this.getUserInfo();
-    }
-    this._loginSubscription = this.auth.loginEvent.subscribe(value => {
-      this.loggedIn = value;
-      if (value === true) {
-        this.getUserInfo();
-      }
+    this.authState.subscribe((state) => {
+        this.userInfo = state.userInfo;
     });
-  }
-
-  private getUserInfo() {
-    this.auth.getUserInfo().subscribe((info: IUserInfo) => this.userInfo = info);
   }
 
   loginClicked(name: string, password: string) {
@@ -45,14 +39,6 @@ export class UserLoginComponent implements OnInit, OnDestroy {
   }
 
   logoutClicked() {
-    this.router.navigate(['']);
-    this.userInfo = null;
-    this.auth.logOut();
-  }
-
-  ngOnDestroy() {
-    if (this._loginSubscription) {
-      this._loginSubscription.unsubscribe();
-    }
+    this.store.dispatch(new AuthActions.LogOutRequest());
   }
 }

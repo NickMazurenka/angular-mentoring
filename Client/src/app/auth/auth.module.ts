@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
 
 import { LoginComponent } from './login/login.component';
 import { AuthRoutingModule } from './auth-routing.module';
+import { AuthReducer } from './store/auth.reducer';
 
 @NgModule({
   imports: [
@@ -13,7 +15,7 @@ import { AuthRoutingModule } from './auth-routing.module';
     ReactiveFormsModule
   ],
   declarations: [
-    LoginComponent
+    LoginComponent,
   ]
 })
 export class AuthModule { }

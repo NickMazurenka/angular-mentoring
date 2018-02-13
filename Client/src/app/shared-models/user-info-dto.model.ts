@@ -1,4 +1,5 @@
 export interface IUserInfoDto {
-  first: string;
-  last: string;
+  firstName: string;
+  lastName: string;
+  token: string;
 }
