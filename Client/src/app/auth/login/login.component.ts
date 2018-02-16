@@ -25,8 +25,7 @@ export class LoginComponent implements OnDestroy {
 
   loginForm: FormGroup;
 
-  private _authState: Observable<AuthorizationState>;
-  private _loginSubscription: Subscription;
+  private authState: Observable<AuthorizationState>;
 
   constructor(
     private store: Store<any>,
@@ -37,8 +36,8 @@ export class LoginComponent implements OnDestroy {
       username: ['', [Validators.required]],
       password: ['', [Validators.required]]
     });
-    this._authState = this.store.select(state => state.auth);
-    this._authState.subscribe((state) => {
+    this.authState = this.store.select(state => state.auth);
+    this.authState.subscribe((state) => {
       if (state.userInfo != null) {
         this.router.navigate(['courses']);
       }

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs/Observable';
-import { IAuthor } from '../shared-models/author.model';
-import { IAuthorDto } from '../shared-models/author-dto.model';
 import { map } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
+import { IAuthor } from '../models/author.model';
+import { IAuthorDto } from '../models/author-dto.model';
 
 @Injectable()
 export class AuthorsService {

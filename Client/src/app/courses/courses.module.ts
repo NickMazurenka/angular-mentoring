@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule, DatePipe, UpperCasePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
@@ -13,14 +15,14 @@ import { PagingComponent } from './paging/paging.component';
 import { AddCourseComponent } from './add-course/add-course.component';
 import { CourseDetailsComponent } from './course-details/course-details.component';
 import { CoursePlateColorDirective } from './course-details/course-plate-color.directive';
-import { CoursesService } from '../shared-services/courses.service';
 import { AuthService } from '../shared-services/auth.service';
-import { AuthorsService } from '../shared-services/authors.service';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { ConfirmationDialogService } from './confirmation-dialog.service';
 import { CourseDurationInputComponent } from './add-course/course-duration-input/course-duration-input.component';
 import { CourseAuthorsSelectorComponent } from './add-course/course-authors-selector/course-authors-selector.component';
 import { CourseDateInputComponent } from './add-course/course-date-input/course-date-input.component';
+import { AuthorsService } from './services/authors.service';
+import { CoursesService } from './services/courses.service';
 
 @NgModule({
   imports: [
@@ -28,7 +30,7 @@ import { CourseDateInputComponent } from './add-course/course-date-input/course-
     CommonModule,
     FormsModule,
     AngularFontAwesomeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   declarations: [
     CoursesComponent,
@@ -48,9 +50,6 @@ import { CourseDateInputComponent } from './add-course/course-date-input/course-
     ConfirmationDialogService,
     DatePipe,
     UpperCasePipe,
-    AuthService,
-    AuthorsService,
-    CoursesService
   ],
   entryComponents: [
     ConfirmationDialogComponent

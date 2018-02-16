@@ -1,6 +1,6 @@
 import { IAuthor } from './author.model';
 
-export interface ICourseDetails {
+export interface ICourse {
   id: number;
   name: string;
   description: string;

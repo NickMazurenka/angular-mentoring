@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CoursePlateColorDirective } from './course-plate-color.directive';
-import { ICourseDetails } from '../../shared-models/course-details.model';
 import { ConfirmationDialogService } from '../confirmation-dialog.service';
+import { ICourse } from '../models/course.model';
 
 @Component({
   selector: 'app-course-details',
@@ -12,8 +12,8 @@ import { ConfirmationDialogService } from '../confirmation-dialog.service';
 })
 export class CourseDetailsComponent {
 
-  @Input() course: ICourseDetails;
-  @Output() onDelete: EventEmitter<ICourseDetails> = new EventEmitter<ICourseDetails>();
+  @Input() course: ICourse;
+  @Output() onDelete: EventEmitter<ICourse> = new EventEmitter<ICourse>();
 
   private dialogService: ConfirmationDialogService;
 

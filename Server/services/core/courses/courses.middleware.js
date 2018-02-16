@@ -23,13 +23,10 @@ module.exports = (server) => {
 				return course.name.toLowerCase().indexOf(filter.toLowerCase()) !== -1;
 			});
 		}
+		let total = courses.length;
 		courses = courses.slice(from, to);
 
-		res.json(courses);
-	});
-
-	router.get('/courses-count', (req, res, next) => {
-		res.json(server.db.getState().courses.length);
+		res.json({ courses, total });
 	});
 
 	return router;

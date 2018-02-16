@@ -1,13 +1,13 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { ICourseDetails } from '../shared-models/course-details.model';
+import { ICourse } from './models/course.model';
 
 @Pipe({
   name: 'coursesOrder'
 })
 export class CoursesOrderPipe implements PipeTransform {
 
-  transform(courses: ICourseDetails[]): any {
-    return courses.sort((a: ICourseDetails, b: ICourseDetails) => b.date.getTime() - a.date.getTime());
+  transform(courses: ICourse[]): any {
+    return courses.sort((a: ICourse, b: ICourse) => b.date.getTime() - a.date.getTime());
   }
 
 }

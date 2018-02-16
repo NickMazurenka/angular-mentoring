@@ -5,9 +5,9 @@
   </div>
   <a class="button add-button" [routerLink]="['./add']">Add course</a>
 </div>
-<div class="courses-container">
+<div class="courses-container" *ngIf="courses != null">
   <app-paging [totalPages]="totalPages" [currentPage]="currentPage" (pageChanged)="onPageChange($event)" class="paging"></app-paging>
-  <div *ngIf="courses.length === 0" class="courses-empty-message">No data. Feel free to add new course.</div>
-  <app-course-details *ngFor="let course of courses | coursesOrder" [course]="course" (onDelete)="deleteCourse($event)"></app-course-details>
+  <div *ngIf="(courses | async).length === 0" class="courses-empty-message">No data. Feel free to add new course.</div>
+  <app-course-details *ngFor="let course of courses | async | coursesOrder" [course]="course" (onDelete)="deleteCourse($event)"></app-course-details>
   <app-paging [totalPages]="totalPages" [currentPage]="currentPage" (pageChanged)="onPageChange($event)" class="paging"></app-paging>
 </div>

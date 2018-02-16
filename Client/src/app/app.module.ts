@@ -6,8 +6,9 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { DatePipe } from '@angular/common';
 import { UpperCasePipe } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { StoreModule, combineReducers, compose, ActionReducer, State, ActionReducerMap, MetaReducer } from '@ngrx/store';
+import { combineReducers, compose, ActionReducer, State, ActionReducerMap, MetaReducer, StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
@@ -22,15 +23,22 @@ import { AuthService } from './shared-services/auth.service';
 import { LocalStorageService } from './shared-services/local-storage.service';
 import { TokenInterceptor } from './shared-services/token-interceptor';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { AuthorsService } from './shared-services/authors.service';
 import { AuthGuard } from './shared-services/auth.guard';
 import { BreadCrumbComponent } from './header/breadcrumb/breadcrumb.component';
 import { AuthReducer } from './auth/store/auth.reducer';
 import { LocalStorageSyncReducer } from './shared-store/local-storage-sync.reducer';
 import { AuthEffects } from './auth/store/auth.effects';
+import { StoreLoggerReducer } from './shared-store/store-logger.reducer';
+import { CourseEffects } from './courses/store/course.effects';
+import { CoursesEffects } from './courses/store/courses.effects';
+import { CourseReducer } from './courses/store/course.reducer';
+import { CoursesReducer } from './courses/store/courses.reducer';
+import { CoursesService } from './courses/services/courses.service';
+import { AuthorsService } from './courses/services/authors.service';
+import { AuthorsReducer } from './courses/store/authors.reducer';
+import { AuthorsEffects } from './courses/store/authors.effects';
 
 const reducers = { auth: AuthReducer };
-const metaReducers: Array<MetaReducer<any, any>> = [LocalStorageSyncReducer];
 
 @NgModule({
   declarations: [
@@ -50,11 +58,25 @@ const metaReducers: Array<MetaReducer<any, any>> = [LocalStorageSyncReducer];
     OverlayModule,
     HttpClientModule,
     ReactiveFormsModule,
-    StoreModule.forRoot(reducers, { metaReducers }),
-    EffectsModule.forRoot([AuthEffects])
+    StoreModule.forRoot(
+    {
+      auth: AuthReducer,
+      course: CourseReducer,
+      courses: CoursesReducer,
+      authors: AuthorsReducer
+    },
+    {
+      metaReducers: [LocalStorageSyncReducer]
+    }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 5
+    }),
+    EffectsModule.forRoot([AuthEffects, CourseEffects, CoursesEffects, AuthorsEffects])
   ],
   providers: [
     AuthService,
+    CoursesService,
+    AuthorsService,
     AuthGuard,
     LocalStorageService,
     {

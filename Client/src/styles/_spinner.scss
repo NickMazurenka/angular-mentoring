@@ -1,0 +1,23 @@
+$spinner-size: 24px;
+$line-width: 5px;
+$spin-duration: 1s;
+$segment-color: #FF6008;
+$wheel-color: #515356;
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading {
+    border-radius: 50%;
+    width: $spinner-size;
+    height: $spinner-size;
+    border: $line-width solid $segment-color;
+    border-top-color: $wheel-color;
+    animation: spin $spin-duration infinite linear;
+}

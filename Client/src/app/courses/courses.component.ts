@@ -1,11 +1,17 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { CoursesFilterPipe } from './courses-filter.pipe';
 import { Router, RouterLink } from '@angular/router';
+import { JsonPipe } from '@angular/common';
+import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
-import { ICourseDetails } from '../shared-models/course-details.model';
-import { CoursesService } from '../shared-services/courses.service';
-import { JsonPipe } from '@angular/common';
+
+import * as CoursesActions from './store/courses.actions';
+import { CoursesFilterPipe } from './courses-filter.pipe';
+import { ICourse } from './models/course.model';
+import { CoursesService } from './services/courses.service';
+import {
+  CoursesState, getCoursesList, getCoursesPaginationState, getCoursesTotal, getCoursesPerPage, getCoursesCurrentPage
+} from './store/courses.reducer';
 
 @Component({
   selector: 'app-courses',
@@ -13,78 +19,42 @@ import { JsonPipe } from '@angular/common';
   styleUrls: ['./courses.component.scss']
 })
 export class CoursesComponent implements OnInit, OnDestroy {
-  public pattern: string;
-  public courses: ICourseDetails[];
-  public coursesPerPage = 5;
-  public currentPage = 1;
-  public get totalPages() {
-    return Math.round(this._coursesTotal / this.coursesPerPage) + (this._coursesTotal % this.coursesPerPage > 0 ? 1 : 0);
-  }
+  courses: Observable<ICourse[]>;
+  coursesTotal: Observable<number>;
+  coursesPerPage: Observable<number>;
+  currentPage: Observable<number>;
 
-  private _coursesTotal = 0;
+  pattern: string;
 
-  private coursesService: CoursesService;
-  private router: Router;
+  private coursesState: Observable<CoursesState>;
 
-  private _getCourseListSubscriptionOnInit: Subscription;
-  private _getCourseListSubscriptionOnPageChange: Subscription;
-  private _getCourseListSubscriptionSearch: Subscription;
-  private _getCourseTotalSunscription: Subscription;
-  private _deleteCourseSubscription: Subscription;
-
-  constructor(router: Router, coursesService: CoursesService) {
-    this.router = router;
-    this.courses = [];
-    this.coursesService = coursesService;
-  }
-
-  private getCourseList(): Observable<ICourseDetails[]> {
-    return this.coursesService.getCourseList((this.currentPage - 1) * this.coursesPerPage, this.coursesPerPage, this.pattern);
-  }
-
-  private updateCourseTotal() {
-    this.coursesService.getCourseTotal().subscribe(count => this._coursesTotal = count);
+  constructor(
+    private store: Store<any>,
+    private router: Router,
+  ) {
+    this.coursesState = this.store.select(state => state.courses);
+    this.courses = this.store.select(getCoursesList);
+    this.coursesTotal = this.store.select(getCoursesTotal);
+    this.coursesPerPage = this.store.select(getCoursesPerPage);
+    this.currentPage = this.store.select(getCoursesCurrentPage);
   }
 
   ngOnInit() {
-    this._getCourseListSubscriptionOnInit =
-      this.getCourseList().subscribe((courses: ICourseDetails[]) => {
-        this.courses = courses;
-      });
-    this.updateCourseTotal();
+    this.store.dispatch(new CoursesActions.GetCourseListRequest());
   }
 
   onPageChange(value: number) {
-    this.currentPage = value;
-    this._getCourseListSubscriptionOnPageChange =
-      this.getCourseList().subscribe((courses: ICourseDetails[]) => {
-        this.courses = courses;
-      });
   }
 
   search(pattern: string) {
     this.pattern = pattern;
-    this._getCourseListSubscriptionSearch = this.getCourseList().subscribe((courses: ICourseDetails[]) => {
-      this.courses = courses;
-    });
   }
 
-  deleteCourse(course: ICourseDetails) {
-    this._deleteCourseSubscription =
-      this.coursesService.deleteCouse(course.id, (this.currentPage - 1) * this.coursesPerPage, this.coursesPerPage)
-        .subscribe(() => this.search(this.pattern));
+  deleteCourse(course: ICourse) {
+    this.store.dispatch(new CoursesActions.DeleteCourseRequest(course.id));
   }
 
   ngOnDestroy() {
-    if (this._getCourseListSubscriptionOnInit) {
-      this._getCourseListSubscriptionOnInit.unsubscribe();
-    }
-    if (this._getCourseListSubscriptionSearch) {
-      this._getCourseListSubscriptionSearch.unsubscribe();
-    }
-    if (this._deleteCourseSubscription) {
-      this._deleteCourseSubscription.unsubscribe();
-    }
   }
 
 }

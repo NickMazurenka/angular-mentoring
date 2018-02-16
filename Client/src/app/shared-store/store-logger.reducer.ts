@@ -1,4 +1,4 @@
-export function StorageLoggerReducer(reducer) {
+export function StoreLoggerReducer(reducer) {
   return function newReducer(state, action) {
     console.group(action.type);
     const nextState = reducer(state, action);

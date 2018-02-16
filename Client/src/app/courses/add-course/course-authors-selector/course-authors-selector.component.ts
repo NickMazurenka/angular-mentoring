@@ -1,6 +1,6 @@
 import { Component, OnInit, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { IAuthor } from '../../../shared-models/author.model';
+import { IAuthor } from '../../models/author.model';
 
 @Component({
   selector: 'app-course-authors-selector',
