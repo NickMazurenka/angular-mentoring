@@ -10,7 +10,7 @@ import { CoursesFilterPipe } from './courses-filter.pipe';
 import { ICourse } from './models/course.model';
 import { CoursesService } from './services/courses.service';
 import {
-  CoursesState, getCoursesList, getCoursesPaginationState, getCoursesTotal, getCoursesPerPage, getCoursesCurrentPage, getCoursesTotalPages
+  CoursesState, getCoursesList, getCoursesPaginationState, getCoursesPerPage, getCoursesCurrentPage, getCoursesTotalPages
 } from './store/courses.reducer';
 
 @Component({
