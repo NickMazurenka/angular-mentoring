@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 
 import { CourseDateInputComponent } from './course-date-input.component';
 
@@ -8,9 +9,9 @@ describe('CourseDateInputComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CourseDateInputComponent ]
-    })
-    .compileComponents();
+      imports: [FormsModule],
+      declarations: [CourseDateInputComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

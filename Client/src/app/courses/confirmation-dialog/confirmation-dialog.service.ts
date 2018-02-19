@@ -1,17 +1,13 @@
-import { Injectable, Injector, ComponentRef } from '@angular/core';
+import { Injectable, Injector, ComponentRef, Inject } from '@angular/core';
 import { Overlay, OverlayConfig } from '@angular/cdk/overlay';
 import { ComponentPortal, PortalInjector } from '@angular/cdk/portal';
-import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
-import { ConfirmationDialogRef } from './confirmation-dialog/confirmation-dialog-ref';
+import { ConfirmationDialogRef } from './confirmation-dialog-ref';
+import { ConfirmationDialogComponent } from './confirmation-dialog.component';
 
 @Injectable()
 export class ConfirmationDialogService {
 
-  private overlay: Overlay;
-  private injector: Injector;
-
-  constructor(injector: Injector, overlay: Overlay) {
-    this.overlay = overlay;
+  constructor(private injector: Injector, private overlay: Overlay) {
   }
 
   open() {

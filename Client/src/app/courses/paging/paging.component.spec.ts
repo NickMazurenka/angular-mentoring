@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 
 import { PagingComponent } from './paging.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 describe('PagingComponent', () => {
   let component: PagingComponent;
@@ -8,9 +10,14 @@ describe('PagingComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PagingComponent ]
-    })
-    .compileComponents();
+      imports: [
+        AngularFontAwesomeModule,
+        FormsModule
+      ],
+      declarations: [
+        PagingComponent
+      ]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

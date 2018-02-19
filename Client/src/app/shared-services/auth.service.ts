@@ -8,7 +8,6 @@ import { map } from 'rxjs/operators/map';
 import { of } from 'rxjs/observable/of';
 
 import { IUserCredentialsDto } from '../shared-models/user-credentials-dto.model';
-import { LocalStorageService } from './local-storage.service';
 import { IUserInfoDto } from '../shared-models/user-info-dto.model';
 import { IUserInfo } from '../shared-models/user-info.model';
 import { IUserTokenDto } from '../header/user-login/user-token-dto.model';
@@ -20,7 +19,7 @@ export class AuthService {
 
   public loginEvent: ReplaySubject<boolean> = new ReplaySubject<boolean>();
 
-  constructor(private http: HttpClient, private localStorageService: LocalStorageService) { }
+  constructor(private http: HttpClient) { }
 
   public logIn(credentials: IUserCredentials): Observable<IUserInfo> {
     const creds: IUserCredentialsDto = {

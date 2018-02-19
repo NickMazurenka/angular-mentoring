@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 
 import { CourseDurationInputComponent } from './course-duration-input.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { CourseDurationPipe } from '../../course-details/course-duration.pipe';
 
 describe('CourseDurationInputComponent', () => {
   let component: CourseDurationInputComponent;
@@ -8,9 +11,15 @@ describe('CourseDurationInputComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CourseDurationInputComponent ]
-    })
-    .compileComponents();
+      imports: [
+        FormsModule,
+        AngularFontAwesomeModule
+      ],
+      declarations: [
+        CourseDurationInputComponent,
+        CourseDurationPipe
+      ]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

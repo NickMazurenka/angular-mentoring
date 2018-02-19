@@ -37,6 +37,7 @@ import { CoursesService } from './courses/services/courses.service';
 import { AuthorsService } from './courses/services/authors.service';
 import { AuthorsReducer } from './courses/store/authors.reducer';
 import { AuthorsEffects } from './courses/store/authors.effects';
+import { ConfirmationDialogComponent } from './courses/confirmation-dialog/confirmation-dialog.component';
 
 const reducers = { auth: AuthReducer };
 
@@ -85,6 +86,9 @@ const reducers = { auth: AuthReducer };
       multi: true
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    ConfirmationDialogComponent
+  ]
 })
 export class AppModule { }

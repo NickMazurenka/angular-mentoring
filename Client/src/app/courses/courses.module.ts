@@ -17,12 +17,12 @@ import { CourseDetailsComponent } from './course-details/course-details.componen
 import { CoursePlateColorDirective } from './course-details/course-plate-color.directive';
 import { AuthService } from '../shared-services/auth.service';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
-import { ConfirmationDialogService } from './confirmation-dialog.service';
 import { CourseDurationInputComponent } from './add-course/course-duration-input/course-duration-input.component';
 import { CourseAuthorsSelectorComponent } from './add-course/course-authors-selector/course-authors-selector.component';
 import { CourseDateInputComponent } from './add-course/course-date-input/course-date-input.component';
 import { AuthorsService } from './services/authors.service';
 import { CoursesService } from './services/courses.service';
+import { ConfirmationDialogService } from './confirmation-dialog/confirmation-dialog.service';
 
 @NgModule({
   imports: [
