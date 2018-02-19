@@ -47,4 +47,9 @@ describe('CoursesFilterPipe', () => {
       }
     ]);
   });
+
+  it('should return initial array on empty filter', () => {
+    const filtered: ICourse[] = new CoursesFilterPipe().transform(courses, '');
+    expect(filtered).toEqual(courses);
+  });
 });
