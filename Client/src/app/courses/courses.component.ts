@@ -10,7 +10,7 @@ import { CoursesFilterPipe } from './courses-filter.pipe';
 import { ICourse } from './models/course.model';
 import { CoursesService } from './services/courses.service';
 import {
-  CoursesState, getCoursesList, getCoursesPaginationState, getCoursesTotal, getCoursesPerPage, getCoursesCurrentPage
+  CoursesState, getCoursesList, getCoursesPaginationState, getCoursesTotal, getCoursesPerPage, getCoursesCurrentPage, getCoursesTotalPages
 } from './store/courses.reducer';
 
 @Component({
@@ -20,7 +20,7 @@ import {
 })
 export class CoursesComponent implements OnInit, OnDestroy {
   courses: Observable<ICourse[]>;
-  coursesTotal: Observable<number>;
+  totalPages: Observable<number>;
   coursesPerPage: Observable<number>;
   currentPage: Observable<number>;
 
@@ -34,7 +34,7 @@ export class CoursesComponent implements OnInit, OnDestroy {
   ) {
     this.coursesState = this.store.select(state => state.courses);
     this.courses = this.store.select(getCoursesList);
-    this.coursesTotal = this.store.select(getCoursesTotal);
+    this.totalPages = this.store.select(getCoursesTotalPages);
     this.coursesPerPage = this.store.select(getCoursesPerPage);
     this.currentPage = this.store.select(getCoursesCurrentPage);
   }
@@ -44,6 +44,8 @@ export class CoursesComponent implements OnInit, OnDestroy {
   }
 
   onPageChange(value: number) {
+    this.store.dispatch(new CoursesActions.PaginationCustom(value));
+    this.store.dispatch(new CoursesActions.GetCourseListRequest());
   }
 
   search(pattern: string) {
