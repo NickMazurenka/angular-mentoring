@@ -50,12 +50,11 @@ export function CoursesReducer(state: CoursesState = defaultCoursesState, action
       return newState(state, { loading: true });
     }
     case CoursesActions.GET_COURSE_LIST_REQUEST_SUCCESS: {
+      const pagination = newState(state.pagination, { totalCount: action.courseList.total });
       return newState(state, {
         loading: false,
         courses: action.courseList.courses,
-        pagination: {
-          totalCount: action.courseList.total
-        }
+        pagination: pagination
       });
     }
     case CoursesActions.GET_COURSE_LIST_REQUEST_FAILED: {
