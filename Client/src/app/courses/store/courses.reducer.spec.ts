@@ -55,4 +55,16 @@ describe('courses reducer', () => {
         expect(CoursesReducer(undefined, new CoursesActions.DeleteCourseRequest(id)))
             .toEqual(newState);
     });
+
+    it('should handle DELETE_COURSE_REQUEST_SUCCESS', () => {
+        const newState = { ...defaultCoursesState, loading: false };
+        expect(CoursesReducer(undefined, new CoursesActions.DeleteCourseRequestSuccess()))
+            .toEqual(newState);
+    });
+
+    it('should handle DELETE_COURSE_REQUEST_FAILED', () => {
+        const newState = { ...defaultCoursesState, loading: false };
+        expect(CoursesReducer(undefined, new CoursesActions.DeleteCourseRequestFailed()))
+            .toEqual(newState);
+    });
 });
