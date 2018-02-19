@@ -59,7 +59,7 @@ export function CoursesReducer(state: CoursesState = defaultCoursesState, action
       });
     }
     case CoursesActions.GET_COURSE_LIST_REQUEST_FAILED: {
-      return newState(state, { loading: false, courses: null });
+      return newState(state, { loading: false, courses: [] });
     }
 
     // Delete Course

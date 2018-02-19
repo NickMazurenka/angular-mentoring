@@ -31,7 +31,7 @@ export function AuthorsReducer(state: AuthorsState = defaultAuthorsState, action
       return newState(state, { loading: false, authors: action.authors });
     }
     case AuthorsActions.GET_AUTHOR_LIST_REQUEST_FAILED: {
-      return newState(state, { loading: false, authors: null });
+      return newState(state, { loading: false, authors: [] });
     }
     case AuthorsActions.CLEAR_STATE:
       return newState(state, { ...defaultAuthorsState });

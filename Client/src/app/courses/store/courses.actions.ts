@@ -19,6 +19,7 @@ export const PAGINATION_NEXT = 'PAGINATION_NEXT';
 export const PAGINATION_CUSTOM = 'PAGINATION_GOTO';
 
 export const CLEAR_STATE = 'CLEAR_STATE';
+export const DUMMY = 'DUMMY';
 
 // Get Course List
 
@@ -88,6 +89,11 @@ export class ClearState implements Action {
   constructor() { }
 }
 
+export class Dummy implements Action {
+  readonly type = DUMMY;
+  constructor() { }
+}
+
 export type All =
       ClearState
     | GetCourseListRequest
@@ -100,4 +106,5 @@ export type All =
     | PaginationLast
     | PaginationPrevious
     | PaginationNext
-    | PaginationCustom;
+    | PaginationCustom
+    | Dummy;

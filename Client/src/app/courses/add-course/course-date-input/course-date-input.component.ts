@@ -20,7 +20,7 @@ export class CourseDateInputComponent implements ControlValueAccessor {
 
   value: string;
 
-  private locale: string = 'en-US';
+  locale: string = 'en-US';
 
   get currentDateFormatted(): string {
     return new DatePipe(this.locale).transform(new Date(), 'yyyy/MM/dd');
