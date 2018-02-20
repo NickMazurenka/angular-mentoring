@@ -58,9 +58,6 @@ export class CourseDurationInputComponent implements ControlValueAccessor {
   }
 
   onUpClick() {
-    if (this.value.length === 3) {
-      return;
-    }
     this.value = (+this.value + 1).toString();
     this.sendFromValueUpdate();
   }

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Effect, Actions } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { mergeMap, map, catchError } from 'rxjs/operators';
+import { mergeMap, map, catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 
 import * as CourseActions from './course.actions';
@@ -16,6 +17,7 @@ type Action = CourseActions.All;
 export class CourseEffects {
   constructor(
     private coursesService: CoursesService,
+    private router: Router,
     private store: Store<any>,
     private actions: Actions) {
   }
@@ -29,6 +31,22 @@ export class CourseEffects {
           map((response: ICourse) => new CourseActions.GetCourseRequestSuccess(response)),
           catchError(e => of(new CourseActions.GetCourseRequestFailed()))
           );
+      }));
+
+  @Effect({ dispatch: false })
+  addCourseSucess =
+    this.actions.ofType(CourseActions.ADD_COURSE_REQUEST_SUCCESS)
+      .pipe(mergeMap(() => {
+        this.router.navigate(['/courses']);
+        return of();
+      }));
+
+  @Effect({ dispatch: false })
+  editCourseSucess =
+    this.actions.ofType(CourseActions.EDIT_COURSE_REQUEST_SUCCESS)
+      .pipe(mergeMap(() => {
+        this.router.navigate(['/courses']);
+        return of();
       }));
 
   @Effect()
