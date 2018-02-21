@@ -21,7 +21,7 @@ $button-alter-hover-out-time: 0.3s;
     transition: background-color $button-hover-out-time, color $button-hover-out-time, border-color $button-hover-out-time;
 
     &__icon {
-        cursor: pointer;        
+        cursor: pointer;
         background-color: transparent;
         color: #333333;
         border: none;
@@ -33,7 +33,7 @@ $button-alter-hover-out-time: 0.3s;
             outline: none;
         }
 
-        &:hover {
+        &:not(.simple):hover {
             color: #FF6008;
             transition: color $button-hover-in-time;
         }
@@ -76,7 +76,7 @@ $button-alter-hover-out-time: 0.3s;
       &:hover {
         border: 1px solid #515356;
         background-color: #515356;
-        transition: background-color $button-hover-in-time, color $button-hover-in-time, border-color $button-hover-in-time;  
+        transition: background-color $button-hover-in-time, color $button-hover-in-time, border-color $button-hover-in-time;
       }
     }
 

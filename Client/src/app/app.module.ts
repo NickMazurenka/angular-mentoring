@@ -38,6 +38,7 @@ import { AuthorsService } from './courses/services/authors.service';
 import { AuthorsReducer } from './courses/store/authors.reducer';
 import { AuthorsEffects } from './courses/store/authors.effects';
 import { ConfirmationDialogComponent } from './courses/confirmation-dialog/confirmation-dialog.component';
+import { UserInfoPopoverComponent } from './header/user-info-popover/user-info-popover.component';
 
 const reducers = { auth: AuthReducer };
 
@@ -50,6 +51,7 @@ const reducers = { auth: AuthReducer };
     UserLoginComponent,
     PageNotFoundComponent,
     BreadCrumbComponent,
+    UserInfoPopoverComponent,
   ],
   imports: [
     BrowserModule,
