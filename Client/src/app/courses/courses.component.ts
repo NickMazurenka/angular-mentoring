@@ -18,7 +18,7 @@ import {
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.scss']
 })
-export class CoursesComponent implements OnInit, OnDestroy {
+export class CoursesComponent implements OnInit {
   courses: Observable<ICourse[]>;
   totalPages: Observable<number>;
   coursesPerPage: Observable<number>;
@@ -51,9 +51,6 @@ export class CoursesComponent implements OnInit, OnDestroy {
 
   deleteCourse(course: ICourse) {
     this.store.dispatch(new CoursesActions.DeleteCourseRequest(course.id));
-  }
-
-  ngOnDestroy() {
   }
 
 }
