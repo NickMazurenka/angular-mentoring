@@ -1,0 +1,10 @@
+$layout-width-threshold: 1000px;
+
+@mixin content() {
+  width: 100%;
+
+  @media (min-width: $layout-width-threshold){
+      width: $layout-width-threshold;
+      margin: auto;
+  }
+}

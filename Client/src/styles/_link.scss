@@ -12,7 +12,7 @@ $hover-out-time: 0.4s;
     }
 }
 
-.link:hover:not(.disabled) {
+.link.primary:hover:not(.disabled) {
     color: #FF6008;
     transition: color $hover-in-time;
 }
