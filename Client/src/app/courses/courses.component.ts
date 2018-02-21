@@ -24,8 +24,6 @@ export class CoursesComponent implements OnInit, OnDestroy {
   coursesPerPage: Observable<number>;
   currentPage: Observable<number>;
 
-  pattern: string;
-
   private coursesState: Observable<CoursesState>;
 
   constructor(
@@ -44,12 +42,11 @@ export class CoursesComponent implements OnInit, OnDestroy {
   }
 
   onPageChange(value: number) {
-    this.store.dispatch(new CoursesActions.PaginationCustom(value));
-    this.store.dispatch(new CoursesActions.GetCourseListRequest());
+    this.store.dispatch(new CoursesActions.ChangePage(value));
   }
 
   search(pattern: string) {
-    this.pattern = pattern;
+    this.store.dispatch(new CoursesActions.ChangeFilter(pattern));
   }
 
   deleteCourse(course: ICourse) {

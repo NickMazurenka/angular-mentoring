@@ -46,5 +46,26 @@ export class CoursesEffects {
           catchError(e => of(new CoursesActions.DeleteCourseRequestFailed()))
           );
       }));
+
+  @Effect()
+  deleteCourseSucess: Observable<Action> =
+    this.actions.ofType(CoursesActions.DELETE_COURSE_REQUEST_SUCCESS)
+      .pipe(mergeMap((action: CoursesActions.DeleteCourseRequestSuccess) => {
+        return of(new CoursesActions.GetCourseListRequest());
+      }));
+
+  @Effect()
+  changeFilter: Observable<Action> =
+    this.actions.ofType(CoursesActions.CHANGE_FILTER)
+      .pipe(mergeMap((action: CoursesActions.ChangeFilter) => {
+          return of(new CoursesActions.GetCourseListRequest());
+      }));
+
+  @Effect()
+  changePage: Observable<Action> =
+    this.actions.ofType(CoursesActions.CHANGE_PAGE)
+      .pipe(mergeMap((action: CoursesActions.ChangePage) => {
+        return of(new CoursesActions.GetCourseListRequest());
+      }));
 }
 
