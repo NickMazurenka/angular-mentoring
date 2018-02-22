@@ -5,8 +5,9 @@
     @include content();
     display: flex;
     justify-content: space-between;
-    padding: 0.5rem 0;
-    height: 32px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    min-height: 32px;
     line-height: 32px;
   }
 }

@@ -1,10 +1,15 @@
 $layout-width-threshold: 1000px;
 
 @mixin content() {
+  box-sizing: border-box;
   width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
 
-  @media (min-width: $layout-width-threshold){
-      width: $layout-width-threshold;
-      margin: auto;
+  @media (min-width: $layout-width-threshold) {
+    width: $layout-width-threshold;
+    margin: auto;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
