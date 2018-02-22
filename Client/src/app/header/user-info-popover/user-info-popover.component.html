@@ -2,7 +2,7 @@
   class="overlay-origin"
   cdkOverlayOrigin
   #origin="cdkOverlayOrigin">
-  <button class="button__icon simple button-user" (click)="userInfoOpened = !userInfoOpened">
+  <button class="button__icon simple button-user">
     <fa name="user-circle"></fa>
   </button>
 </div>
@@ -15,8 +15,18 @@
   [cdkConnectedOverlayOpen]="isOpen"
   [cdkConnectedOverlayPositions]="positionList"
   (backdropClick)="close()">
-  <div class="popover__container user-info-container">
-    <div>Welcome, Username</div>
-    <a [routerLink]="['']" class="link link-login">Sign out</a>
-  </div>
+  <ul class="popover__container user-info__container">
+    <li class="user-info__header">
+      <span>Signed in as </span>
+      <div class="user-info__header-text">{{userInfo.firstName}} {{userInfo.lastName}}</div>
+    </li>
+    <li class="user-info__divider"></li>
+    <li>
+      <a [routerLink]="['']" class="link link-login user-info__item" (click)="onSignOutClick()">Sign out</a>  
+    </li>
+  </ul>
+  <!-- <div class="popover__container user-info-container">
+    <div class="user-info-option">Welcome, {{userInfo.firstName}} {{userInfo.lastName}}</div>
+    <a [routerLink]="['']" class="link link-login" (click)="onSignOutClick()">Sign out</a>
+  </div> -->
 </ng-template>

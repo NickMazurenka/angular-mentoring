@@ -2,5 +2,5 @@
   <a [routerLink]="['/login']" class="link link-login">Sign in</a>
 </div>
 <div *ngIf="userInfo != null">
-  <app-user-info-popover></app-user-info-popover>
+  <app-user-info-popover [userInfo]="userInfo" (onSignOut)="onSignOut()"></app-user-info-popover>
 </div>

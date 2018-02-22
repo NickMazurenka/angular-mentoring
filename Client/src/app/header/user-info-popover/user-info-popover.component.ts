@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, HostListener } from '@angular/core';
+import { Component, OnInit, Input, HostListener, EventEmitter, Output } from '@angular/core';
 import { ConnectionPositionPair } from '@angular/cdk/overlay';
+import { IUserInfo } from '../../shared-models/user-info.model';
 
 @Component({
   selector: 'app-user-info-popover',
@@ -8,14 +9,19 @@ import { ConnectionPositionPair } from '@angular/cdk/overlay';
 })
 export class UserInfoPopoverComponent {
 
-  @Input()
-  isOpen: boolean;
+  isOpen: boolean = false;
 
   positionList = [
     new ConnectionPositionPair(
-      { originX: 'end', originY: 'top' },
+      { originX: 'end', originY: 'bottom' },
       { overlayX: 'end', overlayY: 'top' })
   ];
+
+  @Input()
+  userInfo: IUserInfo;
+
+  @Output()
+  onSignOut = new EventEmitter<void>();
 
   constructor() { }
 
@@ -34,6 +40,11 @@ export class UserInfoPopoverComponent {
   @HostListener('click')
   onClick() {
     this.toggle();
+  }
+
+  onSignOutClick() {
+    this.onSignOut.emit();
+    this.close();
   }
 
 }

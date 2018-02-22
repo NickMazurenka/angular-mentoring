@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Effect, Actions } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { mergeMap, map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
@@ -15,6 +16,7 @@ type Action = AuthActions.All;
 export class AuthEffects {
   constructor(
     private authService: AuthService,
+    private router: Router,
     private store: Store<any>,
     private actions: Actions) {
   }
@@ -38,6 +40,14 @@ export class AuthEffects {
           map(() => new AuthActions.LogOutRequestSuccess()),
           catchError(e => of(new AuthActions.LogOutRequestFailed()))
         );
+      }));
+
+  @Effect({ dispatch: false })
+  logOutSuccess =
+    this.actions.ofType(AuthActions.LOG_OUT_REQUEST_SUCCESS)
+      .pipe(mergeMap(() => {
+        this.router.navigate(['/login']);
+        return of();
       }));
 }
 

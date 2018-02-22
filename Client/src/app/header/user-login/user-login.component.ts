@@ -35,6 +35,10 @@ export class UserLoginComponent implements OnInit {
     });
   }
 
+  onSignOut() {
+    this.store.dispatch(new AuthActions.LogOutRequest());
+  }
+
   loginClicked(name: string, password: string) {
     this.router.navigate(['/login']);
   }

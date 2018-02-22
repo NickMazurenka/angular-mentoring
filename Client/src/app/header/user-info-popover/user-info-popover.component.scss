@@ -8,6 +8,37 @@
   font-weight: bold;
 }
 
-.user-info-container {
-  width: 180px;
+.user-info {
+
+  &__container {
+    color: #515253;
+    list-style: none;
+    width: 180px;
+  }
+
+  &__divider {
+    height: 1px;
+    margin: 8px 1px;
+    background-color: #EEEEEE;
+  }
+
+  &__header {
+    padding: 4px 5px 6px 16px;
+  }
+
+  &__header-text {
+    color: #333333;
+    font-weight: bold;
+  }
+
+  &__item {
+    display: block;
+    padding: 4px 5px 6px 16px;
+    transition: none;
+
+    &:hover {
+      color: #EEEEEE;
+      background-color: #FF6008;
+    }
+  }
 }
