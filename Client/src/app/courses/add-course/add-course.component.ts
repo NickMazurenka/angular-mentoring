@@ -81,15 +81,18 @@ export class AddCourseComponent implements OnInit {
   }
 
   private gatherCourseFromForm(): ICourse {
-    return {
-      id: this.courseId,
+    const course: ICourse = {
       name: this.addCourseForm.get('title').value,
       description: this.addCourseForm.get('description').value,
       duration: this.addCourseForm.get('duration').value,
       date: this.addCourseForm.get('date').value,
-      starred: false,
       authors: this.addCourseForm.get('authors').value,
     };
+    if (this.editMode) {
+      course.id = this.courseId;
+    }
+
+    return course;
   }
 
   private submit() {
@@ -97,15 +100,11 @@ export class AddCourseComponent implements OnInit {
     if (!this.addCourseForm.valid) {
       return;
     }
-    // if (this.editMode) {
-    //   this.coursesService.updateCourse(this.gatherCourseFromForm(this.courseId)).subscribe((course: ICourse) => {
-    //     this.navigateToCoursesList();
-    //   });
-    // } else {
-    //   this.coursesService.addCourse(this.gatherCourseFromForm()).subscribe((course: ICourse) => {
-    //     this.navigateToCoursesList();
-    //   });
-    // }
+    if (this.editMode) {
+      this.store.dispatch(new CourseActions.EditCourseRequest(this.gatherCourseFromForm()));
+    } else {
+      this.store.dispatch(new CourseActions.AddCourseRequest(this.gatherCourseFromForm()));
+    }
   }
 
   private navigateToCoursesList() {

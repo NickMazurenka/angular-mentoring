@@ -12,11 +12,8 @@ export const DELETE_COURSE_REQUEST = 'DELETE_COURSE_REQUEST';
 export const DELETE_COURSE_REQUEST_SUCCESS = 'DELETE_COURSE_REQUEST_SUCCESS';
 export const DELETE_COURSE_REQUEST_FAILED = 'DELETE_COURSE_REQUEST_FAILED';
 
-export const PAGINATION_FIRST = 'PAGINATION_FIRST';
-export const PAGINATION_LAST = 'PAGINATION_LAST';
-export const PAGINATION_PREVIOUS = 'PAGINATION_PREVIOUS';
-export const PAGINATION_NEXT = 'PAGINATION_NEXT';
-export const PAGINATION_CUSTOM = 'PAGINATION_GOTO';
+export const CHANGE_FILTER = 'CHANGE_FILTER';
+export const CHANGE_PAGE = 'CHANGE_PAGE';
 
 export const CLEAR_STATE = 'CLEAR_STATE';
 export const DUMMY = 'DUMMY';
@@ -55,30 +52,17 @@ export class DeleteCourseRequestFailed implements Action {
   constructor() { }
 }
 
+// Filter
+
+export class ChangeFilter implements Action {
+  readonly type = CHANGE_FILTER;
+  constructor(public filter: string) { }
+}
+
 // Pagination
 
-export class PaginationFirst implements Action {
-  readonly type = PAGINATION_FIRST;
-  constructor() { }
-}
-
-export class PaginationLast implements Action {
-  readonly type = PAGINATION_LAST;
-  constructor() { }
-}
-
-export class PaginationPrevious implements Action {
-  readonly type = PAGINATION_PREVIOUS;
-  constructor() { }
-}
-
-export class PaginationNext implements Action {
-  readonly type = PAGINATION_NEXT;
-  constructor() { }
-}
-
-export class PaginationCustom implements Action {
-  readonly type = PAGINATION_CUSTOM;
+export class ChangePage implements Action {
+  readonly type = CHANGE_PAGE;
   constructor(public page: number) { }
 }
 
@@ -102,9 +86,6 @@ export type All =
     | DeleteCourseRequest
     | DeleteCourseRequestSuccess
     | DeleteCourseRequestFailed
-    | PaginationFirst
-    | PaginationLast
-    | PaginationPrevious
-    | PaginationNext
-    | PaginationCustom
+    | ChangePage
+    | ChangeFilter
     | Dummy;

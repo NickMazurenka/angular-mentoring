@@ -1,16 +1,12 @@
-@import '../../styles.scss';
-
-:host {
-    background: #FFFFFF;
-    border-bottom: 1px solid #EEEEEE;
-}
+@import '../../styles/layout';
 
 .header {
-    @include container();
+  &__content {
+    @include content();
     display: flex;
     justify-content: space-between;
     padding: 0.5rem 0;
-    @media (min-width: 900px) {
-        padding: 1.5rem 0;
-    }
+    height: 32px;
+    line-height: 32px;
+  }
 }

@@ -18,9 +18,10 @@ import { AuthorizationState } from '../../auth/store/auth.reducer';
 })
 export class UserLoginComponent implements OnInit {
 
-  public userInfo: IUserInfo;
-
   private authState: Observable<AuthorizationState>;
+
+  userInfo: IUserInfo;
+  userInfoOpened: boolean = false;
 
   constructor(
     private store: Store<any>,

@@ -1,12 +1,9 @@
-@import '../styles.scss';
+@import '../styles/layout';
 
-.content {
-    @include container();
-    flex: 1 0 auto;
-}
-
-.body {
-    display: flex;
+.app {
+  &__content {
+    @include content();
     height: 100%;
-    flex-direction: column;
+    margin: 1rem auto;
+  }
 }

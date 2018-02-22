@@ -18,13 +18,11 @@ import {
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.scss']
 })
-export class CoursesComponent implements OnInit, OnDestroy {
+export class CoursesComponent implements OnInit {
   courses: Observable<ICourse[]>;
   totalPages: Observable<number>;
   coursesPerPage: Observable<number>;
   currentPage: Observable<number>;
-
-  pattern: string;
 
   private coursesState: Observable<CoursesState>;
 
@@ -44,19 +42,15 @@ export class CoursesComponent implements OnInit, OnDestroy {
   }
 
   onPageChange(value: number) {
-    this.store.dispatch(new CoursesActions.PaginationCustom(value));
-    this.store.dispatch(new CoursesActions.GetCourseListRequest());
+    this.store.dispatch(new CoursesActions.ChangePage(value));
   }
 
   search(pattern: string) {
-    this.pattern = pattern;
+    this.store.dispatch(new CoursesActions.ChangeFilter(pattern));
   }
 
   deleteCourse(course: ICourse) {
     this.store.dispatch(new CoursesActions.DeleteCourseRequest(course.id));
-  }
-
-  ngOnDestroy() {
   }
 
 }

@@ -1,0 +1,22 @@
+<div
+  class="overlay-origin"
+  cdkOverlayOrigin
+  #origin="cdkOverlayOrigin">
+  <button class="button__icon simple button-user" (click)="userInfoOpened = !userInfoOpened">
+    <fa name="user-circle"></fa>
+  </button>
+</div>
+
+<ng-template
+  cdkConnectedOverlay
+  hasBackdrop
+  backdropClass="cdk-overlay-transparent-backdrop"
+  [cdkConnectedOverlayOrigin]="origin"
+  [cdkConnectedOverlayOpen]="isOpen"
+  [cdkConnectedOverlayPositions]="positionList"
+  (backdropClick)="close()">
+  <div class="popover__container user-info-container">
+    <div>Welcome, Username</div>
+    <a [routerLink]="['']" class="link link-login">Sign out</a>
+  </div>
+</ng-template>

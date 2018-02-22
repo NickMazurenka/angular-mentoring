@@ -1,7 +1,7 @@
 import { IAuthor } from './author.model';
 
 export interface ICourse {
-  id: number;
+  id?: number;
   name: string;
   description: string;
   date: Date;

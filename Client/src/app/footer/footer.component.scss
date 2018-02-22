@@ -1,18 +1,14 @@
-@import '../../styles.scss';
-
-:host {
-    background: #E3E3E3;
-}
+@import '../../styles/layout';
 
 .footer {
-    @include container();
-    display: flex;
-    flex: none;
+  &__content {
+    @include content();
     padding: 1.5rem 0;
-}
+  }
 
-.text {
-    padding-left: 1rem;
+  &__text {
+    text-align: center;
     font: 14px/14px Lato;
     color: #747578;
+  }
 }

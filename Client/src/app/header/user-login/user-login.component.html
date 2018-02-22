@@ -1,6 +1,6 @@
-<div class="user-info" *ngIf="userInfo != null">
-  <span class="first-name">{{userInfo.firstName}}</span>
-  <span class="last-name">{{userInfo.lastName}}</span>
+<div *ngIf="userInfo == null">
+  <a [routerLink]="['/login']" class="link link-login">Sign in</a>
 </div>
-<fa *ngIf="userInfo == null" name="user-circle-o" (click)="loginClicked()" class="control"></fa>
-<fa *ngIf="userInfo != null" name="sign-out" (click)="logoutClicked()" class="control"></fa>
+<div *ngIf="userInfo != null">
+  <app-user-info-popover></app-user-info-popover>
+</div>

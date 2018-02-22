@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700');
 @import '~@angular/cdk/overlay';
-@import 'document';
+@import 'site';
+@import 'page';
+@import 'layout';
 @import 'button';
 @import 'input';
 @import 'search';
@@ -8,6 +10,7 @@
 @import 'accordion';
 @import 'link';
 @import 'spinner';
+@import 'popover';
 
 @include cdk-overlay();
 

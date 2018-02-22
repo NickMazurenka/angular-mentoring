@@ -1,14 +1,16 @@
 <div class="course" [appCoursePlateColor]="course.date">
   <div class="heading-container">
+    <button [ngClass]="{'starred': course.starred }" class="button__icon button__icon_alter button-star">
+      <fa name="star"></fa>
+    </button>
     <a [routerLink]="['./edit/', course.id]" class="heading link">{{course.name | uppercase}}</a>
-    <button class="button__icon button__icon_alter" (click)="onDeleteClick()">
-      <fa class="delete-icon" name="times-circle"></fa>
+    <button class="button__icon button__icon_alter button-delete" (click)="onDeleteClick()">
+      <fa name="times-circle"></fa>
     </button>
   </div>
   <div class="description">{{course.description}}</div>
   <div class="info">
     <div class="date">{{course.date | date}}</div>
-    <fa [ngClass]="{'star_not': !course.starred }" class="star" name="star"></fa>
     <div>{{course.duration | courseDuration}}</div>
   </div>
 </div>
