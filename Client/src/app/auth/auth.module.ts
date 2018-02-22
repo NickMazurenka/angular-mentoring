@@ -9,10 +9,13 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { AuthReducer } from './store/auth.reducer';
 import { LocalStorageSyncReducer } from '../shared-store/local-storage-sync.reducer';
 import { AuthEffects } from './store/auth.effects';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { LogoComponent } from '../header/logo/logo.component';
 
 @NgModule({
   imports: [
     AuthRoutingModule,
+    AngularFontAwesomeModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,

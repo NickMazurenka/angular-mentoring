@@ -3,12 +3,19 @@ import { Routes, RouterModule } from '@angular/router';
 import { CoursesComponent } from './courses/courses.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthGuard } from './shared-services/auth.guard';
+import { LayoutComponent } from './layout/layout.component';
 
 const routes: Routes = [
-  { path: 'courses', loadChildren: 'app/courses/courses.module#CoursesModule', canLoad: [AuthGuard] },
+  {
+    path: '',
+    component: LayoutComponent,
+    children: [
+      { path: 'courses', loadChildren: 'app/courses/courses.module#CoursesModule', canLoad: [AuthGuard] },
+      { path: '404', component: PageNotFoundComponent },
+      { path: '', redirectTo: '/courses', pathMatch: 'full' },
+    ]
+  },
   { path: 'login', loadChildren: 'app/auth/auth.module#AuthModule' },
-  { path: '404', component: PageNotFoundComponent },
-  { path: '', redirectTo: '/courses', pathMatch: 'full' },
   { path: '**', redirectTo: '/404' }
 ];
 

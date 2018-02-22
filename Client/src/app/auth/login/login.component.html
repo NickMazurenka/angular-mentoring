@@ -1,17 +1,24 @@
-<div class="container">
-  <div class="header">Log into your account</div>
-  <form [formGroup]="loginForm" class="login-form" (keydown)="onKeyDown($event)">
-    <input formControlName="username" type="text" class="input field" placeholder="Email Address">
-    <span class="field__error" *ngIf="showControlError('username')">
-        {{ getControlError('username') }}
-      </span>
-    <input formControlName="password" type="password" class="input field" placeholder="Password">
-    <span class="field__error" *ngIf="showControlError('password')">
-        {{ getControlError('password') }}
-      </span>
-    <div class="controls">
-      <button class="button button_large button_alter button_wide" (click)="onCancelClick()">Cancel</button>
-      <button type="submit" class="button button_large button_wide" (click)="onSubmit()" [class.button_disabled]="!loginForm.valid">Log in</button>
-    </div>
-  </form>
+<div class="header">
+  <div class="header-logo">
+    <fa [ngClass]="{'fa-spin': logoSpin}" class="logo" name="grav" (click)="logoSpin = !logoSpin"></fa>
+    <a class="title link" [routerLink]="['']"> Angular mentoring </a>      
+  </div>
+</div>
+<div class="main-container">
+  <div class="form-container">
+    <div class="form-header">Login to Your Account</div>
+    <form [formGroup]="loginForm" class="login-form" (keydown)="onKeyDown($event)">
+      <input formControlName="username" type="text" class="input field" placeholder="Email Address">
+      <span class="field__error" *ngIf="showControlError('username')">
+          {{ getControlError('username') }}
+        </span>
+      <input formControlName="password" type="password" class="input field" placeholder="Password">
+      <span class="field__error" *ngIf="showControlError('password')">
+          {{ getControlError('password') }}
+        </span>
+      <div class="controls">
+        <button type="submit" class="button button_large button_wide" (click)="onSubmit()" [class.button_disabled]="!loginForm.valid">Sign in</button>
+      </div>
+    </form>
+  </div>
 </div>

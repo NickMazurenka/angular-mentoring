@@ -8,6 +8,7 @@ import { LoginComponent } from './login.component';
 import { AuthReducer } from '../store/auth.reducer';
 import { LocalStorageSyncReducer } from '../../shared-store/local-storage-sync.reducer';
 import { AuthRoutingModule } from '../auth-routing.module';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -19,6 +20,7 @@ describe('LoginComponent', () => {
       imports: [
         StoreModule.forRoot({ auth: AuthReducer }, { metaReducers: [LocalStorageSyncReducer] }),
         FormsModule,
+        AngularFontAwesomeModule,
         ReactiveFormsModule,
         RouterTestingModule
       ],
