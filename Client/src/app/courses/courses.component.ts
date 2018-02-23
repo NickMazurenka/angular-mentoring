@@ -2,8 +2,10 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { JsonPipe } from '@angular/common';
 import { Store } from '@ngrx/store';
+import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
+import { debounceTime } from 'rxjs/operators';
 
 import * as CoursesActions from './store/courses.actions';
 import { CoursesFilterPipe } from './courses-filter.pipe';
@@ -23,6 +25,7 @@ export class CoursesComponent implements OnInit {
   totalPages: Observable<number>;
   coursesPerPage: Observable<number>;
   currentPage: Observable<number>;
+  filter: FormControl = new FormControl();
 
   private coursesState: Observable<CoursesState>;
 
@@ -39,14 +42,13 @@ export class CoursesComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(new CoursesActions.GetCourseListRequest());
+    this.filter.valueChanges.pipe(debounceTime(200)).subscribe((filterValue: string) => {
+      this.store.dispatch(new CoursesActions.ChangeFilter(filterValue));
+    });
   }
 
   onPageChange(value: number) {
     this.store.dispatch(new CoursesActions.ChangePage(value));
-  }
-
-  search(pattern: string) {
-    this.store.dispatch(new CoursesActions.ChangeFilter(pattern));
   }
 
   deleteCourse(course: ICourse) {
