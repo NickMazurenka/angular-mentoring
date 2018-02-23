@@ -1,4 +1,4 @@
-<div class="heading">Add new course</div>
+<div class="heading">{{ editMode ? 'Edit course': 'Add new course'}}</div>
 <form [formGroup]="addCourseForm" (keydown)="onKeyDown($event)">
   <div class="fieldset">
     <input class="field input" type="text" placeholder="Title" formControlName="title">
