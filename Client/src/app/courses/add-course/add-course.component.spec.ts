@@ -14,7 +14,6 @@ import { CourseDurationPipe } from '../course-details/course-duration.pipe';
 import { CourseReducer } from '../store/course.reducer';
 import { AuthorsReducer } from '../store/authors.reducer';
 import { IAuthor } from '../models/author.model';
-import { MockStore } from '../../shared-store/mock-store';
 import { ICourse } from '../models/course.model';
 
 describe('AddCourseComponent', () => {
