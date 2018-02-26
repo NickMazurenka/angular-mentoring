@@ -1,33 +1,23 @@
-.title {
-    line-height: 32px;
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.main-container {
-    padding: 70px 40px;
-}
-
-.form-container {
-    max-width: 500px;
-    margin: auto;
-    padding: 2rem;
-    box-shadow: 0 2px 7px rgba(27, 31, 35, 0.35);
+:host {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 3rem;
 }
 
 .login-form {
-    display: flex;
-    flex-direction: column;
+  max-width: 30rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .field {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 
-    &__error {
-        color: #FF6008;
-        font: 12px/1rem Lato;
-        margin-top: -1rem;
-    }
+  &__error {
+      color: #FF6008;
+      font: 12px/1rem Lato;
+      margin-top: -1rem;
+  }
 }
 
 .controls {
@@ -39,13 +29,12 @@
 }
 
 .form-group {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .form-header {
-    text-align: center;
-    color: #515253;
-    font-size: 42px;
-    line-height: 42px;
-    margin-bottom: 2rem;
+  color: #515253;
+  font-size: 42px;
+  line-height: 42px;
+  margin-bottom: 2rem;
 }
