@@ -1,4 +1,6 @@
-<div class="heading">{{ editMode ? 'Edit course': 'Add new course'}}</div>
+<div class="heading">
+  {{ editMode ? 'Edit course': 'Add new course' }}
+</div>
 <form [formGroup]="addCourseForm" (keydown)="onKeyDown($event)">
   <div class="fieldset">
     <input class="field input" type="text" placeholder="Title" formControlName="title">
@@ -24,7 +26,9 @@
     </span>
   </div>
   <div class="controls">
-    <button class="button button_large button_alter button_wide" (click)="onCancelClick()">Cancel</button>
-    <button type="submit" class="button button_large button_wide" (click)="onSubmit()" [class.button_disabled]="!addCourseForm.valid">{{editMode ? 'Update Course' : 'Add New Course'}}</button>
+    <button class="button button_large button_alter button_wide button-cancel" (click)="onCancelClick()">Cancel</button>
+    <button type="submit" class="button button_large button_wide button-update" (click)="onSubmit()" [class.button_disabled]="!addCourseForm.valid">
+      {{ editMode ? 'Update Course' : 'Add New Course' }}
+    </button>
   </div>
 </form>

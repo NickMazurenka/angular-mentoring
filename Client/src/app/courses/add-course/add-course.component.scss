@@ -1,13 +1,13 @@
 .heading {
     color: #515253;
     font: bold 42px/42px Lato;
-    margin: 2rem 1rem;
+    margin-bottom: 1rem;
 }
 
 .fieldset {
     display: flex;
     flex-flow: column;
-    margin: 0 1rem;
+    margin: 0;
 }
 
 .group {
@@ -32,5 +32,13 @@
 .controls {
     display: flex;
     justify-content: space-between;
-    margin: 0.5rem 1rem 2rem;
+    margin-top: 0.5rem;
+}
+
+.button-cancel {
+  margin-right: 0.25rem;
+}
+
+.button-update {
+  margin-left: 0.25rem;
 }

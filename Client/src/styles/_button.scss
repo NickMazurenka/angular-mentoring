@@ -14,7 +14,6 @@ $button-alter-hover-out-time: 0.3s;
     border-radius: 2rem;
     padding: 0 1rem;
     line-height: 2rem;
-    height: 2rem;
     text-align: center;
     cursor: pointer;
     text-transform: uppercase;
@@ -52,7 +51,7 @@ $button-alter-hover-out-time: 0.3s;
     }
 
     &_large {
-        height: 3rem;
+        line-height: 3rem;
     }
 
     &:hover {
