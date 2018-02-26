@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule, DatePipe, UpperCasePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { OverlayModule } from '@angular/cdk/overlay';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
@@ -31,6 +32,7 @@ import { ConfirmationDialogService } from './confirmation-dialog/confirmation-di
     FormsModule,
     AngularFontAwesomeModule,
     ReactiveFormsModule,
+    OverlayModule,
   ],
   declarations: [
     CoursesComponent,

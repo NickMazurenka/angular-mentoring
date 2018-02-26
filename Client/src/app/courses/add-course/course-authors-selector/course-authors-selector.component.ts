@@ -1,5 +1,6 @@
-import { Component, OnInit, forwardRef, Input } from '@angular/core';
+import { Component, OnInit, forwardRef, Input, HostListener } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { CdkConnectedOverlay } from '@angular/cdk/overlay';
 import { IAuthor } from '../../models/author.model';
 
 @Component({
@@ -14,10 +15,11 @@ import { IAuthor } from '../../models/author.model';
 })
 export class CourseAuthorsSelectorComponent implements ControlValueAccessor {
 
+  isOpen: boolean = false;
   selected: IAuthor[] = new Array<IAuthor>();
 
   @Input()
-  options: IAuthor[];
+  authors: IAuthor[];
 
   public constructor() { }
 
@@ -33,6 +35,23 @@ export class CourseAuthorsSelectorComponent implements ControlValueAccessor {
 
   isOptionSelected(option: IAuthor): boolean {
     return this.selected.indexOf(option) !== -1;
+  }
+
+  toggle(): void {
+    this.isOpen ? this.close() : this.open();
+  }
+
+  close() {
+    this.isOpen = false;
+  }
+
+  open() {
+    this.isOpen = true;
+  }
+
+  @HostListener('click')
+  onClick() {
+    this.toggle();
   }
 
   onToggle() {

@@ -1,57 +1,36 @@
+$checkbox-unchecked-border-color: #DDDDDD;
+$checkbox-unchecked-color: #FFFFFF;
+$checkbox-checked-color: #515253;
+$checkbox-hover-color: #515253;
 $checkbox-hover-in-time: 0.1s;
 $checkbox-hover-out-time: 0.2s;
+$checkbox-size: 18px;
 
 .checkbox {
-    position: absolute;
-    opacity: 0;
+  &__container {
+    position: relative;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    width: $checkbox-size;
+    height: $checkbox-size;
+    border: $checkbox-unchecked-border-color solid 1px;
+    border-radius: 5px;
+    background-color: $checkbox-unchecked-color;
+    transition: background-color $checkbox-hover-out-time;
 
-    & + label {
-        position: relative;
-        cursor: pointer;
-        padding: 0;
-    }
+    &_checked {
+      background-color: $checkbox-checked-color;
 
-    & + label:before {
-        content: '';
-        margin-right: 1rem;
-        display: inline-block;
-        vertical-align: text-top;
-        width: 18px;
-        height: 18px;
-        border: #515356 solid 1px;
-        border-radius: 5px;
-        background-color: white;
-        transition: background-color $checkbox-hover-out-time;
-    }
-
-    &:hover + label:before {
-        background-color: #515356;
-        transition: background-color $checkbox-hover-in-time;
-    }
-
-    &:checked + label:before {
-        background-color: #515356;
-    }
-
-    &:disabled + label {
-        color: #b8b8b8;
-        cursor: auto;
-    }
-
-    &:disabled + label:before {
-        box-shadow: none;
-        background: #ddd;
-    }
-
-    &:checked + label:after {
+      &::after {
         content: '';
         position: absolute;
-        left: 5px;
-        top: 9px;
+        left: 4px;
+        top: 8px;
         background: white;
         width: 2px;
         height: 2px;
-        box-shadow: 
+        box-shadow:
         2px 0 0 white,
         4px 0 0 white,
         4px -2px 0 white,
@@ -59,6 +38,12 @@ $checkbox-hover-out-time: 0.2s;
         4px -6px 0 white,
         4px -8px 0 white;
         transform: rotate(45deg);
+      }
     }
+
+    &:hover {
+      background-color: $checkbox-hover-color;
+      transition: background-color $checkbox-hover-in-time;
+    }
+  }
 }
-  

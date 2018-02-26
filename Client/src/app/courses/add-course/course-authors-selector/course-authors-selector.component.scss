@@ -8,64 +8,38 @@ $button-hover-out-time: 0.7s;
 }
 
 .field {
-  margin-bottom: 1rem;
-}
-
-.authors {
-  display: inline-block;
-  width: 12rem;
-}
-
-.option {
-
-  &__container {
-    padding: 0.5rem;
-    width: 100%;
-  }
-
-  &__wrapper {
-    width: 100%;
-  }
-
-  &__label {
-    display: block;
-    width: 100%;
-  }
-}
-
-.controls {
+  font-weight: bold;
+  font-size: 16px;
+  color: #B2B2B2;
+  line-height: 3rem;
   height: 3rem;
-  border: transparent solid 1px;
-  vertical-align: top;
-  display: inline-flex;
-  flex-direction: column;
-  margin-left: -3.3rem;
 }
 
-.control {
-  &__button {
-    color: #525457;
-    width: 3rem;
-    height: 3rem;
-    padding: 0;
-    background-color: transparent;
-    border: none;
-    display: flex;
-    transition: background-color $button-hover-out-time, color $button-hover-out-time;
-
-    &:hover {
-      color: #EEEEEE;
-      background-color: #515356;
-      transition: background-color $button-hover-in-time, color $button-hover-in-time;
-    }
-
-    &:focus {
-      outline: none;
-    }
-  }
+.field-container {
+  display: flex;
 }
 
 .triangle {
-  color: inherit;
-  margin: auto;
+  line-height: 3rem;
+  font-size: 10px;
+  color: #B2B2B2;
+}
+
+.item {
+  display: flex;
+  padding: 0.2rem 0;
+  cursor: pointer;
+}
+
+.item-checkbox {
+  margin-right: 0.5rem;
+}
+
+.item-label {
+  display: inline-block;
+  color: #515253;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 18px;
 }
