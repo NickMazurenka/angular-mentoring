@@ -1,3 +1,24 @@
+@import '../../../styles/layout';
+
+.course {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  box-shadow: 0 0 7px 0 rgba(0,0,0,.12);
+  margin-bottom: 0.5rem;
+  padding: 1rem;
+  background: #FFFFFF;
+  position: relative;
+
+  @media (min-width: $layout-small-width-threshold) and (max-width: $layout-width-threshold) {
+    margin-bottom: 1rem;
+  }
+
+  @media (min-width: $layout-width-threshold) {
+    margin-bottom: 2rem;
+  }
+}
+
 .heading-container {
     width: 100%;
     display: flex;
@@ -38,17 +59,6 @@
     font: 14px/14px Lato;
     display: flex;
     justify-content: flex-start;
-}
-
-.course {
-    display: flex;
-    flex-flow: column;
-    justify-content: space-between;
-    box-shadow: 0 0 7px 0 rgba(0,0,0,.12);
-    margin: 1rem;
-    padding: 1rem;
-    background: #FFFFFF;
-    position: relative;
 }
 
 @mixin course-plate() {

@@ -1,4 +1,5 @@
 $layout-width-threshold: 1000px;
+$layout-small-width-threshold: 400px;
 
 @mixin content() {
   box-sizing: border-box;
