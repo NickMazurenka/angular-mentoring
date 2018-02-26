@@ -1,5 +1,11 @@
 @import '../styles/layout';
 
+// :host {
+//   display: flex;
+//   flex-direction: column;
+//   height: 100%;
+// }
+
 .app {
   &__content {
     @include content();

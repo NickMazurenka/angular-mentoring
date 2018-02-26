@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, HostListener, EventEmitter, Output } from '@angular/core';
-import { ConnectionPositionPair } from '@angular/cdk/overlay';
+import { Component, OnInit, Input, HostListener, EventEmitter, Output, ViewChild, TemplateRef } from '@angular/core';
+import { ConnectionPositionPair, GlobalPositionStrategy, CdkConnectedOverlay, OverlayRef } from '@angular/cdk/overlay';
 import { IUserInfo } from '../../shared-models/user-info.model';
 
 @Component({
@@ -23,7 +23,8 @@ export class UserInfoPopoverComponent {
   @Output()
   onSignOut = new EventEmitter<void>();
 
-  constructor() { }
+  constructor() {
+  }
 
   toggle(): void {
     this.isOpen ? this.close() : this.open();

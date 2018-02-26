@@ -1,20 +1,21 @@
 .add-button {
     width: 12em;
     line-height: 1.9rem;
-    margin-left: 0.5rem;
     text-decoration: none;
 }
 
 .search-container {
     display: flex;
     flex: 1 0 auto;
+    margin-bottom: 0.5rem;
+    margin-right: 0.5rem;
 }
 
 .controls-container {
     display: flex;
     flex-flow: column;
     background-color: #FFFFFF;
-    padding: 0.5rem 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .paging {
@@ -29,7 +30,6 @@
 }
 
 .courses-container {
-    padding: 0.5rem;
     display: flex;
     flex-flow: column;
     margin-bottom: 1rem;

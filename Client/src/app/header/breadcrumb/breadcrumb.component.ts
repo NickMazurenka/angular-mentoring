@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, NavigationEnd, UrlSegment } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd, UrlSegment, RouterEvent } from '@angular/router';
 import { filter, distinctUntilChanged, map } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
 
@@ -23,19 +23,33 @@ export class BreadCrumbComponent {
   ) {
     this.breadcrumbs = this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)).pipe(
-      distinctUntilChanged()).pipe(
-      map(event => this.buildBreadCrumb(this.activatedRoute.firstChild)));
+        distinctUntilChanged()).pipe(
+          map(event => {
+            return this.buildBreadCrumb(this.activatedRoute.firstChild);
+          }));
   }
 
   buildBreadCrumb(route: ActivatedRoute): BreadCrumb[] {
+    const breadcrumbs: BreadCrumb[] = [{
+      label: 'Home',
+      url: ''
+    }];
+    breadcrumbs.push(...this.buildRouteBreadCrumb(route, ''));
+    return breadcrumbs;
+  }
+
+  buildRouteBreadCrumb(route: ActivatedRoute, path: string): BreadCrumb[] {
     const breadcrumbs: BreadCrumb[] = [];
-    let path: string = '';
     route.snapshot.url.forEach((url: UrlSegment) => {
       path = path + (path.length === 0 ? '' : '/') + url.path;
       breadcrumbs.push({
         label: url.path,
         url: path
       });
+    });
+
+    route.children.forEach((childRoute: ActivatedRoute) => {
+      breadcrumbs.push(...this.buildRouteBreadCrumb(childRoute, path));
     });
 
     return breadcrumbs;
