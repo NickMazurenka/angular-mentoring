@@ -1,10 +1,10 @@
 <form [formGroup]="loginForm" class="login-form" (keydown)="onKeyDown($event)">
   <div class="form-header">Login to Your Account</div>
-  <input formControlName="username" type="text" class="input field" placeholder="Email Address">
+  <input formControlName="username" type="text" class="input__single field" placeholder="Email Address">
   <span class="field__error" *ngIf="showControlError('username')">
       {{ getControlError('username') }}
     </span>
-  <input formControlName="password" type="password" class="input field" placeholder="Password">
+  <input formControlName="password" type="password" class="input__single field" placeholder="Password">
   <span class="field__error" *ngIf="showControlError('password')">
       {{ getControlError('password') }}
     </span>

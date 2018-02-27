@@ -1,12 +1,6 @@
 $button-hover-in-time: 0.2s;
 $button-hover-out-time: 0.7s;
 
-:host {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
 .selector {
   width: 15rem;
   color: #B2B2B2;

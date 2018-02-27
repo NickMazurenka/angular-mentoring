@@ -1,20 +1,22 @@
 <div class="input__label">Duration</div>
-<input
-  class="input__single duration"
-  [(ngModel)]="value"
-  (change)="onChange()"
-  (blur)="onBlur()"
-  (keyup)="onChange()"
-  (keypress)="onKeyPress($event)"
-  (paste)="onPaste($event)"
-  (drop)="onDrop($event)"
-  type="text">
-<div class="controls">
-  <button type="button" class="control__button" (click)="onUpClick()">
-    <fa name="angle-up" class="triangle"></fa>
-  </button>
-  <button type="button" class="control__button" (click)="onDownClick()">
-    <fa name="angle-down" class="triangle"></fa>
-  </button>
+<div class="input-container">
+  <input
+    class="input__single duration"
+    [(ngModel)]="value"
+    (change)="onChange()"
+    (blur)="onBlur()"
+    (keyup)="onChange()"
+    (keypress)="onKeyPress($event)"
+    (paste)="onPaste($event)"
+    (drop)="onDrop($event)"
+    type="text">
+  <div class="controls">
+    <button type="button" class="control__button" (click)="onUpClick()">
+      <fa name="angle-up" class="triangle"></fa>
+    </button>
+    <button type="button" class="control__button" (click)="onDownClick()">
+      <fa name="angle-down" class="triangle"></fa>
+    </button>
+  </div>
+  <div class="result" *ngIf="value != null && value.length > 0 ">{{ value | courseDuration }}</div>
 </div>
-<div class="result" *ngIf="value != null && value.length > 0 ">{{ value | courseDuration }}</div>

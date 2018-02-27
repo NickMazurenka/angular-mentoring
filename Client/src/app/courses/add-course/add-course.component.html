@@ -1,7 +1,7 @@
-<div class="heading">
-  {{ editMode ? 'Edit course': 'Add new course' }}
-</div>
-<form [formGroup]="addCourseForm">
+<form [formGroup]="addCourseForm" class="form">
+  <div class="heading">
+    {{ editMode ? 'Edit course': 'Add new course' }}
+  </div>
   <div class="fieldset">
     <input class="field input__single" type="text" placeholder="Title" formControlName="title">
     <span class="field__error" *ngIf="showControlError('title')">
@@ -12,15 +12,15 @@
     <span class="field__error" *ngIf="showControlError('description')">
       {{ getControlError('description') }}
     </span>
-    <app-course-date-input formControlName="date" class="input__wrapper field"></app-course-date-input>
+    <app-course-date-input formControlName="date" class="input__wrapper field field-with-label"></app-course-date-input>
     <span class="field__error" *ngIf="showControlError('date')">
       {{ getControlError('date') }}
     </span>
-    <app-course-duration-input formControlName="duration" class="input__wrapper field"></app-course-duration-input>
+    <app-course-duration-input formControlName="duration" class="input__wrapper field field-with-label"></app-course-duration-input>
     <span class="field__error" *ngIf="showControlError('duration')">
       {{ getControlError('duration') }}
     </span>
-    <app-course-authors-selector formControlName="authors" [authors]="authors" class="input__wrapper field"></app-course-authors-selector>
+    <app-course-authors-selector formControlName="authors" [authors]="authors" class="input__wrapper field field-with-label"></app-course-authors-selector>
     <span class="field__error" *ngIf="showControlError('authors')">
       {{ getControlError('authors') }}
     </span>

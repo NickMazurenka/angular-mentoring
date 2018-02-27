@@ -6,7 +6,6 @@ $button-alter-hover-out-time: 0.3s;
 .button {
     font: bold 10px/10px Lato;
     letter-spacing: 2px;
-    width: 5rem;
     outline: none;
     color: #FFFFFF;
     border: 1px solid #FF6008;
@@ -47,7 +46,8 @@ $button-alter-hover-out-time: 0.3s;
     }
 
     &_wide {
-        width: 16rem;
+        max-width: 12rem;
+        width: 100%;
     }
 
     &_large {
