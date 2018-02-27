@@ -1,10 +1,10 @@
 <div class="input__label">Date</div>
 <input
+    class="input__single date"
     [(ngModel)]="value"
     (change)="onChange()"
     (keyup)="onChange()"
     (dblclick)="onDoubleClick()"
     (blur)="onBlur()"
-    class="input date"
     type="text"
     placeholder="{{currentDateFormatted }}">

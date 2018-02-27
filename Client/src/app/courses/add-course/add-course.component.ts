@@ -115,13 +115,6 @@ export class AddCourseComponent implements OnInit {
     this.submit();
   }
 
-  onKeyDown(event) {
-    if (event.keyCode === 13) {
-      event.preventDefault();
-      this.submit();
-    }
-  }
-
   onCancelClick() {
     this.navigateToCoursesList();
   }

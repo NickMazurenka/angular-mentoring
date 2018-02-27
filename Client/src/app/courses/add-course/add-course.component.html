@@ -1,13 +1,13 @@
 <div class="heading">
   {{ editMode ? 'Edit course': 'Add new course' }}
 </div>
-<form [formGroup]="addCourseForm" (keydown)="onKeyDown($event)">
+<form [formGroup]="addCourseForm">
   <div class="fieldset">
-    <input class="field input" type="text" placeholder="Title" formControlName="title">
+    <input class="field input__single" type="text" placeholder="Title" formControlName="title">
     <span class="field__error" *ngIf="showControlError('title')">
       {{ getControlError('title') }}
     </span>
-    <textarea class="field input input__textarea" placeholder="Description" formControlName="description">
+    <textarea class="field input__textarea" placeholder="Description" formControlName="description">
     </textarea>
     <span class="field__error" *ngIf="showControlError('description')">
       {{ getControlError('description') }}
@@ -20,13 +20,13 @@
     <span class="field__error" *ngIf="showControlError('duration')">
       {{ getControlError('duration') }}
     </span>
-    <app-course-authors-selector formControlName="authors" [authors]="authors" class="field"></app-course-authors-selector>
+    <app-course-authors-selector formControlName="authors" [authors]="authors" class="input__wrapper field"></app-course-authors-selector>
     <span class="field__error" *ngIf="showControlError('authors')">
       {{ getControlError('authors') }}
     </span>
   </div>
   <div class="controls">
-    <button class="button button_large button_alter button_wide button-cancel" (click)="onCancelClick()">Cancel</button>
+    <button type="button" class="button button_large button_alter button_wide button-cancel" (click)="onCancelClick()">Cancel</button>
     <button type="submit" class="button button_large button_wide button-update" (click)="onSubmit()" [class.button_disabled]="!addCourseForm.valid">
       {{ editMode ? 'Update Course' : 'Add New Course' }}
     </button>

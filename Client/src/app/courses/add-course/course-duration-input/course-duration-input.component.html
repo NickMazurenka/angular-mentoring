@@ -1,5 +1,6 @@
 <div class="input__label">Duration</div>
 <input
+  class="input__single duration"
   [(ngModel)]="value"
   (change)="onChange()"
   (blur)="onBlur()"
@@ -7,13 +8,12 @@
   (keypress)="onKeyPress($event)"
   (paste)="onPaste($event)"
   (drop)="onDrop($event)"
-  class="input duration"
   type="text">
 <div class="controls">
-  <button class="control__button control__button_up" (click)="onUpClick()">
+  <button type="button" class="control__button" (click)="onUpClick()">
     <fa name="angle-up" class="triangle"></fa>
   </button>
-  <button class="control__button control__button_down" (click)="onDownClick()">
+  <button type="button" class="control__button" (click)="onDownClick()">
     <fa name="angle-down" class="triangle"></fa>
   </button>
 </div>

@@ -1,11 +1,14 @@
+<div class="input__label">Authors</div>
 <div
   class="overlay-origin"
   cdkOverlayOrigin
   #origin="cdkOverlayOrigin">
-  <div class="field-container">
-    <div class="input__label field">Authors ({{selected.length}} Selected)</div>
-    <fa *ngIf="!isOpen" class="triangle" name="chevron-down"></fa>
-    <fa *ngIf="isOpen" class="triangle" name="chevron-up"></fa>
+  <div class="field-container" (click)="onClick()">
+    <div class="input__single selector">{{selected.length}} Selected</div>
+    <div class="controls">
+      <fa *ngIf="!isOpen" class="triangle" name="angle-down"></fa>
+      <fa *ngIf="isOpen" class="triangle" name="angle-up"></fa>
+    </div>
   </div>
 </div>
 

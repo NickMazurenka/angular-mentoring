@@ -12,7 +12,3 @@
 @import 'popover';
 
 @include cdk-overlay();
-
-.ng-touched.ng-invalid > div > .validated {
-  border-color: #FC7124;
-}

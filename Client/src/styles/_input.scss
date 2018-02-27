@@ -1,40 +1,69 @@
 .input {
-  font: 18px/18px Lato;
-  padding: 0 1rem;
-  color: #000000;
-  background-color: #EEEEEE;
-  line-height: 1em;
-  height: 3rem;
-  border: #EEEEEE solid 1px;
-  appearance: none;
+
+  &__single {
+    box-sizing: border-box;
+    font: bold 12px/14px Lato;    
+    padding: 0 20px;
+    color: #515253;
+    background-color: #EEEEEE;
+    max-width: 425px;
+    height: 45px;
+    line-height: 45px;
+    border: #EEEEEE solid 1px;
+    appearance: none;
+
+    &:focus {
+      outline: none;
+      border-color: #B6B6B6;
+    }
+
+    &::placeholder {
+      color: #B2B2B2;
+      font-weight: bold;
+    }
+
+    &.ng-touched.ng-invalid {
+      border-color: #FC7124;
+    }
+  }
 
   &__label {
     display: inline-block;
-    color: #515253;
-    font: 14px/14px Lato;
+    font: bold 10px/14px Lato;
     letter-spacing: 1px;
+    color: #515253;
     padding-right: 1rem;
     text-transform: uppercase;
   }
 
   &__textarea {
-      line-height: 1.3em;
-      padding-top: 0.5em;
-      padding-bottom: 0.5em;
-      min-height: 3rem;
-      resize: vertical;
+    box-sizing: border-box;
+    font: bold 12px/14px Lato;    
+    padding: 15px 20px;
+    color: #515253;
+    background-color: #EEEEEE;
+    max-width: 425px;
+    min-height: 60px;
+    resize: vertical;
+    border: #EEEEEE solid 1px;    
+    appearance: none;
+
+    &:focus {
+      outline: none;
+      border-color: #B6B6B6;
+    }
+
+    &::placeholder {
+      color: #B2B2B2;
+      font-weight: bold;
+    }
+
+    &.ng-touched.ng-invalid {
+      border-color: #FC7124;
+    }
   }
 
-  &.ng-touched.ng-invalid, &__wrapper.ng-touched.ng-invalid > & {
+  &__wrapper.ng-touched.ng-invalid .input__single {
     border-color: #FC7124;
   }
-}
-
-.input:focus {
-  outline: none;
-  border-color: #B6B6B6;
-}
-
-.input::placeholder {
-  color: #B2B2B2;
 }

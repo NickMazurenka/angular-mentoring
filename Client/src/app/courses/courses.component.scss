@@ -46,13 +46,15 @@
 }
 
 .search-field {
-  height: 2rem;
-  border-radius: 2rem;
-  border: 1px solid #DEDEDE;
-  flex: 1 0 auto;
-  font: 16px/16px Lato;
-  padding: 0 1rem;
-  outline: none;
+    font: 16px/16px Lato;
+    color: #515253;
+    height: 2rem;
+    border-radius: 2rem;
+    border: 1px solid #DEDEDE;
+    flex: 1 0 auto;
+    padding: 0 1rem;
+    outline: none;
+    appearance: none;
 }
 
 .search-button {

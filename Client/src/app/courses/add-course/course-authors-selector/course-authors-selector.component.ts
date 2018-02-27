@@ -43,13 +43,13 @@ export class CourseAuthorsSelectorComponent implements ControlValueAccessor {
 
   close() {
     this.isOpen = false;
+    this.onTouched();
   }
 
   open() {
     this.isOpen = true;
   }
 
-  @HostListener('click')
   onClick() {
     this.toggle();
   }
