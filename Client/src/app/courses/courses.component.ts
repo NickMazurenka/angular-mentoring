@@ -31,6 +31,7 @@ export class CoursesComponent implements OnInit {
   filter: FormControl = new FormControl();
 
   private loadingTimeoutMilliseconds: number = 500;
+  private loadingMinimalTimeoutMilliseconds: number = 300;
   private loadingStart: Subject<void>;
   private loadingFinish: Subject<void>;
 
@@ -58,7 +59,7 @@ export class CoursesComponent implements OnInit {
     });
     this.loadingStart.pipe(debounceTime(this.loadingTimeoutMilliseconds)).pipe(takeUntil(this.loadingFinish))
       .subscribe(() => this.loadingDialogService.open());
-    this.loadingFinish
+    this.loadingFinish.pipe(debounceTime(this.loadingMinimalTimeoutMilliseconds))
       .subscribe(() => this.loadingDialogService.close());
     this.loading.subscribe(loading => {
       if (loading) {
