@@ -5,15 +5,17 @@ import { Store } from '@ngrx/store';
 import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
-import { debounceTime } from 'rxjs/operators';
+import { Subject } from 'rxjs/Subject';
+import { debounceTime, delay, takeUntil } from 'rxjs/operators';
 
 import * as CoursesActions from './store/courses.actions';
 import { CoursesFilterPipe } from './courses-filter.pipe';
 import { ICourse } from './models/course.model';
 import { CoursesService } from './services/courses.service';
 import {
-  CoursesState, getCoursesList, getCoursesPaginationState, getCoursesPerPage, getCoursesCurrentPage, getCoursesTotalPages
+  CoursesState, getCoursesList, getCoursesPaginationState, getCoursesPerPage, getCoursesCurrentPage, getCoursesTotalPages, getLoading
 } from './store/courses.reducer';
+import { LoadingDialogService } from './loading-dialog/loading-dialog.service';
 
 @Component({
   selector: 'app-courses',
@@ -25,25 +27,45 @@ export class CoursesComponent implements OnInit {
   totalPages: Observable<number>;
   coursesPerPage: Observable<number>;
   currentPage: Observable<number>;
+  loading: Observable<boolean>;
   filter: FormControl = new FormControl();
+
+  private loadingTimeoutMilliseconds: number = 500;
+  private loadingStart: Subject<void>;
+  private loadingFinish: Subject<void>;
 
   private coursesState: Observable<CoursesState>;
 
   constructor(
     private store: Store<any>,
     private router: Router,
+    private loadingDialogService: LoadingDialogService
   ) {
     this.coursesState = this.store.select(state => state.courses);
     this.courses = this.store.select(getCoursesList);
     this.totalPages = this.store.select(getCoursesTotalPages);
     this.coursesPerPage = this.store.select(getCoursesPerPage);
     this.currentPage = this.store.select(getCoursesCurrentPage);
+    this.loading = this.store.select(getLoading);
+    this.loadingStart = new Subject<void>();
+    this.loadingFinish = new Subject<void>();
   }
 
   ngOnInit() {
     this.store.dispatch(new CoursesActions.GetCourseListRequest());
     this.filter.valueChanges.pipe(debounceTime(200)).subscribe((filterValue: string) => {
       this.store.dispatch(new CoursesActions.ChangeFilter(filterValue));
+    });
+    this.loadingStart.pipe(debounceTime(this.loadingTimeoutMilliseconds)).pipe(takeUntil(this.loadingFinish))
+      .subscribe(() => this.loadingDialogService.open());
+    this.loadingFinish
+      .subscribe(() => this.loadingDialogService.close());
+    this.loading.subscribe(loading => {
+      if (loading) {
+        this.loadingStart.next();
+      } else {
+        this.loadingFinish.next();
+      }
     });
   }
 

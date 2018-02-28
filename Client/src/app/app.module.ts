@@ -39,6 +39,7 @@ import { AuthorsReducer } from './courses/store/authors.reducer';
 import { AuthorsEffects } from './courses/store/authors.effects';
 import { ConfirmationDialogComponent } from './courses/confirmation-dialog/confirmation-dialog.component';
 import { UserInfoPopoverComponent } from './header/user-info-popover/user-info-popover.component';
+import { LoadingDialogComponent } from './courses/loading-dialog/loading-dialog.component';
 
 const reducers = { auth: AuthReducer };
 
@@ -90,7 +91,8 @@ const reducers = { auth: AuthReducer };
   ],
   bootstrap: [AppComponent],
   entryComponents: [
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    LoadingDialogComponent
   ]
 })
 export class AppModule { }

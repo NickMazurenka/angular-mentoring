@@ -5,7 +5,7 @@
   </div>
   <a class="button add-button" [routerLink]="['./add']">Add course</a>
 </div>
-<div class="courses-container" *ngIf="courses != null">
+<div class="courses-container" *ngIf="!(loading | async)">
   <app-paging [totalPages]="totalPages | async" [currentPage]="currentPage | async" (pageChanged)="onPageChange($event)" class="paging"></app-paging>
   <div *ngIf="(courses | async).length === 0" class="courses-empty-message">
     {{ filter.value != null && filter.value.length > 0 ? 'No courses fitting your filter' : 'No data. Feel free to add new course.' }}

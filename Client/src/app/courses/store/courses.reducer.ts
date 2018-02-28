@@ -37,6 +37,7 @@ export const getCoursesPaginationState = createSelector(getCoursesState, (state:
 export const getCoursesTotalPages = createSelector(getCoursesPaginationState, (state: PaginationState) => state.totalPages);
 export const getCoursesCurrentPage = createSelector(getCoursesPaginationState, (state: PaginationState) => state.currentPage);
 export const getCoursesPerPage = createSelector(getCoursesPaginationState, (state: PaginationState) => state.coursesPerPage);
+export const getLoading = createSelector(getCoursesState, (state: CoursesState) => state.loading);
 
 const newState = (state, newData) => {
   return Object.assign({}, state, newData);

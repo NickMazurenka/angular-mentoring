@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { CoursePlateColorDirective } from './course-plate-color.directive';
 import { ICourse } from '../models/course.model';
 import { ConfirmationDialogService } from '../confirmation-dialog/confirmation-dialog.service';
+import { LoadingDialogService } from '../loading-dialog/loading-dialog.service';
 
 @Component({
   selector: 'app-course-details',
@@ -15,14 +16,13 @@ export class CourseDetailsComponent {
   @Input() course: ICourse;
   @Output() onDelete: EventEmitter<ICourse> = new EventEmitter<ICourse>();
 
-  private dialogService: ConfirmationDialogService;
-
-  constructor(dialogService: ConfirmationDialogService) {
-    this.dialogService = dialogService;
+  constructor(private confirmationDialogService: ConfirmationDialogService, private nyanDialog: LoadingDialogService) {
   }
 
   onDeleteClick() {
-    const dialogRef = this.dialogService.open();
-    dialogRef.onDelete.subscribe(() => this.onDelete.emit(this.course));
+    const dialogRef = this.nyanDialog.open();
+
+    // const dialogRef = this.confirmationDialogService.open();
+    // dialogRef.onDelete.subscribe(() => this.onDelete.emit(this.course));
   }
 }

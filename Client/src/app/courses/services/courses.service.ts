@@ -67,6 +67,7 @@ export class CoursesService {
   }
 
   public getCourseList(start: number, count: number, filter?: string): Observable<ICourseList> {
+
     const url: string = this.coursesUrl;
     let params = new HttpParams()
       .set('start', String(start))

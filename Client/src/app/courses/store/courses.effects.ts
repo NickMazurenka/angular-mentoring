@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Effect, Actions } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { mergeMap, map, catchError, withLatestFrom } from 'rxjs/operators';
+import { mergeMap, map, catchError, withLatestFrom, delay } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 
 import * as CoursesActions from './courses.actions';

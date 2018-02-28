@@ -24,6 +24,8 @@ import { CourseDateInputComponent } from './add-course/course-date-input/course-
 import { AuthorsService } from './services/authors.service';
 import { CoursesService } from './services/courses.service';
 import { ConfirmationDialogService } from './confirmation-dialog/confirmation-dialog.service';
+import { LoadingDialogComponent } from './loading-dialog/loading-dialog.component';
+import { LoadingDialogService } from './loading-dialog/loading-dialog.service';
 
 @NgModule({
   imports: [
@@ -47,14 +49,17 @@ import { ConfirmationDialogService } from './confirmation-dialog/confirmation-di
     CourseDurationInputComponent,
     CourseAuthorsSelectorComponent,
     CourseDateInputComponent,
+    LoadingDialogComponent
   ],
   providers: [
     ConfirmationDialogService,
+    LoadingDialogService,
     DatePipe,
     UpperCasePipe,
   ],
   entryComponents: [
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    LoadingDialogComponent
   ]
 })
 export class CoursesModule { }
