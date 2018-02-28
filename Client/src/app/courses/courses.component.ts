@@ -30,8 +30,8 @@ export class CoursesComponent implements OnInit {
   loading: Observable<boolean>;
   filter: FormControl = new FormControl();
 
-  private loadingTimeoutMilliseconds: number = 500;
-  private loadingMinimalTimeoutMilliseconds: number = 300;
+  private loadingTimeoutMilliseconds: number = 300;
+  private loadingMinimalTimeoutMilliseconds: number = 200;
   private loadingStart: Subject<void>;
   private loadingFinish: Subject<void>;
 
@@ -57,14 +57,14 @@ export class CoursesComponent implements OnInit {
     this.filter.valueChanges.pipe(debounceTime(200)).subscribe((filterValue: string) => {
       this.store.dispatch(new CoursesActions.ChangeFilter(filterValue));
     });
-    this.loadingStart.pipe(debounceTime(this.loadingTimeoutMilliseconds)).pipe(takeUntil(this.loadingFinish))
-      .subscribe(() => this.loadingDialogService.open());
-    this.loadingFinish.pipe(debounceTime(this.loadingMinimalTimeoutMilliseconds))
-      .subscribe(() => this.loadingDialogService.close());
     this.loading.subscribe(loading => {
       if (loading) {
+        this.loadingStart.pipe(debounceTime(this.loadingTimeoutMilliseconds)).pipe(takeUntil(this.loadingFinish))
+          .subscribe(() => this.loadingDialogService.open());
         this.loadingStart.next();
       } else {
+        this.loadingFinish.pipe(debounceTime(this.loadingMinimalTimeoutMilliseconds))
+          .subscribe(() => this.loadingDialogService.close());
         this.loadingFinish.next();
       }
     });

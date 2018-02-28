@@ -29,7 +29,7 @@ export class CoursesEffects {
       withLatestFrom(this.store.select(getCoursesSearch)),
       mergeMap(([[action, pagination], search]) => {
         return this.coursesService.getCourseList(
-          (pagination.currentPage - 1) * pagination.coursesPerPage, pagination.coursesPerPage, search)
+          (pagination.currentPage - 1) * pagination.coursesPerPage, pagination.coursesPerPage, search).pipe(delay(2000))
           .pipe(
           map((response: ICourseList) => new CoursesActions.GetCourseListRequestSuccess(response)),
           catchError(e => of(new CoursesActions.GetCourseListRequestFailed()))
