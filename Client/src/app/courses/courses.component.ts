@@ -31,7 +31,7 @@ export class CoursesComponent implements OnInit {
   filter: FormControl = new FormControl();
 
   private loadingTimeoutMilliseconds: number = 300;
-  private loadingMinimalTimeoutMilliseconds: number = 200;
+  private loadingMinimalTimeoutMilliseconds: number = 100;
   private loadingStart: Subject<void>;
   private loadingFinish: Subject<void>;
 
