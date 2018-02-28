@@ -40,6 +40,7 @@ import { AuthorsEffects } from './courses/store/authors.effects';
 import { ConfirmationDialogComponent } from './courses/confirmation-dialog/confirmation-dialog.component';
 import { UserInfoPopoverComponent } from './header/user-info-popover/user-info-popover.component';
 import { LoadingDialogComponent } from './courses/loading-dialog/loading-dialog.component';
+import { MewComponent } from './page-not-found/mew/mew.component';
 
 const reducers = { auth: AuthReducer };
 
@@ -53,6 +54,7 @@ const reducers = { auth: AuthReducer };
     PageNotFoundComponent,
     BreadCrumbComponent,
     UserInfoPopoverComponent,
+    MewComponent,
   ],
   imports: [
     BrowserModule,

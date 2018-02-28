@@ -1,0 +1,66 @@
+.mew {
+  position: fixed;
+}
+
+@keyframes rotate1 {
+  from {
+    transform: rotate(27deg);
+  }
+  to {
+    transform: rotate(387deg);
+  }
+}
+
+@keyframes rotate2 {
+  from {
+    transform: rotate(45deg);
+  }
+  to {
+    transform: rotate(405deg);
+  }
+}
+
+@keyframes rotate3 {
+  from {
+    transform: rotate(78deg);
+  }
+  to {
+    transform: rotate(438deg);
+  }
+}
+
+@keyframes rotate3 {
+  from {
+    transform: rotate(131deg);
+  }
+  to {
+    transform: rotate(491deg);
+  }
+}
+
+@keyframes rotate4 {
+  from {
+    transform: rotate(190deg);
+  }
+  to {
+    transform: rotate(550deg);
+  }
+}
+
+@keyframes rotate5 {
+  from {
+    transform: rotate(249deg);
+  }
+  to {
+    transform: rotate(609deg);
+  }
+}
+
+@keyframes rotate6 {
+  from {
+    transform: rotate(303deg);
+  }
+  to {
+    transform: rotate(663deg);
+  }
+}
